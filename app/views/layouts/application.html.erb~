@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-  	<title><%= title %></title>
+  	<title><%= @title %></title>
   	<%= csrf_meta_tag %>
+  	<%= render 'layouts/stylesheets' %>
 	</head>
 	<body>
-		<%= yield %>
+	  <div class="page_layout">
+
+			<%= render 'layouts/header' %>
+
+			<section class="page_body">
+			  <%= yield %>
+      </section>
+
+			<%= render 'layouts/footer' %>
+
+		</div>
 	</body>
 </html>

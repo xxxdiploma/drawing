@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def copyright
-    "MSTU \"Stankin\" | Department of Engeneering Graphics | #{Time.now.year}"
+    "MSTU Stankin | Department of Engeneering Graphics | #{Time.now.year}"
   end
 
   def author
