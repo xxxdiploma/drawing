@@ -10,9 +10,11 @@ ru:
     contact:
       title: "Контакты"
 
+  news: "Новости"
+
   home: "ГЛАВНАЯ"
   contact: "КОНТАКТЫ"
   sign_in: "ВОЙТИ"
 
   copyright: "CТАНКИН | Кафедра Инженерной Графики"
-  author: "Автор: DY"
+  author: "DY"

@@ -4,6 +4,7 @@ $content_width: 1000px;
 
 html, body {
   font-family: "Arial";
+
   height: 100%;
   margin: 0;
 	padding: 0;
@@ -23,11 +24,26 @@ body {
 
 /* *************** */
 
+p, h1, h2, h3, h4, h5, h6, ul, a {
+  margin: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+/* *************** */
+
 header {
-  height: 108px;
+  height: 138px;
 
 	background: #424242;
+	margin-bottom: 8px;
+}
 
+.header {
+  height: 95px;
 	border-color: #272727;
 	border-width: 0px 0px 1px 0px;
 	border-style: solid;
@@ -43,29 +59,31 @@ header .content {
   margin-top: 34px;
 }
 
-header nav {
+ul {
+  padding-left: 0 !important;
+}
+
+.header nav {
   position: relative;
   top: 58px;
   float: right;
   font-size: 12px;
 }
 
-header nav ul li a {
+.header nav ul li a {
   padding: 0px 5px;
   font-weight: bold;
   text-decoration: none;
   color: #e8e8e8;
 }
 
-header nav ul li a:hover {
+.header nav ul li a:hover {
   color: #b2d179;
 }
 
-/* *************** */
-
 .navigation {
+  bottom: 0px;
 	width: 100%;
-	margin-bottom: 8px;
 	height: 40px;
 
   background: #eee;
@@ -73,7 +91,26 @@ header nav ul li a:hover {
 	border-bottom-color: #ddd;
 	border-top-color: #fff;
 	border-width: 1px 0px;
-	border-style: solid;;
+	border-style: solid;
+}
+
+.navigation nav {
+  position: relative;
+  top: 10px;
+  left: -2px;
+  font-size: 11pt;
+  float: left;
+}
+
+.navigation nav ul li a {
+  padding: 4px 5px 4px 5px;
+  text-decoration: none;
+  color: #333;
+}
+
+.navigation nav ul li a:hover {
+  background: #ddd;
+  border-radius: 5px;
 }
 
 /* *************** */
@@ -84,10 +121,12 @@ header nav ul li a:hover {
 	min-height: 100%;
 	padding-bottom: 110px;
 
+	padding-left: 2px;
+
 	margin-left: 50%;
   left: -$content_width / 2;
 
-  //background: #fde430;
+  color: #383838;
 }
 
 /* *************** */
@@ -138,17 +177,6 @@ footer div .footer_contact {
 
 footer div .footer_author {
   text-align: right;
-}
-
-/* *************** */
-
-p, h1, ul {
-  margin: 0;
-}
-
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
 }
 
 /* *************** */

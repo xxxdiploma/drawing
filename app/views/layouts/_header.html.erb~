@@ -1,12 +1,25 @@
 <header>
-	<div class="content">
-		 <%= link_to logo, root_path %>
-		 <nav>
-       <ul>
-         <li><%= link_to "HOME", root_path %></li>
-         <li><%= link_to "CONTACT", contact_path %></li>
-         <li><%= link_to "SIGN IN", '#' %></li>
-       </ul>
-		 </nav>
+  <div class="header">
+		<div class="content">
+			 <%= link_to logo, root_path %>
+			 <nav>
+		     <ul>
+		       <li><%= link_to t('home'), root_path %></li>
+		       <li><%= link_to t('contact'), contact_path %></li>
+		       <li><%= link_to t('sign_in'), '#' %></li>
+		     </ul>
+			 </nav>
+		</div>
+  </div>
+
+	<div class="navigation">
+		<div class="content">
+      <nav>
+		     <ul>
+		       <li><%= link_to t('news'), root_path %></li>
+		     </ul>
+			 </nav>
+		</div>
 	</div>
+
 </header>
