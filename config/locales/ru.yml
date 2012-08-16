@@ -1,0 +1,18 @@
+
+ru:
+  language: "Русский"
+
+  pages:
+    base:
+      title: "СТАНКИН | ИГ"
+    home:
+      title: "Главная"
+    contact:
+      title: "Контакты"
+
+  home: "ГЛАВНАЯ"
+  contact: "КОНТАКТЫ"
+  sign_in: "ВОЙТИ"
+
+  copyright: "CТАНКИН | Кафедра Инженерной Графики"
+  author: "Автор: DY"

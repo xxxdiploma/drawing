@@ -3,9 +3,9 @@
 		 <%= link_to logo, root_path %>
 		 <nav>
        <ul>
-         <li><%= link_to "Home", root_path %></li>
-         <li><%= link_to "Contact", contact_path %></li>
-         <li><%= link_to "Sign in", '#' %></li>
+         <li><%= link_to "HOME", root_path %></li>
+         <li><%= link_to "CONTACT", contact_path %></li>
+         <li><%= link_to "SIGN IN", '#' %></li>
        </ul>
 		 </nav>
 	</div>

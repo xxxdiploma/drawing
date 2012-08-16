@@ -64,11 +64,10 @@ header nav ul li a:hover {
 /* *************** */
 
 .page_body {
+  position: relative;
 	width: $content_width;
 
-	position: relative;
 	margin-left: 50%;
-	min-height: 100%;
   left: -$content_width / 2;
 
   background: #fde430;

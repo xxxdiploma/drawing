@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def title
-    base_title = "MSTU \"Stankin\""
+    base_title = t('pages.base.title')
     if @title.nil?
       base_title
     else
@@ -10,15 +10,16 @@ module ApplicationHelper
   end
 
   def logo
-  	image_tag("logo_en.png", :alt => "LOGO", :class => "logo")
+    locale = I18n.locale.to_s
+  	image_tag("logo_#{locale}.png", :alt => "LOGO", :class => "logo")
   end
 
   def copyright
-    "MSTU \"Stankin\" | Department of Engeneering Graphics | #{Time.now.year}"
+    "#{t('copyright')} | #{Time.now.year}"
   end
 
   def author
-    "Created by DY"
+    t('author')
   end
 
 end
