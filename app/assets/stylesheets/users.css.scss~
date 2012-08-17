@@ -3,7 +3,7 @@
 }
 
 .user_info p {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .user_info hr {
