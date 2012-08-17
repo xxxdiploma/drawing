@@ -7,4 +7,5 @@ class PagesController < ApplicationController
   def contact
     @title = t('pages.contact.title')
   end
+
 end

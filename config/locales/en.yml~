@@ -11,7 +11,8 @@ en:
       title: "Contact"
 
 
-  news: "Новости"
+  news: "News"
+  about: "About"
 
   home: "HOME"
   contact: "CONTACT"

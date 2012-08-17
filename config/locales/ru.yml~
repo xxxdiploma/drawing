@@ -10,8 +10,13 @@ ru:
     contact:
       title: "Контакты"
 
+  users:
+    sign_up:
+      title: "Регистрация"
+
 
   news: "Новости"
+  about: "O кафедре"
 
   home: "ГЛАВНАЯ"
   contact: "КОНТАКТЫ"

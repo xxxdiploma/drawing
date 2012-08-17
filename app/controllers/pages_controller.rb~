@@ -5,6 +5,6 @@ class PagesController < ApplicationController
   end
 
   def contact
-    @title = "Contact"
+    @title = t('pages.contact.title')
   end
 end
