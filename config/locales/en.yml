@@ -4,7 +4,7 @@ en:
 
   pages:
     base:
-      title: "STANKIN | EG"
+      title: "СТАНКИН"
     home:
       title: "Home"
     contact:
@@ -25,5 +25,5 @@ en:
   contact: "CONTACT"
   sign_in: "SIGN IN"
 
-  copyright: "STANKIN | Department of Engineering Graphics"
+  copyright: "СТАНКИН | Department of Engineering Graphics"
   author: "DY"
