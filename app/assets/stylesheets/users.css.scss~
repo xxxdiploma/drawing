@@ -1,12 +1,16 @@
 .user_info {
-  width: 360px;
+  width: 400px;
+}
+
+.user_info h2 {
+  font-size: 16px;
 }
 
 .user_info p {
-  font-size: 12px;
+  font-size: 14px;
 }
 
-.user_info hr {
+.user_info hr, .user_new hr {
   width: 100%;
 
   margin: 10px 0px;
@@ -17,4 +21,23 @@
 	border-top-color: #f7f7f7;
 	border-width: 1px 0px;
 	border-style: solid;
+}
+
+/* **************** */
+
+.user_new {
+  width: 400px;
+}
+
+.user_new h2 {
+  font-size: 16px;
+}
+
+.user_new label {
+  font-size: 14px;
+  display: table;
+}
+
+.field {
+  margin-bottom: 10px;
 }

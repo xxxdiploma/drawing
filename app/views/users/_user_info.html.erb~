@@ -1,3 +1,7 @@
-<h4><%= @title %></h4>
+<div class="flash_success">
+Test mesage
+</div>
+
+<h2><%= @title %></h2>
 <hr>
 <p><%= @user.email %></p>

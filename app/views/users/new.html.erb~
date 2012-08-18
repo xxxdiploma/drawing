@@ -25,7 +25,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit t('users.sign_up.button') %>
+    <%= f.submit t('users.sign_up.button'), :class => "buttons" %>
   </div>
 <% end %>
 </div>

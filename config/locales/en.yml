@@ -13,10 +13,15 @@ en:
   users:
     sign_up:
       title: "Sign up"
+      button: "Sign up"
 
   user:
     name: "Name"
+    surname: "Surname"
+    initials: "Initials"
     email: "Email"
+    password: "Password"
+    confirmation: "Confirmation"
 
   news: "News"
   about: "About"
@@ -27,3 +32,16 @@ en:
 
   copyright: "СТАНКИН | Department of Engineering Graphics"
   author: "DY"
+
+  errors:
+    registration:
+      description: "There were problems with the following fields"
+
+  activerecord:
+    attributes:
+      user:
+        password_confirmation: "Confirmation"
+
+  flash:
+    success:
+      welcome: "Welcome to the site!"

@@ -39,7 +39,7 @@ header {
   height: 138px;
 
 	background: #424242;
-	margin-bottom: 8px;
+	margin-bottom: 28px;
 }
 
 .header {
@@ -177,6 +177,21 @@ footer div .footer_contact {
 
 footer div .footer_author {
   text-align: right;
+}
+
+/* *************** */
+
+.actions input {
+    background-color: #424242;
+    border:1px solid #333;
+
+    font-size: 12px;
+    text-decoration: none;
+    color: #eee;
+    cursor: pointer;
+    padding:5px 10px 6px 7px;
+
+    margin: 10px 0px;
 }
 
 /* *************** */

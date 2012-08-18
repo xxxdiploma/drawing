@@ -6,7 +6,19 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
     @title = t('users.sign_up.title')
+  end
+
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      flash[:success] = t('flash.success.welcome')
+      redirect_to @user
+    else
+      @title = t('users.sign_up.title')
+      render 'new'
+    end
   end
 
 end
