@@ -1,6 +1,4 @@
-<div class="flash_success">
-Test mesage
-</div>
+<div class="flash_success">Test</div>
 
 <h2><%= @title %></h2>
 <hr>
