@@ -4,8 +4,8 @@
 			 <%= link_to logo, root_path %>
 			 <nav>
 		     <ul>
-		       <li><%= link_to t('home').mb_chars.upcase.to_s, root_path %></li>
-		       <li><%= link_to t('contact').upcase, contact_path %></li>
+		       <li><%= link_to t('home'), root_path %></li>
+		       <li><%= link_to t('contact'), contact_path %></li>
 		       <% if signed_in? %>
      			 <li><%= link_to t('sign_out'), signout_path, :method => :delete %></li>
       		 <% else %>

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
                              params[:session][:password])
     if user.nil?
       flash.now[:error] =  t('flash.error.login')
-      @title = "Sign in"
+      @title = t('pages.sign_in.title')
       render 'new'
     else
       sign_in user

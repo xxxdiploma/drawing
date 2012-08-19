@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-	<head>
-  	<title><%= title %></title>
-  	<%= csrf_meta_tag %>
-  	<%= favicon_link_tag %>
-  	<%= render 'layouts/stylesheets' %>
-	</head>
-	<body>
-	  <div class="page_layout">
+  <head>
+    <title><%= title %></title>
+    <%= csrf_meta_tag %>
+    <%= favicon_link_tag %>
+    <%= render 'layouts/stylesheets' %>
+  </head>
+  <body>
+    <div class="page_layout">
 
-			<%= render 'layouts/header' %>
+      <%= render 'layouts/header' %>
 
-			<section class="page_body">
+      <section class="page_body">
         <% flash.each do |key, value| %>
           <%= content_tag(:div, value, :class => "flash #{key}") %>
         <% end %>
-			  <%= yield %>
+        <%= yield %>
       </section>
 
-			<%= render 'layouts/footer' %>
+      <%= render 'layouts/footer' %>
 
-		</div>
-	</body>
+    </div>
+  </body>
 </html>
