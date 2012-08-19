@@ -53,3 +53,7 @@
   color: #557230;
   background: #cdf08b;
 }
+
+.flash.error {
+
+}

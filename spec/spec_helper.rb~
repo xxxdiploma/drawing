@@ -38,7 +38,7 @@ RSpec.configure do |config|
 
   # User defined
 
-  def test_sign_in(user)
+  def test_sign_in
     controller.sign_in(user)
   end
 

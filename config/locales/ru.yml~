@@ -9,18 +9,22 @@ ru:
       title: "Главная"
     contact:
       title: "Контакты"
-
-  users:
+    sign_in:
+      title: "Вход"
+      button: "Войти"
     sign_up:
       title: "Регистрация"
       button: "Зарегистрироваться"
 
-  news: "Новости"
-  about: "O кафедре"
-
-  home: "ГЛАВНАЯ"
-  contact: "КОНТАКТЫ"
-  sign_in: "ВОЙТИ"
+	news: "Новости"
+	about: "O кафедре"
+	my_page: "Моя страница"
+	settings: "Настройки"
+	users: "Пользователи"
+	contact: "Контакты"
+  home: "Главная"
+  sign_in: "Войти"
+  sign_out: "Выйти"
 
   copyright: "CТАНКИН | Кафедра Инженерной Графики"
   author: "DY"
@@ -28,6 +32,13 @@ ru:
   errors:
     registration:
       description: "Регистрационные данные указаны с ошибками"
+
+  sessions:
+    new:
+      email: "Почта"
+      password: "Пароль"
+      new_user: "Впервые на сайте?"
+      proposal: "Зарегистрируйтесь!"
 
   activerecord:
     attributes:
@@ -57,7 +68,8 @@ ru:
               too_long: "не должен быть длиннее 40 символов"
               confirmation: "и подтверждение не совпадают"
 
-
   flash:
     success:
       welcome: "Добро пожаловать на сайт!"
+    error:
+      login: "Неверная пара почта/пароль."

@@ -68,6 +68,7 @@ ul {
   top: 58px;
   float: right;
   font-size: 12px;
+  text-transform: uppercase;
 }
 
 .header nav ul li a {
@@ -128,6 +129,15 @@ ul {
 
   color: #383838;
 }
+
+.page_body a {
+  color: #557230;
+}
+
+.page_body a:hover {
+  color: #383838;
+}
+
 
 /* *************** */
 

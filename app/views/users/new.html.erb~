@@ -5,7 +5,7 @@
   <%= render 'shared/error_messages' %>
   <hr>
   <div class="field">
-    <%= f.label :surname %>
+    <%= f.label ('.surname') %>
     <%= f.text_field :surname %>
   </div>
     <div class="field">
@@ -25,7 +25,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit t('users.sign_up.button'), :class => "buttons" %>
+    <%= f.submit t('pages.sign_up.button') %>
   </div>
 <% end %>
 </div>

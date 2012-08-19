@@ -9,26 +9,22 @@ en:
       title: "Home"
     contact:
       title: "Contact"
-
-  users:
+    sign_in:
+      title: "Sign in"
+      button: "Sign in"
     sign_up:
       title: "Sign up"
       button: "Sign up"
 
-  user:
-    name: "Name"
-    surname: "Surname"
-    initials: "Initials"
-    email: "Email"
-    password: "Password"
-    confirmation: "Confirmation"
-
   news: "News"
   about: "About"
-
-  home: "HOME"
-  contact: "CONTACT"
-  sign_in: "SIGN IN"
+  my_page: "My page"
+  settings: "Settings"
+  users: "Users"
+  contact: "Contact"
+  home: "Home"
+  sign_in: "Sign in"
+  sign_out: "Sign out"
 
   copyright: "СТАНКИН | Department of Engineering Graphics"
   author: "DY"
@@ -36,6 +32,11 @@ en:
   errors:
     registration:
       description: "There were problems with the following fields"
+
+  sessions:
+    new:
+      new_user: "New user?"
+      proposal: "Sign up now!"
 
   activerecord:
     attributes:
@@ -45,3 +46,5 @@ en:
   flash:
     success:
       welcome: "Welcome to the site!"
+    error:
+      login: "Invalid email/password combination."

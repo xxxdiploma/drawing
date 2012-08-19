@@ -1,16 +1,23 @@
-.user_info {
+.user_info,
+.user_new,
+.user_login {
   width: 400px;
 }
 
-.user_info h2 {
+.user_info h2,
+.user_new h2,
+.user_login h2 {
   font-size: 16px;
 }
 
-.user_info p {
+.user_info p,
+.user_login p {
   font-size: 14px;
 }
 
-.user_info hr, .user_new hr {
+.user_info hr,
+.user_new hr,
+.user_login hr {
   width: 100%;
 
   margin: 10px 0px;
@@ -25,16 +32,10 @@
 
 /* **************** */
 
-.user_new {
-  width: 400px;
-}
-
-.user_new h2 {
-  font-size: 16px;
-}
-
-.user_new label {
+.user_new label,
+.user_login label {
   font-size: 14px;
+  padding-bottom: 2px;
   display: table;
 }
 

@@ -22,4 +22,8 @@ module ApplicationHelper
     t('author')
   end
 
+  def contact_page?
+    request.path == contact_path
+  end
+
 end

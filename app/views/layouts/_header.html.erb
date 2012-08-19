@@ -6,7 +6,11 @@
 		     <ul>
 		       <li><%= link_to t('home'), root_path %></li>
 		       <li><%= link_to t('contact'), contact_path %></li>
-		       <li><%= link_to t('sign_in'), '#' %></li>
+		       <% if signed_in? %>
+     			 <li><%= link_to t('sign_out'), signout_path, :method => :delete %></li>
+      		 <% else %>
+           <li><%= link_to t('sign_in'), signin_path %></li>
+           <% end %>
 		     </ul>
 			 </nav>
 		</div>
@@ -16,8 +20,17 @@
 		<div class="content">
       <nav>
 		     <ul>
-		       <li><%= link_to t('about'), '#' %></li>
-		       <li><%= link_to t('news'), '#' %></li>
+		       <% if contact_page? %>
+           <li><%= link_to t('contact'), '#' %></li>
+           <% else %>
+             <% if signed_in? %>
+             <li><%= link_to t('my_page'), '#' %></li>
+             <li><%= link_to t('settings'), '#' %></li>
+             <li><%= link_to t('news'), '#' %></li>
+             <li><%= link_to t('users'), '#' %></li>
+             <% end %>
+             <li><%= link_to t('about'), '#' %></li>
+		       <% end %>
 		     </ul>
 			 </nav>
 		</div>

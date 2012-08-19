@@ -19,7 +19,11 @@ module ApplicationHelper
   end
 
   def author
-    "Created by DY"
+    t('author')
+  end
+
+  def contact_page?
+    request.path == contact_path
   end
 
 end
