@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    @title = t('pages.sign_in.title')
+    @title = t('titles.sign_in')
   end
 
   def create
@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
                              params[:session][:password])
     if user.nil?
       flash.now[:error] =  t('flash.error.login')
-      @title = t('pages.sign_in.title')
+      @title = t('titles.sign_in')
       render 'new'
     else
       sign_in user

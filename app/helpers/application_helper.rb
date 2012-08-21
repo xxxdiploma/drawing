@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def title
-    base_title = t('pages.base.title')
+    base_title = t('titles.base')
     if @title.nil?
       base_title
     else

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @title = t('pages.sign_up.title')
+    @title = t('titles.sign_up')
   end
 
   def create
@@ -17,7 +17,8 @@ class UsersController < ApplicationController
       flash[:success] = t('flash.success.welcome')
       redirect_to @user
     else
-      @title = t('pages.sign_up.title')
+      @title = t('titles.sign_up')
+      flash.now[:error] = t('flash.error.registration')
       render 'new'
     end
   end

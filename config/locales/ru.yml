@@ -1,44 +1,44 @@
 
 ru:
   language: "Русский"
-
-  pages:
-    base:
-      title: "СТАНКИН"
-    home:
-      title: "Главная"
-    contact:
-      title: "Контакты"
-    sign_in:
-      title: "Вход"
-      button: "Войти"
-    sign_up:
-      title: "Регистрация"
-      button: "Зарегистрироваться"
-
-  news: "Новости"
-  about: "O кафедре"
-  my_page: "Моя страница"
-  settings: "Настройки"
-  users: "Пользователи"
-  contact: "Контакты"
-  home: "Главная"
-  sign_in: "Войти"
-  sign_out: "Выйти"
-
   copyright: "CТАНКИН | Кафедра Инженерной Графики"
   author: "DY"
 
-  errors:
-    registration:
-      description: "Регистрационные данные указаны с ошибками"
+  titles:
+    base: "СТАНКИН"
+    home: "Главная"
+    contact: "Контакты"
+    sign_in: "Вход"
+    sign_up: "Регистрация"
+
+  links:
+    news: "Новости"
+    about: "O кафедре"
+    my_page: "Моя страница"
+    settings: "Настройки"
+    users: "Пользователи"
+    contact: "Контакты"
+    home: "Главная"
+    sign_in: "Войти"
+    sign_out: "Выйти"
+
+  buttons:
+    sign_in: "Войти"
+    sign_up: "Зарегистрироваться"
 
   sessions:
     new:
       email: "Почта"
       password: "Пароль"
       new_user: "Впервые на сайте?"
-      proposal: "Зарегистрируйтесь!"
+      sign_up: "Зарегистрируйтесь!"
+
+  flash:
+    success:
+      welcome: "Добро пожаловать на сайт"
+    error:
+      login: "Неверная пара почта/пароль"
+      registration: "Регистрационные данные указаны с ошибками"
 
   activerecord:
     attributes:
@@ -67,9 +67,3 @@ ru:
               too_short: "не должен быть короче 6 символов"
               too_long: "не должен быть длиннее 40 символов"
               confirmation: "и подтверждение не совпадают"
-
-  flash:
-    success:
-      welcome: "Добро пожаловать на сайт!"
-    error:
-      login: "Неверная пара почта/пароль."

@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
 
   def home
-  	@title = t('pages.home.title')
+  	@title = t('titles.home')
   end
 
   def contact
-    @title = t('pages.contact.title')
+    @title = t('titles.contact')
   end
 
 end

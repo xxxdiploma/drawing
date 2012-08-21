@@ -4,12 +4,12 @@
        <%= link_to logo, root_path %>
        <nav>
          <ul>
-           <li><%= link_to t('home'), root_path %></li>
-           <li><%= link_to t('contact'), contact_path %></li>
+           <li><%= link_to t('links.home'), root_path %></li>
+           <li><%= link_to t('links.contact'), contact_path %></li>
            <% if signed_in? %>
-           <li><%= link_to t('sign_out'), signout_path, :method => :delete %></li>
+           <li><%= link_to t('links.sign_out'), signout_path, :method => :delete %></li>
            <% else %>
-           <li><%= link_to t('sign_in'), signin_path %></li>
+           <li><%= link_to t('links.sign_in'), signin_path %></li>
            <% end %>
          </ul>
        </nav>
@@ -21,15 +21,15 @@
       <nav>
          <ul>
            <% if contact_page? %>
-           <li><%= link_to t('contact'), '#' %></li>
+           <li><%= link_to t('links.contact'), '#' %></li>
            <% else %>
            <% if signed_in? %>
-           <li><%= link_to t('my_page'), '#' %></li>
-           <li><%= link_to t('settings'), '#' %></li>
-           <li><%= link_to t('news'), '#' %></li>
-           <li><%= link_to t('users'), '#' %></li>
+           <li><%= link_to t('links.my_page'), '#' %></li>
+           <li><%= link_to t('links.settings'), '#' %></li>
+           <li><%= link_to t('links.news'), '#' %></li>
+           <li><%= link_to t('links.users'), '#' %></li>
            <% end %>
-           <li><%= link_to t('about'), '#' %></li>
+           <li><%= link_to t('links.about'), '#' %></li>
            <% end %>
          </ul>
        </nav>

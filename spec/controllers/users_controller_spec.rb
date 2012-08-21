@@ -33,7 +33,7 @@ describe UsersController do
 
     it "should have the right title" do
       get :new
-      response.should have_selector("title", :content => "Sign up" )
+      response.should have_selector("title", :content => I18n.t('titles.sign_up') )
     end
 
 
@@ -81,7 +81,7 @@ describe UsersController do
 
       it "should have the right title" do
         post :create, :user => @attr
-        response.should have_selector("title", :content => "Sign up")
+        response.should have_selector("title", :content => I18n.t('titles.sign_up') )
       end
 
       it "should render the 'new' page" do
@@ -111,7 +111,7 @@ describe UsersController do
 
       it "should have a welcome message" do
         post :create, :user => @attr
-        flash[:success].should =~ /welcome to the site/i
+        flash[:success].should == I18n.t('flash.success.welcome')
       end
 
       it "should sign the user in" do

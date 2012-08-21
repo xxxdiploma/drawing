@@ -1,11 +1,11 @@
 <div class = "user_new">
 <h2><%= @title %></h2>
-
+<hr />
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages' %>
-  <hr>
+  <br />
   <div class="field">
-    <%= f.label ('.surname') %>
+    <%= f.label :surname %>
     <%= f.text_field :surname %>
   </div>
     <div class="field">
@@ -25,7 +25,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit t('pages.sign_up.button') %>
+    <%= f.submit t('buttons.sign_up') %>
   </div>
 <% end %>
 </div>

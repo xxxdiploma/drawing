@@ -11,10 +11,10 @@
     <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= f.submit t('.button') %>
+    <%= f.submit t('buttons.sign_in') %>
   </div>
 <% end %>
 <br />
-<p><%= t('.new_user') %> <%= link_to t('.proposal'), signup_path %></p>
+<p><%= t('.new_user') %> <%= link_to t('.sign_up'), signup_path %></p>
 <br />
 </div>
