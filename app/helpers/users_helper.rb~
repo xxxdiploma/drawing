@@ -1,7 +1,0 @@
-module UsersHelper
-
-  def user_name
-    "#{@user.surname} #{@user.initials.first}. #{@user.initials.last}."
-  end
-
-end
