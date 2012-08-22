@@ -24,8 +24,8 @@
            <li><%= link_to t('links.contact'), '#' %></li>
            <% else %>
            <% if signed_in? %>
-           <li><%= link_to t('links.my_page'), '#' %></li>
-           <li><%= link_to t('links.settings'), '#' %></li>
+           <li><%= link_to t('links.my_page'), current_user %></li>
+           <li><%= link_to t('links.settings'), edit_user_path(current_user) %></li>
            <li><%= link_to t('links.news'), '#' %></li>
            <li><%= link_to t('links.users'), '#' %></li>
            <% end %>

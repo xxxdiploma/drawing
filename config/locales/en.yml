@@ -38,9 +38,13 @@ en:
   flash:
     success:
       welcome: "Welcome to the site"
+      updated: "Profile updated"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"
+      not_updated: "Profile has not been updated"
+    notice:
+      deny_access: "Please sign in to access this page"
 
   activerecord:
     attributes:

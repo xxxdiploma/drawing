@@ -38,9 +38,13 @@ ru:
   flash:
     success:
       welcome: "Добро пожаловать на сайт"
+      updated: "Информация обновлена"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"
+      not_updated: "Профиль не был обновлён"
+    notice:
+      deny_access: "Авторизируйтесь для доступа к этой странице"
 
   activerecord:
     attributes:
