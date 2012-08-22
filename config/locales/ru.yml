@@ -10,6 +10,7 @@ ru:
     contact: "Контакты"
     sign_in: "Вход"
     sign_up: "Регистрация"
+    edit: "Настройки"
 
   links:
     news: "Новости"
@@ -25,6 +26,7 @@ ru:
   buttons:
     sign_in: "Войти"
     sign_up: "Зарегистрироваться"
+    update: "Обновить"
 
   sessions:
     new:

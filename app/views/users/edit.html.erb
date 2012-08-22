@@ -1,4 +1,4 @@
-<div class = "user_new">
+<div class = "user_edit">
 <h2><%= @title %></h2>
 <hr />
 <%= form_for(@user) do |f| %>
@@ -25,7 +25,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit t('buttons.sign_up') %>
+    <%= f.submit t('buttons.update') %>
   </div>
 <% end %>
 </div>

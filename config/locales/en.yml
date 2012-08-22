@@ -10,6 +10,7 @@ en:
     contact: "Contact"
     sign_in: "Sign in"
     sign_up: "Sign up"
+    edit: "Settings"
 
   links:
     news: "News"
@@ -25,6 +26,7 @@ en:
   buttons:
     sign_in: "Sign in"
     sign_up: "Sign up"
+    update: "Update"
 
   sessions:
     new:
