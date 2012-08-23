@@ -36,10 +36,16 @@ en:
       new_user: "New user?"
       sign_up: "Sign up now!"
 
+  users:
+    user:
+      delete: "Delete"
+      confirm: "Are you sure?"
+
   flash:
     success:
       welcome: "Welcome to the site"
       updated: "Profile updated"
+      destroyed: "User destroyed"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"

@@ -1,0 +1,7 @@
+<li>
+  <%= link_to user_full_name(user), user %>
+
+  <% if current_user.admin? %>
+  | <%= link_to t('.delete'), user, :method => :delete, :confirm => t('.confirm') %>
+  <% end %>
+</li>
