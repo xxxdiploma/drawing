@@ -6,11 +6,6 @@
   font-size: 16px;
 }
 
-.user ul li {
-  list-style-type: none;
-  padding-bottom: 2px;
-}
-
 .user.info p,
 .user.login p {
   font-size: 14px;
@@ -39,6 +34,47 @@
 
 .field {
   margin-bottom: 10px;
+}
+
+.user.list ul li {
+  list-style-type: none;
+  padding-bottom: 2px;
+  font-size: 14px;
+}
+
+.user.list ul li a {
+  text-decoration: none;
+  color: #383838;
+}
+
+.user.list ul li a:hover {
+  text-decoration: underline;
+}
+
+.user.list li {
+  cursor: pointer;
+  border-radius: 2px;
+  padding-left: 4px;
+  margin-left: -4px;
+}
+
+.user.list li:hover {
+  background: #ddd;
+}
+
+.show_user_button {
+  float: left;
+}
+
+.delete_user_button {
+  float: right;
+  font-size: 12px;
+  padding-top: 1px;
+  padding-right: 4px;
+}
+
+.pagination {
+  font-size: 14px;
 }
 
 //#user_surname {
