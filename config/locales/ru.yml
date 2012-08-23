@@ -11,6 +11,7 @@ ru:
     sign_in: "Вход"
     sign_up: "Регистрация"
     edit: "Настройки"
+    users: "Пользователи"
 
   links:
     news: "Новости"
@@ -45,6 +46,10 @@ ru:
       not_updated: "Профиль не был обновлён"
     notice:
       deny_access: "Авторизируйтесь для доступа к этой странице"
+
+  will_paginate:
+    previous_label: "Назад"
+    next_label: "Далее"
 
   activerecord:
     attributes:

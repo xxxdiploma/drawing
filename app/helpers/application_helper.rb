@@ -26,4 +26,8 @@ module ApplicationHelper
     request.path == contact_path
   end
 
+  def user_full_name(user)
+    "#{user.surname} #{user.initials.first}. #{user.initials.last}."
+  end
+
 end

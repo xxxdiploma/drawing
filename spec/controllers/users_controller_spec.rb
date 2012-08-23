@@ -3,6 +3,67 @@ require 'spec_helper'
 describe UsersController do
   render_views
 
+  describe "GET 'index'" do
+
+    describe "for non-signed-in users" do
+      it "should deny access" do
+        get :index
+        response.should redirect_to(signin_path)
+        flash[:notice].should == I18n.t('flash.notice.deny_access')
+      end
+    end
+
+    describe "for signed-in users" do
+
+      before(:each) do
+        @user = test_sign_in(FactoryGirl.create(:user))
+        second = FactoryGirl.create(:user, :surname => "Bob", :email => "bob@example.com")
+        third  = FactoryGirl.create(:user, :surname => "Ben", :email => "ben@example.net")
+
+        @users = [@user, second, third]
+
+        30.times do
+          @users << FactoryGirl.create(:user, :email => FactoryGirl.generate(:email))
+        end
+      end
+
+      it "should be successful" do
+        get :index
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get :index
+        response.should have_selector("title", :content => I18n.t('titles.users') )
+      end
+
+      it "should have an element for each user" do
+        get :index
+        @users.each do |user|
+          response.should have_selector("li", :content => user.surname)
+        end
+      end
+
+      it "should have an element for each user" do
+        get :index
+        @users[0..2].each do |user|
+          response.should have_selector("li", :content => user.surname)
+        end
+      end
+
+      it "should paginate users" do
+        get :index
+        response.should have_selector("div.pagination")
+        response.should have_selector("span.disabled",
+                                           :content => I18n.t('will_paginate.previous_label'))
+        response.should have_selector("a", :href => "/users?page=2",
+                                           :content => "2")
+        response.should have_selector("a", :href => "/users?page=2",
+                                           :content => I18n.t('will_paginate.next_label'))
+      end
+    end
+  end
+
   describe "GET 'show'" do
 
     before(:each) do

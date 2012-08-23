@@ -11,6 +11,7 @@ en:
     sign_in: "Sign in"
     sign_up: "Sign up"
     edit: "Settings"
+    users: "Users"
 
   links:
     news: "News"
@@ -45,6 +46,10 @@ en:
       not_updated: "Profile has not been updated"
     notice:
       deny_access: "Please sign in to access this page"
+
+  will_paginate:
+    previous_label: "Previous"
+    next_label: "Next"
 
   activerecord:
     attributes:

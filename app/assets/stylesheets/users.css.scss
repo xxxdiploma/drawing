@@ -1,26 +1,22 @@
-.user_info,
-.user_new,
-.user_login,
-.user_edit {
+.user {
   width: 400px;
 }
 
-.user_info h2,
-.user_new h2,
-.user_login h2,
-.user_edit h2 {
+.user h2 {
   font-size: 16px;
 }
 
-.user_info p,
-.user_login p {
+.user ul li {
+  list-style-type: none;
+  padding-bottom: 2px;
+}
+
+.user.info p,
+.user.login p {
   font-size: 14px;
 }
 
-.user_info hr,
-.user_new hr,
-.user_login hr,
-.user_edit hr {
+.user hr {
   width: 100%;
 
   margin: 10px 0px;
@@ -33,9 +29,9 @@
 	border-style: solid;
 }
 
-.user_new label,
-.user_login label,
-.user_edit label {
+.user.new label,
+.user.login label,
+.user.edit label {
   font-size: 14px;
   padding-bottom: 2px;
   display: table;
@@ -44,3 +40,11 @@
 .field {
   margin-bottom: 10px;
 }
+
+//#user_surname {
+  //text-transform: capitalize;
+//}
+
+//#user_initials {
+  //text-transform: uppercase;
+//}
