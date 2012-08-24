@@ -52,6 +52,8 @@ ru:
       not_updated: "Профиль не был обновлён"
     notice:
       deny_access: "Авторизируйтесь для доступа к этой странице"
+      already_signed_in: "Вы уже авторизированы"
+      destroy_yourself: "Вы не можете удалить себя"
 
   will_paginate:
     previous_label: "Назад"

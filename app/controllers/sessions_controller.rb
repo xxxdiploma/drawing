@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+  before_filter :signed_in_user, :only => [:new]
+
   def new
     @title = t('titles.sign_in')
   end
@@ -21,5 +23,14 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_path
   end
+
+  private
+
+    def signed_in_user
+      if signed_in?
+        flash[:notice] = t('flash.notice.already_signed_in')
+        redirect_to(current_user)
+      end
+    end
 
 end

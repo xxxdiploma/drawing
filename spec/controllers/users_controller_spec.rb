@@ -62,6 +62,27 @@ describe UsersController do
                                            :content => I18n.t('will_paginate.next_label'))
       end
     end
+
+    describe "as an admin user" do
+
+      it "should have 'delete' links" do
+        admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(admin)
+        get :index
+        response.should have_selector("a", :content => I18n.t('users.user.delete'))
+      end
+    end
+
+    describe "as an non-admin user" do
+
+      it "should have 'delete' links" do
+        user = FactoryGirl.create(:user)
+        test_sign_in(user)
+        get :index
+        response.should_not have_selector("a", :content => I18n.t('users.user.delete'))
+      end
+    end
+
   end
 
   describe "GET 'show'" do
@@ -122,6 +143,20 @@ describe UsersController do
     it "should have a password confirmation field" do
       get :new
       response.should have_selector("input[name='user[password_confirmation]'][type='password']")
+    end
+
+    describe "for signed-in users" do
+
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        test_sign_in(@user)
+      end
+
+      it "should redirect to the user show page" do
+        get :new
+        response.should redirect_to(user_path(@user))
+      end
+
     end
   end
 
@@ -321,8 +356,8 @@ describe UsersController do
     describe "as an admin user" do
 
       before(:each) do
-        admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
-        test_sign_in(admin)
+        @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(@admin)
       end
 
       it "should destroy the user" do
@@ -334,6 +369,12 @@ describe UsersController do
       it "should redirect to the users page" do
         delete :destroy, :id => @user
         response.should redirect_to(users_path)
+      end
+
+      it "should not be able to destroy yourself" do
+        lambda do
+          delete :destroy, :id => @admin
+        end.should_not change(User, :count)
       end
     end
   end

@@ -14,6 +14,20 @@ describe SessionsController do
       get :new
       response.should have_selector("title", :content => I18n.t('titles.sign_in') )
     end
+
+    describe "for signed-in users" do
+
+      before(:each) do
+        @user = FactoryGirl.create(:user)
+        test_sign_in(@user)
+      end
+
+      it "should redirect to the user show page" do
+        get :new
+        response.should redirect_to(user_path(@user))
+      end
+
+    end
   end
 
   describe "POST 'create'" do

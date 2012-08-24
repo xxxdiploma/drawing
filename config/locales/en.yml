@@ -52,6 +52,8 @@ en:
       not_updated: "Profile has not been updated"
     notice:
       deny_access: "Please sign in to access this page"
+      already_signed_in: "You are already signed in"
+      destroy_yourself: "You cannot destroy yourself"
 
   will_paginate:
     previous_label: "Previous"
