@@ -1,0 +1,21 @@
+<div class = "articles" >
+  <h2><%= @title %></h2>
+  <hr />
+  <br />
+  <% @articles.each do |article| %>
+    <div class = "articles content" >
+      <p><%= article.content %></p>
+    </div>
+    <div class = "articles info" >
+      <div class = "articles author" >
+        <%= posted_by_at(article) %></p>
+      </div>
+      <% if current_user.admin? %>
+      <div class = "articles delete_article_button">
+         <%= link_to t('.delete') %>
+      </div>
+      <% end %>
+    </div>
+    <br />
+  <% end %>
+</div>

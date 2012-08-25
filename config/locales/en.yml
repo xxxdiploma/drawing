@@ -12,9 +12,10 @@ en:
     sign_up: "Sign up"
     edit: "Settings"
     users: "Users"
+    articles: "News"
 
   links:
-    news: "News"
+    articles: "News"
     about: "About"
     my_page: "My page"
     settings: "Settings"
@@ -40,6 +41,12 @@ en:
     user:
       delete: "Delete"
       confirm: "Are you sure?"
+
+  articles:
+    index:
+      posted_by: "Posted by"
+      at: "at"
+      delete: "Delete"
 
   flash:
     success:

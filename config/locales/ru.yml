@@ -12,9 +12,10 @@ ru:
     sign_up: "Регистрация"
     edit: "Настройки"
     users: "Пользователи"
+    articles: "Новости"
 
   links:
-    news: "Новости"
+    articles: "Новости"
     about: "O кафедре"
     my_page: "Моя страница"
     settings: "Настройки"
@@ -40,6 +41,12 @@ ru:
     user:
       delete: "Удалить"
       confirm: "Вы уверены?"
+
+  articles:
+    index:
+      posted_by: "Опубликовано"
+      at: "в"
+      delete: "Удалить"
 
   flash:
     success:

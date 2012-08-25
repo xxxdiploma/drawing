@@ -54,9 +54,21 @@ describe "LayoutLinks" do
                                          :content => I18n.t('links.sign_out') )
     end
 
-    it "should have a profile link" do
+    it "should have a profile link"
       # Заполнить позже
-    end
+
+
+    it "should have an edit link"
+      # Заполнить позже
+
+
+    it "should have an articles link"
+      # Заполнить позже
+
+
+    it "should have a users link"
+      # Заполнить позже
+
   end
 
 end
