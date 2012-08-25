@@ -167,4 +167,30 @@ describe User do
     end
   end
 
+  ##################################################################
+
+  describe "article associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+      @mp1 = FactoryGirl.create(:article, :user => @user, :created_at => 1.day.ago)
+      @mp2 = FactoryGirl.create(:article, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have a articles attribute" do
+      @user.should respond_to(:articles)
+    end
+
+    it "should have the right articles in the right order" do
+      @user.articles.should == [@mp2, @mp1]
+    end
+
+    it "should destroy associated articles" do
+      @user.destroy
+      [@mp1, @mp2].each do |article|
+        Article.find_by_id(article.id).should be_nil
+      end
+    end
+  end
+
 end
