@@ -50,6 +50,7 @@ en:
       at: "at"
       delete: "Delete"
       confirm: "Are you sure?"
+      new: "New article"
 
   flash:
     success:

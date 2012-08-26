@@ -17,11 +17,12 @@
 }
 
 .articles.content {
+  width: 100%;
   min-height: 100px;
   font-size: 14px;
   border-radius: 4px;
-  padding: 6px 4px;
-  margin-left: -4px;
+  padding: 6px;
+  margin-left: -6px;
   background: #eee;
 }
 
@@ -53,6 +54,26 @@
 .articles.delete_article_button a:hover {
   text-decoration: underline;
   color: #383838;
+}
+
+.articles.new_article_button a {
+  float: right;
+  color: #383838;
+  text-decoration: none;
+  font-size: 22px;
+  margin-right: 600px;
+  margin-top: -21px;
+  content: "+";
+  background: #eee;
+  padding: 0 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.articles.new_article_button a:hover {
+  font-size: 12px;
+  content: inherit;
+  padding: 5px 10px;
 }
 
 .articles label {

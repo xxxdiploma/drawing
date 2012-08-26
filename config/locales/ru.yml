@@ -50,6 +50,7 @@ ru:
       at: "в"
       delete: "Удалить"
       confirm: "Удалить это сообщение?"
+      new: "Добавить новость"
 
   flash:
     success:
