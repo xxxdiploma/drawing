@@ -13,6 +13,7 @@ en:
     edit: "Settings"
     users: "Users"
     articles: "News"
+    publication: "Publication"
 
   links:
     articles: "News"
@@ -29,6 +30,7 @@ en:
     sign_in: "Sign in"
     sign_up: "Sign up"
     update: "Update"
+    publish: "Publish"
 
   sessions:
     new:
@@ -55,10 +57,12 @@ en:
       updated: "Profile updated"
       user_destroyed: "User destroyed"
       article_destroyed: "Article destroyed"
+      published: "The article is published"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"
       not_updated: "Profile has not been updated"
+      publication: "Publishing failure"
     notice:
       deny_access: "Please sign in to access this page"
       already_signed_in: "You are already signed in"
@@ -76,3 +80,5 @@ en:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirmation"
+      article:
+        content: "Content"

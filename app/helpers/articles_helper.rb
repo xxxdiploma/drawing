@@ -8,7 +8,7 @@ module ArticlesHelper
     Time.zone = "Moscow" #Переписать потом
     time = article.created_at.in_time_zone.to_s(:russian)
 
-    posted_by + " " + user + posted_at + " " + time
+    posted_by + " " + user + " " + posted_at + " " + time
   end
 
 end

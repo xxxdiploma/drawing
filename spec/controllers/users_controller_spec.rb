@@ -82,8 +82,9 @@ describe UsersController do
         response.should_not have_selector("a", :content => I18n.t('users.user.delete'))
       end
     end
-
   end
+
+  ##############################################
 
   describe "GET 'show'" do
 
@@ -108,6 +109,8 @@ describe UsersController do
     end
   end
 
+  ##############################################
+
   describe "GET 'new'" do
     it "returns http success" do
       get :new
@@ -118,7 +121,6 @@ describe UsersController do
       get :new
       response.should have_selector("title", :content => I18n.t('titles.sign_up') )
     end
-
 
     it "should have a surname field" do
       get :new
@@ -156,9 +158,10 @@ describe UsersController do
         get :new
         response.should redirect_to(user_path(@user))
       end
-
     end
   end
+
+  ##############################################
 
   describe "POST 'create'" do
 
@@ -218,6 +221,8 @@ describe UsersController do
     end
   end
 
+  ##############################################
+
   describe "GET 'edit'" do
 
     before(:each) do
@@ -235,6 +240,8 @@ describe UsersController do
       response.should have_selector("title", :content => I18n.t('titles.edit') )
     end
   end
+
+  ##############################################
 
   describe "PUT 'update'" do
 
@@ -289,6 +296,8 @@ describe UsersController do
     end
   end
 
+  ##############################################
+
   describe "authentication of edit/update/show pages" do
 
     before(:each) do
@@ -331,6 +340,8 @@ describe UsersController do
       end
     end
   end
+
+  ##############################################
 
   describe "DELETE 'destroy'" do
 

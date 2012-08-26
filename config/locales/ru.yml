@@ -13,6 +13,7 @@ ru:
     edit: "Настройки"
     users: "Пользователи"
     articles: "Новости"
+    publication: "Публикация"
 
   links:
     articles: "Новости"
@@ -29,6 +30,7 @@ ru:
     sign_in: "Войти"
     sign_up: "Зарегистрироваться"
     update: "Обновить"
+    publish: "Опубликовать"
 
   sessions:
     new:
@@ -55,10 +57,12 @@ ru:
       updated: "Информация обновлена"
       user_destroyed: "Пользователь удалён"
       article_destroyed: "Запись удалена"
+      published: "Запись была опубликована"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"
       not_updated: "Профиль не был обновлён"
+      publication: "Ошибка при публикации"
     notice:
       deny_access: "Авторизируйтесь для доступа к этой странице"
       already_signed_in: "Вы уже авторизированы"
@@ -76,6 +80,8 @@ ru:
         email: "Почта"
         password: "Пароль"
         password_confirmation: "Подтверждение"
+      article:
+        content: "Контент"
 
     errors:
       models:
@@ -95,3 +101,9 @@ ru:
               too_short: "не должен быть короче 6 символов"
               too_long: "не должен быть длиннее 40 символов"
               confirmation: "и подтверждение не совпадают"
+
+        article:
+          attributes:
+            content:
+              blank: "не должен быть пустым"
+              too_long: "не должен содержать более 5000 символов"

@@ -5,14 +5,6 @@ describe ArticlesController do
 
   describe "GET 'index'" do
 
-    describe "for non-signed-in users" do
-      it "should deny access" do
-        get :index
-        response.should redirect_to(signin_path)
-        flash[:notice].should == I18n.t('flash.notice.deny_access')
-      end
-    end
-
     describe "for signed-in users" do
 
       before(:each) do
@@ -59,6 +51,92 @@ describe ArticlesController do
 
   ##############################################
 
+  describe "GET 'new'" do
+
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
+
+    describe "as a non-signed-in user" do
+      it "should deny access" do
+        get :new
+        response.should redirect_to(signin_path)
+      end
+    end
+
+    describe "as a non-admin user" do
+      it "should protect the page" do
+        test_sign_in(@user)
+        get :new
+        response.should redirect_to(articles_path)
+      end
+    end
+
+    describe "as an admin user" do
+
+      before(:each) do
+        @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(@admin)
+      end
+
+      it "should have the right title" do
+        get :new
+        response.should have_selector("title", :content => I18n.t('titles.publication') )
+      end
+
+      it "should have a textarea" do
+        get :new
+        response.should have_selector("textarea[name='article[content]']")
+      end
+    end
+  end
+
+  ##############################################
+
+  describe "POST 'create'" do
+
+    describe "as a non-signed-in user" do
+      it "should deny access" do
+        post :create, :article => { :content => "Sample text" }
+        response.should redirect_to(signin_path)
+      end
+    end
+
+    describe "as a non-admin user" do
+      before(:each) do
+        user = FactoryGirl.create(:user)
+        test_sign_in(user)
+      end
+
+      it "should protect the action" do
+        post :create, :article => { :content => "Sample text" }
+        response.should redirect_to(articles_path)
+      end
+    end
+
+    describe "as an admin user" do
+      before(:each) do
+        admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+        test_sign_in(admin)
+      end
+
+      it "should not create a new article" do
+        lambda do
+          post :create, :article => { :content => "" }
+        end.should_not change(Article, :count)
+      end
+
+      it "should create a new article" do
+        lambda do
+          post :create, :article => { :content => "Sample text" }
+        end.should change(Article, :count).by(1)
+      end
+    end
+
+  end
+
+  ##############################################
+
   describe "DELETE 'destroy'" do
 
     before(:each) do
@@ -74,10 +152,10 @@ describe ArticlesController do
     end
 
     describe "as a non-admin user" do
-      it "should protect the page" do
+      it "should protect the action" do
         test_sign_in(@user)
         delete :destroy, :id => @article
-        response.should redirect_to(root_path)
+        response.should redirect_to(articles_path)
       end
     end
 

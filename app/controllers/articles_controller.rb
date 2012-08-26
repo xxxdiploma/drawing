@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
-  before_filter :authenticate, :only => [:index, :destroy]
-  before_filter :admin_user,   :only => [:destroy]
+  before_filter :authenticate, :only => [:index, :new, :create, :destroy]
+  before_filter :admin_user,   :only => [:new, :create, :destroy]
 
   def index
     @title = t('titles.articles')
@@ -15,7 +15,20 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    #Заполнить позже
+    @article = Article.new
+    @title = t('titles.publication')
+  end
+
+  def create
+    @article = current_user.articles.build(params[:article])
+    if @article.save
+      flash[:success] = t('flash.success.published')
+      redirect_to articles_path
+    else
+      @title = t('titles.articles')
+      flash.now[:error] = t('flash.error.publication')
+      render 'new'
+    end
   end
 
   def show
@@ -33,7 +46,7 @@ class ArticlesController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_path) unless current_user.admin?
+      redirect_to(articles_path) unless current_user.admin?
     end
 
 end
