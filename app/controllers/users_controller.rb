@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 			flash[:notice] = t('flash.notice.destroy_yourself')
     else
       User.find(params[:id]).destroy
-      flash[:success] = t('flash.success.destroyed')
+      flash[:success] = t('flash.success.user_destroyed')
     end
     redirect_to users_path
   end

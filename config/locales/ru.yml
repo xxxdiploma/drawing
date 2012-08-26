@@ -47,12 +47,14 @@ ru:
       posted_by: "Опубликовано"
       at: "в"
       delete: "Удалить"
+      confirm: "Удалить это сообщение?"
 
   flash:
     success:
       welcome: "Добро пожаловать на сайт"
       updated: "Информация обновлена"
-      destroyed: "Пользователь удалён"
+      user_destroyed: "Пользователь удалён"
+      article_destroyed: "Запись удалена"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"

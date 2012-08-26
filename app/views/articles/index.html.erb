@@ -12,7 +12,7 @@
       </div>
       <% if current_user.admin? %>
       <div class = "articles delete_article_button">
-         <%= link_to t('.delete') %>
+         <%= link_to t('.delete'), article, :method => :delete, :data => {:confirm => t('.confirm')} %>
       </div>
       <% end %>
     </div>

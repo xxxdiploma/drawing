@@ -47,12 +47,14 @@ en:
       posted_by: "Posted by"
       at: "at"
       delete: "Delete"
+      confirm: "Are you sure?"
 
   flash:
     success:
       welcome: "Welcome to the site"
       updated: "Profile updated"
-      destroyed: "User destroyed"
+      user_destroyed: "User destroyed"
+      article_destroyed: "Article destroyed"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"
