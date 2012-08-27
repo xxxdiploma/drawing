@@ -109,8 +109,13 @@
   background: #e5e5e5;
 }
 
-.articles.content h1 {
-  font-size: 16px;
+.articles.content h1,
+.articles.content h2 {
+  font-size: 14px;
+}
+
+.articles.content img {
+  padding: 10px 10px 10px 0;
 }
 
 .articles.content hr {
