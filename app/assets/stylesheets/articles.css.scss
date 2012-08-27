@@ -16,20 +16,6 @@
 	border-style: solid;
 }
 
-.articles.content {
-  width: 100%;
-  min-height: 100px;
-  font-size: 14px;
-  border-radius: 4px;
-  padding: 6px;
-  margin-left: -6px;
-  background: #eee;
-}
-
-.articles.content:hover {
-  background: #e5e5e5;
-}
-
 .articles.info {
   width: 100%;
   padding-top: 4px;
@@ -106,3 +92,32 @@
   font-family: inherit !important;
   font-size: 14px;
 }
+
+/* **************** */
+
+.articles.content {
+  width: 100%;
+  min-height: 100px;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 6px;
+  margin-left: -6px;
+  background: #eee;
+}
+
+.articles.content:hover {
+  background: #e5e5e5;
+}
+
+.articles.content h1 {
+  font-size: 16px;
+}
+
+.articles.content hr {
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  border-width: 0;
+}
+
+/* **************** */ 

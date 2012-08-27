@@ -143,6 +143,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   jquery-rails
+  nokogiri
   pg
   rails (= 3.2.6)
   rspec-rails
