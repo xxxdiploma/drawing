@@ -10,10 +10,11 @@ en:
     contact: "Contact"
     sign_in: "Sign in"
     sign_up: "Sign up"
-    edit: "Settings"
+    user_edit: "Settings"
     users: "Users"
     articles: "News"
     publication: "Publication"
+    article_edit: "Editing"
 
   links:
     articles: "News"
@@ -46,11 +47,13 @@ en:
 
   articles:
     index:
+      new: "New article"
+    article:
       posted_by: "Posted by"
       at: "at"
       delete: "Delete"
       confirm: "Are you sure?"
-      new: "New article"
+      edit: "Edit"
 
   flash:
     success:
@@ -58,7 +61,8 @@ en:
       updated: "Profile updated"
       user_destroyed: "User destroyed"
       article_destroyed: "Article destroyed"
-      published: "The article is published"
+      published: "Article published"
+      article_updated: "Article updated"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"

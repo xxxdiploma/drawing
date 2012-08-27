@@ -33,7 +33,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @title = t('titles.edit')
+    @user = User.find(params[:id])
+    @title = t('titles.user_edit')
   end
 
   def update
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
       flash[:success] = t('flash.success.updated')
       redirect_to @user
     else
-      @title = t('titles.edit')
+      @title = t('titles.user_edit')
       flash.now[:error] = t('flash.error.not_updated')
       render 'edit'
     end

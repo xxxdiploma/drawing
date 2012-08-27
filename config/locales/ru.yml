@@ -10,10 +10,11 @@ ru:
     contact: "Контакты"
     sign_in: "Вход"
     sign_up: "Регистрация"
-    edit: "Настройки"
+    user_edit: "Настройки"
     users: "Пользователи"
     articles: "Новости"
     publication: "Публикация"
+    article_edit: "Редактирование"
 
   links:
     articles: "Новости"
@@ -46,11 +47,13 @@ ru:
 
   articles:
     index:
+      new: "Добавить новость"
+    article:
       posted_by: "Опубликовано"
       at: "в"
       delete: "Удалить"
       confirm: "Удалить это сообщение?"
-      new: "Добавить новость"
+      edit: "Изменить"
 
   flash:
     success:
@@ -59,6 +62,7 @@ ru:
       user_destroyed: "Пользователь удалён"
       article_destroyed: "Запись удалена"
       published: "Запись была опубликована"
+      article_updated: "Запись обновлена"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"

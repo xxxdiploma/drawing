@@ -54,21 +54,16 @@ describe "LayoutLinks" do
                                          :content => I18n.t('links.sign_out') )
     end
 
-    it "should have a profile link"
-      # Заполнить позже
-
-
-    it "should have an edit link"
-      # Заполнить позже
-
-
-    it "should have an articles link"
-      # Заполнить позже
-
-
-    it "should have a users link"
-      # Заполнить позже
-
+    it "should have the right links" do
+      click_link I18n.t('links.my_page')
+      response.should have_selector("title", :content => "#{@user.surname}")
+      click_link I18n.t('links.settings')
+      response.should have_selector("title", :content => I18n.t('titles.user_edit') )
+      click_link I18n.t('links.articles')
+      response.should have_selector("title", :content => I18n.t('titles.articles') )
+      click_link I18n.t('links.users')
+      response.should have_selector("title", :content => I18n.t('titles.users') )
+    end
   end
 
 end

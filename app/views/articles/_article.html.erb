@@ -1,0 +1,17 @@
+<div class = "articles content" >
+  <p><%= article.content %></p>
+</div>
+<div class = "articles info" >
+  <div class = "articles author" >
+    <%= posted_by_at(article) %></p>
+  </div>
+  <% if current_user.admin? %>
+  <div class = "articles delete_article_button">
+    <%= link_to t('.delete'), article, :method => :delete, :data => {:confirm => t('.confirm')} %>
+  </div>
+  <div class = "articles edit_article_button">
+    <%= link_to t('.edit'), edit_article_path(article) %>
+  </div>
+  <% end %>
+</div>
+<br />

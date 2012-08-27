@@ -5,10 +5,21 @@ describe ArticlesController do
 
   describe "GET 'index'" do
 
-    describe "for signed-in users" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+      @article = FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
+    end
 
+    describe "as a non-signed-in user" do
+      it "should deny access" do
+        get :index
+        response.should redirect_to(signin_path)
+      end
+    end
+
+    describe "for signed-in users" do
       before(:each) do
-        @user = FactoryGirl.create(:user)
         test_sign_in(@user)
       end
 
@@ -18,33 +29,71 @@ describe ArticlesController do
       end
 
       it "should show the articles" do
-        mp1 = FactoryGirl.create(:article, :user => @user, :content => "Sample text")
-        mp2 = FactoryGirl.create(:article, :user => @user, :content => "Sample text")
+        mp1 = FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
+        mp2 = FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
         get :index
         response.should have_selector("div.articles.content", :content => mp1.content)
         response.should have_selector("div.articles.content", :content => mp2.content)
       end
-    end
 
-    describe "as an admin user" do
+      it "should paginate articles" do
 
-      it "should have 'delete' links" do
-        admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
-        FactoryGirl.create(:article, :user => admin, :content => "Sample text")
-        test_sign_in(admin)
+        articles = [@article]
+
+        3.times do
+          articles << FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
+        end
+
         get :index
-        response.should have_selector("a", :content => I18n.t('articles.index.delete'))
+        response.should have_selector("div.pagination")
+        response.should have_selector("span.disabled",
+                                           :content => I18n.t('will_paginate.previous_label'))
+        response.should have_selector("a", :href => "/articles?page=2",
+                                           :content => "2")
+        response.should have_selector("a", :href => "/articles?page=2",
+                                           :content => I18n.t('will_paginate.next_label'))
       end
     end
 
     describe "as an non-admin user" do
+      before(:each) do
+        test_sign_in(@user)
+      end
+
+      it "should not have 'new article' link" do
+        get :index
+        response.should_not have_selector("a", :content => I18n.t('articles.index.new'))
+      end
+
+      it "should not have 'edit' links" do
+        get :index
+        response.should_not have_selector("a", :content => I18n.t('articles.article.edit'))
+      end
+
+      it "should not have 'delete' links" do
+        get :index
+        response.should_not have_selector("a", :content => I18n.t('articles.article.delete'))
+      end
+    end
+
+    describe "as an admin user" do
+      before(:each) do
+        test_sign_in(@admin)
+      end
+
+      it "should have 'new article' link" do
+        get :index
+        response.should have_selector("a", :content => I18n.t('articles.index.new'))
+      end
+
+      it "should have 'edit' links" do
+        get :index
+        response.should have_selector("a", :content => I18n.t('articles.article.edit'))
+      end
 
       it "should have 'delete' links" do
-        user = FactoryGirl.create(:user)
-        FactoryGirl.create(:article, :user => user, :content => "Sample text")
-        test_sign_in(user)
         get :index
-        response.should_not have_selector("a", :content => I18n.t('articles.index.delete'))
+        response.should have_selector("a", :content => I18n.t('articles.article.delete'))
       end
     end
   end
@@ -55,6 +104,7 @@ describe ArticlesController do
 
     before(:each) do
       @user = FactoryGirl.create(:user)
+      @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
     end
 
     describe "as a non-signed-in user" do
@@ -73,9 +123,7 @@ describe ArticlesController do
     end
 
     describe "as an admin user" do
-
       before(:each) do
-        @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
         test_sign_in(@admin)
       end
 
@@ -95,6 +143,11 @@ describe ArticlesController do
 
   describe "POST 'create'" do
 
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+    end
+
     describe "as a non-signed-in user" do
       it "should deny access" do
         post :create, :article => { :content => "Sample text" }
@@ -103,12 +156,8 @@ describe ArticlesController do
     end
 
     describe "as a non-admin user" do
-      before(:each) do
-        user = FactoryGirl.create(:user)
-        test_sign_in(user)
-      end
-
       it "should protect the action" do
+        test_sign_in(@user)
         post :create, :article => { :content => "Sample text" }
         response.should redirect_to(articles_path)
       end
@@ -116,8 +165,7 @@ describe ArticlesController do
 
     describe "as an admin user" do
       before(:each) do
-        admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
-        test_sign_in(admin)
+        test_sign_in(@admin)
       end
 
       it "should not create a new article" do
@@ -132,7 +180,6 @@ describe ArticlesController do
         end.should change(Article, :count).by(1)
       end
     end
-
   end
 
   ##############################################
@@ -141,7 +188,8 @@ describe ArticlesController do
 
     before(:each) do
       @user = FactoryGirl.create(:user)
-      @article = FactoryGirl.create(:article, :user => @user, :content => "Sample text")
+      @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+      @article = FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
     end
 
     describe "as a non-signed-in user" do
@@ -160,9 +208,7 @@ describe ArticlesController do
     end
 
     describe "as an admin user" do
-
       before(:each) do
-        @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
         test_sign_in(@admin)
       end
 
@@ -178,5 +224,49 @@ describe ArticlesController do
       end
     end
   end
+
+  ##############################################
+
+  describe "GET 'edit'" do
+
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @admin = FactoryGirl.create(:user, :email => "admin@example.com", :admin => true)
+      @article = FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
+    end
+
+    describe "as a non-signed-in user" do
+      it "should protect the action" do
+        get :edit, :id => @article
+        response.should redirect_to(signin_path)
+      end
+    end
+
+    describe "as a non-admin user" do
+      it "should protect the action" do
+        test_sign_in(@user)
+        get :edit, :id => @article
+        response.should redirect_to(articles_path)
+      end
+    end
+
+    describe "as an admin user" do
+      before(:each) do
+        test_sign_in(@admin)
+      end
+
+      it "should be successful" do
+        get :edit, :id => @article
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get :edit, :id => @article
+        response.should have_selector("title", :content => I18n.t('titles.article_edit') )
+      end
+    end
+  end
+
+  ##############################################
 
 end

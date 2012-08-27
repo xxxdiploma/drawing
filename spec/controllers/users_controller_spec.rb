@@ -237,7 +237,7 @@ describe UsersController do
 
     it "should have the right title" do
       get :edit, :id => @user
-      response.should have_selector("title", :content => I18n.t('titles.edit') )
+      response.should have_selector("title", :content => I18n.t('titles.user_edit') )
     end
   end
 
@@ -265,7 +265,7 @@ describe UsersController do
 
       it "should have the right title" do
         put :update, :id => @user, :user => @attr
-        response.should have_selector("title", :content => I18n.t('titles.edit') )
+        response.should have_selector("title", :content => I18n.t('titles.user_edit') )
       end
     end
 

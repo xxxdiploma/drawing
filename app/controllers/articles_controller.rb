@@ -1,11 +1,11 @@
 class ArticlesController < ApplicationController
 
-  before_filter :authenticate, :only => [:index, :new, :create, :destroy]
-  before_filter :admin_user,   :only => [:new, :create, :destroy]
+  before_filter :authenticate
+  before_filter :admin_user, :except => [:index]
 
   def index
     @title = t('titles.articles')
-    @articles = Article.all
+    @articles = Article.paginate(:page => params[:page], :per_page => 3 )
   end
 
   def destroy
@@ -20,23 +20,34 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.build(params[:article])
-    if @article.save
-      flash[:success] = t('flash.success.published')
-      redirect_to articles_path
-    else
-      @title = t('titles.articles')
-      flash.now[:error] = t('flash.error.publication')
-      render 'new'
+    if current_user.admin?
+      @article = current_user.articles.build(params[:article])
+      if @article.save
+        flash[:success] = t('flash.success.published')
+        redirect_to articles_path
+      else
+        @title = t('titles.articles')
+        flash.now[:error] = t('flash.error.publication')
+        render 'new'
+      end
     end
   end
 
-  def show
-    #Заполнить позже
+  def edit
+    @article = Article.find(params[:id])
+    @title = t('titles.article_edit')
   end
 
-  def edit
-    #Заполнить позже
+  def update
+    @article = Article.find(params[:id])
+    if @article.update_attributes(params[:article])
+      flash[:success] = t('flash.success.article_updated')
+      redirect_to articles_path
+    else
+      @title = t('titles.article_edit')
+      flash.now[:error] = t('flash.error.publication')
+      render 'edit'
+    end
   end
 
   private
