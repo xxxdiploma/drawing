@@ -1,129 +1,138 @@
+.articles {
+  h1, h2 {
+    font-size: $font_large;
+  }
 
-.articles h2 {
-  font-size: 16px;
+  hr {
+    width: 400px;
+    margin: 10px 0px;
+    height: 1px;
+    background: $grey;
+    border-width: 0;
+  }
+
+  .table {
+    padding-top: 18px;
+  }
+
+  .table:hover .button_delete {
+    visibility: visible;
+  }
+
+  .table:hover .content {
+    background: $grey;
+  }
+
+  .button_delete {
+    float: right;
+    margin-top: -16px;
+    margin-right: -2px;
+    opacity: 0.3;
+    visibility: hidden;
+  }
+
+  .button_delete:hover {
+    opacity: inherit;
+  }
+
+  .button_delete a {
+    content: url(buttons/delete.gif);
+  }
+
+  .button_edit {
+    @include grey_link;
+  }
+
+  .button_edit:before {
+    color: #999;
+    content: "|";
+    padding-left: 4px;
+  }
+
+  .author {
+    float: left;
+    @include grey_link;
+  }
+
+  .time {
+    float: left;
+    color: #999;
+  }
+
+  .time:before {
+    color: #999;
+    content: "|";
+    padding-left: 4px;
+  }
+
+  .info {
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    font-size: $font_small;
+    color: $dark_grey;
+  }
+
+  label {
+    padding-bottom: 2px;
+    display: none;
+  }
+
+  textarea {
+    width: 990px;
+    font-size: $font_normal;
+  }
+
+  .button_new {
+    margin-right: -4px;
+  }
+
+  .button_new a {
+    float: right;
+    color: #383838;
+    text-decoration: none;
+    font-size: 22px;
+    margin-right: 600px;
+    margin-top: -21px;
+    content: "+";
+    background: #eee;
+    padding: 0 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+ .button_new a:hover {
+    font-size: 12px;
+    content: inherit;
+    padding: 5px 10px;
+  }
 }
 
-.articles hr {
-  width: 400px;
-
-  margin: 10px 0px;
-
-  background: #f7f7f7;
-
-  border-bottom-color: #ddd;
-	border-top-color: #f7f7f7;
-	border-width: 1px 0px;
-	border-style: solid;
-}
-
-.articles.info {
-  width: 100%;
-  padding-top: 4px;
-  padding-bottom: 12px;
-  font-size: 12px;
-  color: #999;
-}
-
-.articles.author {
-  float: left;
-}
-
-.articles.delete_article_button {
-  float: right;
-}
-
-.articles.delete_article_button a {
-  text-decoration: none;
-  color: #999;
-}
-
-.articles.delete_article_button a:hover {
-  text-decoration: underline;
-  color: #383838;
-}
-
-.articles.edit_article_button {
-  float: right;
-  padding-right: 8px;
-}
-
-.articles.edit_article_button a {
-  text-decoration: none;
-  color: #999;
-}
-
-.articles.edit_article_button a:hover {
-  text-decoration: underline;
-  color: #383838;
-}
-
-.articles.new_article_button {
-  margin-right: -4px;
-}
-
-.articles.new_article_button a {
-  float: right;
-  color: #383838;
-  text-decoration: none;
-  font-size: 22px;
-  margin-right: 600px;
-  margin-top: -21px;
-  content: "+";
-  background: #eee;
-  padding: 0 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.articles.new_article_button a:hover {
-  font-size: 12px;
-  content: inherit;
-  padding: 5px 10px;
-}
-
-.articles label {
-  font-size: 14px;
-  padding-bottom: 2px;
-  display: table;
-}
-
-.articles textarea {
-  width: 990px;
-  font-family: inherit !important;
-  font-size: 14px;
-}
-
-/* **************** */
+/****************************/
 
 .articles.content {
   width: 100%;
   min-height: 100px;
-  font-size: 14px;
   border-radius: 4px;
   padding: 6px;
   margin-left: -6px;
   background: #eee;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: $font_normal;
+  }
+
+  img {
+    padding: 0px 10px 10px 0;
+    float: left;
+  }
+
+  hr {
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    border-width: 0;
+  }
 }
 
-.articles.content:hover {
-  background: #e5e5e5;
-}
-
-.articles.content h1,
-.articles.content h2 {
-  font-size: 14px;
-}
-
-.articles.content img {
-  padding: 0px 10px 10px 0;
-  float: left;
-}
-
-.articles.content hr {
-  width: 100%;
-  height: 1px;
-  background: #ccc;
-  border-width: 0;
-}
-
-/* **************** */ 
+/****************************/

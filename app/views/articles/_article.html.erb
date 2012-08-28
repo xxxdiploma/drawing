@@ -1,17 +1,23 @@
-<div class = "articles content" >
-  <%= article_format(article.content) %>
-</div>
-<div class = "articles info" >
-  <div class = "articles author" >
-    <%= posted_by_at(article) %></p>
-  </div>
+<div class = "articles table" >
   <% if current_user.admin? %>
-  <div class = "articles delete_article_button">
+  <div class = "articles button_delete">
     <%= link_to t('.delete'), article, :method => :delete, :data => {:confirm => t('.confirm')} %>
   </div>
-  <div class = "articles edit_article_button">
-    <%= link_to t('.edit'), edit_article_path(article) %>
-  </div>
   <% end %>
+  <div class = "articles content">
+    <%= article_format(article.content) %>
+  </div>
+  <div class = "articles info" >
+    <div class = "articles author" >
+      <%= link_to article_by(article), article_author(article) %></p>
+    </div>
+    <div class = "articles time">
+      <%= article_time(article) %>
+    </div>
+    <% if current_user.admin? %>
+    <div class = "articles button_edit">
+      <%= link_to t('.edit'), edit_article_path(article) %>
+    </div>
+    <% end %>
+  </div>
 </div>
-<br />

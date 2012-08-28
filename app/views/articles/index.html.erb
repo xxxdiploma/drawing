@@ -1,12 +1,11 @@
 <div class = "articles" >
   <h2><%= @title %></h2>
   <% if current_user.admin? %>
-  <div class = "articles new_article_button">
+  <div class = "articles button_new">
     <%= link_to t('.new'), new_article_path %>
   </div>
   <% end %>
   <hr />
-  <br />
   <%= render @articles %>
   <%= will_paginate %>
 </div>

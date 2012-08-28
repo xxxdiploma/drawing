@@ -1,0 +1,257 @@
+/****************************/
+
+$content_width: 1000px;
+$basic_text_color: #383838;
+
+$light_grey: #f7f7f7;
+$medium_grey: #eee;
+$grey: #ddd;
+$dark_grey: #424242;
+$black: #272727;
+
+$light_green: #b2d179;
+$green: #557230;
+
+$font_large: 16px;
+$font_normal: 14px;
+$font_small: 12px;
+
+/****************************/
+
+@mixin green_link {
+  a {
+    color: $green
+  }
+
+  a:hover {
+    color: $basic_text_color;
+  }
+}
+
+@mixin black_link {
+  a {
+    text-decoration: none;
+    color: $basic_text_color;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+@mixin grey_link {
+  a {
+    text-decoration: none;
+    color: #999;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: $basic_text_color;
+  }
+}
+
+/****************************/
+
+html, body {
+  font-family: "Arial";
+  font-size: $font_normal;
+  height: 100%;
+  margin: 0;
+	padding: 0;
+}
+
+body {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  position: relative;
+  background: $light_grey;
+}
+
+p, h1, h2, h3, h4, h5, h6, ul, a {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.content {
+	width: $content_width;
+}
+
+/****************************/
+
+header {
+  height: 138px;
+  margin-bottom: 28px;
+	background: $dark_grey;
+
+	.content {
+    position: relative;
+    margin-left: 50%;
+    left: -$content_width / 2;
+  }
+}
+
+.header {
+  height: 95px;
+	border-color: $black;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+}
+
+.logo {
+  margin-top: 34px;
+}
+
+.header {
+  nav {
+    position: relative;
+    top: 58px;
+    float: right;
+    font-size: $font_small;
+    margin-right: -2px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  nav ul li a {
+    padding: 0px 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #000;
+    color: $medium_grey;
+  }
+
+  nav ul li a:hover {
+    color: $light_green;
+  }
+}
+
+.navigation {
+  bottom: 0px;
+	width: 100%;
+	height: 40px;
+  background: $medium_grey;
+	border-bottom-color: $grey;
+	border-top-color: white;
+	border-width: 1px 0px;
+	border-style: solid;
+	font-size: $font_normal;
+
+  nav {
+    position: relative;
+    top: 12px;
+    left: -2px;
+    float: left;
+    cursor: pointer;
+  }
+
+  nav ul li a {
+    padding: 4px 5px 4px 5px;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px white;
+    color: #333;
+  }
+
+  nav ul li a:hover {
+    background: #ddd;
+    border-radius: 5px;
+    text-shadow: 1px 1px 0px #ddd;
+  }
+}
+
+/****************************/
+
+.page_body {
+  @include green_link;
+
+  position: relative;
+	width: ($content_width - 4px);
+	min-height: 100%;
+	padding-bottom: 110px;
+	padding-left: 2px;
+	margin-left: 50%;
+  left: -$content_width / 2;
+  color: $basic_text_color;
+}
+
+
+/****************************/
+
+footer {
+  position: absolute;
+  bottom: 1px;
+  width: 100%;
+  height: 76px;
+	background: $medium_grey;
+	border-bottom-color: white;
+	border-top-color: $grey;
+	border-width: 1px 0px 22px 0px;
+	border-style: solid;
+
+  .content {
+    position: relative;
+    padding-left: 2px;
+    margin-left: 50%;
+    margin-top: 10px;
+    left: -$content_width / 2;
+    width: ($content-width - 4px)
+  }
+
+  .footer_frame {
+    position: relative;
+    top: 52px;
+    height: 20px;
+    background: $dark_grey;
+	  border-top-color: $black;
+	  border-width: 1px 0px 0px 0px;
+	  border-style: solid;
+  }
+
+  div {
+    font-size: 10pt;
+    color: #a0a0a0;
+
+    .footer_contact {
+	    float: left;
+    }
+
+    .footer_author {
+      text-align: right;
+    }
+  }
+}
+
+/****************************/
+
+.actions input {
+  background-color: $dark_grey;
+  border: 1px solid $black;
+  font-size: 12px;
+  text-decoration: none;
+  color: $light_grey;
+  cursor: pointer;
+  padding: 5px 10px 6px 7px;
+  margin: 10px 0px;
+}
+
+/****************************/
+
+.pagination {
+  margin: 10px 0px;
+  padding-top: 10px;
+  border-top-color: $grey;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+}
+
+/****************************/

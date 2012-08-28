@@ -1,14 +1,17 @@
 module ArticlesHelper
 
-  def posted_by_at(article)
-    posted_by = t('.posted_by')
-    user = user_full_name(User.find(article.user_id))
-    posted_at = t('.at')
+  def article_by(article)
+    user_full_name(User.find(article.user_id))
+  end
 
+  def article_author(article)
+    return User.find(article.user_id)
+  end
+
+  def article_time(article)
     Time.zone = "Moscow" #Переписать потом
-    time = article.created_at.in_time_zone.to_s(:russian)
 
-    posted_by + " " + user + " " + posted_at + " " + time
+    article.created_at.in_time_zone.to_s(:russian)
   end
 
   def article_format(text)

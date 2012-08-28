@@ -52,10 +52,6 @@ class ArticlesController < ApplicationController
 
   private
 
-    def authenticate
-      deny_access unless signed_in?
-    end
-
     def admin_user
       redirect_to(articles_path) unless current_user.admin?
     end

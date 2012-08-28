@@ -49,11 +49,9 @@ ru:
     index:
       new: "Добавить новость"
     article:
-      posted_by: "Опубликовано"
-      at: "в"
       delete: "Удалить"
       confirm: "Удалить это сообщение?"
-      edit: "Изменить"
+      edit: "Редактировать"
 
   flash:
     success:

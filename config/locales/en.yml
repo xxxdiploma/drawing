@@ -49,8 +49,6 @@ en:
     index:
       new: "New article"
     article:
-      posted_by: "Posted by"
-      at: "at"
       delete: "Delete"
       confirm: "Are you sure?"
       edit: "Edit"

@@ -5,11 +5,11 @@
   background: #c0391b;
   border-radius: 4px;
   display: table;
-}
 
-.field_with_errors label {
-  color: #fff;
-  padding-right: 3px;
+  label {
+    color: #fff;
+    padding-right: 3px;
+  }
 }
 
 #error_explanation {
@@ -20,14 +20,13 @@
   margin-top: 10px;
   border-radius: 4px;
   background: #e9cec8;
+
+  ul li {
+    list-style-type: none;
+  }
 }
 
-#error_explanation ul li {
-  list-style-type: none;
-  font-size: 14px;
-}
-
-/* **************** */
+/****************************/
 
 .flash {
   width: 100% -32px;
@@ -53,3 +52,5 @@
   color: #c0391b;
   background: #fbc48e;
 }
+
+/****************************/

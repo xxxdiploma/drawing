@@ -1,10 +1,10 @@
 <li>
-  <div class = "show_user_button">
+  <div class = "button_show">
     <%= link_to user_full_name(user), user %>
   </div>
 
   <% if current_user.admin? %>
-  <div class = "delete_user_button">
+  <div class = "button_delete">
     <%= link_to t('.delete'), user, :method => :delete, :data => {:confirm => t('.confirm')} %>
   </div>
   <% end %>
