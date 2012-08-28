@@ -1,5 +1,3 @@
-/****************************/
-
 $content_width: 1000px;
 $basic_text_color: #383838;
 
@@ -15,8 +13,6 @@ $green: #557230;
 $font_large: 16px;
 $font_normal: 14px;
 $font_small: 12px;
-
-/****************************/
 
 @mixin green_link {
   a {
@@ -51,7 +47,6 @@ $font_small: 12px;
   }
 }
 
-/****************************/
 
 html, body {
   font-family: "Arial";
@@ -87,7 +82,6 @@ ul {
 	width: $content_width;
 }
 
-/****************************/
 
 header {
   height: 138px;
@@ -169,7 +163,6 @@ header {
   }
 }
 
-/****************************/
 
 .page_body {
   @include green_link;
@@ -184,8 +177,6 @@ header {
   color: $basic_text_color;
 }
 
-
-/****************************/
 
 footer {
   position: absolute;
@@ -231,7 +222,6 @@ footer {
   }
 }
 
-/****************************/
 
 .actions input {
   background-color: $dark_grey;
@@ -244,7 +234,6 @@ footer {
   margin: 10px 0px;
 }
 
-/****************************/
 
 .pagination {
   margin: 10px 0px;
@@ -253,5 +242,3 @@ footer {
 	border-width: 1px 0 0 0;
 	border-style: solid;
 }
-
-/****************************/
