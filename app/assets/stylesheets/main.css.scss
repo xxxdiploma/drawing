@@ -226,7 +226,7 @@ footer {
 .actions input {
   background-color: $dark_grey;
   border: 1px solid $black;
-  font-size: 12px;
+  font-size: $font_small;
   text-decoration: none;
   color: $light_grey;
   cursor: pointer;
