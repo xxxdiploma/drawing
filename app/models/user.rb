@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates :surname,  :presence     => true,
             					 :length       => { :maximum => 50 }
   validates :initials, :presence     => true,
-                       :length       => { :maximum => 2 }
+                       :length       => { :is => 2 }
   validates :email,    :presence     => true,
                        :format       => { :with => email_regex },
                        :uniqueness   => { :case_sensitive => false }

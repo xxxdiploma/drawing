@@ -39,10 +39,13 @@ describe User do
     long_name_user.should_not be_valid
   end
 
-  it "should reject initials that are too long" do
+  it "should reject wrong initials" do
     long_initials = "AAA"
-    long_initials_user = User.new(@attr.merge(:initials => long_initials))
-    long_initials_user.should_not be_valid
+    short_initials = "A"
+    wrong_initials_user = User.new(@attr.merge(:initials => long_initials))
+    wrong_initials_user.should_not be_valid
+    wrong_initials_user = User.new(@attr.merge(:initials => short_initials))
+    wrong_initials_user.should_not be_valid
   end
 
   it "should accept valid email addresses" do
