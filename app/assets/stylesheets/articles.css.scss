@@ -85,26 +85,32 @@
 
   .button_new {
     margin-right: -4px;
+    font-size: $font_small;
   }
 
   .button_new a {
     float: right;
-    color: #383838;
+    color: $light_grey;
     text-decoration: none;
-    font-size: 22px;
     margin-right: 600px;
     margin-top: -21px;
-    content: "+";
-    background: #eee;
-    padding: 0 10px;
-    border-radius: 4px;
+    background: url(buttons/add.gif);
+    background-repeat: no-repeat;
+    background-position: 96% 8px;
+    padding: 5px 10px;
     cursor: pointer;
+    opacity: 0.3;
   }
 
  .button_new a:hover {
-    font-size: 12px;
-    content: inherit;
-    padding: 5px 10px;
+    color: $basic_text_color;
+    background-color: $medium_grey;
+    opacity: inherit;
+  }
+
+  .button_new a:after {
+    content: " ";
+    margin-right: 14px;
   }
 }
 

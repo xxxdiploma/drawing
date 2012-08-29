@@ -10,6 +10,7 @@
   border: 5px solid $dark_grey;
   border-radius: 4px;
   cursor: default;
+  box-shadow: 0px 0px 5px rgba(50, 50, 50, 0.8);
 
   .button_ok {
     margin-left: 40px;
@@ -25,7 +26,7 @@
     font-size: $font_small;
     cursor: pointer;
     padding: 5px 10px 6px 7px;
-    margin: 50px 10px;
+    margin: 10px 10px;
     float: left;
     text-align: center;
     text-decoration: none;
@@ -36,9 +37,11 @@
 
   p {
     color: $black;
-    width: 100%;
+    width: 350px;
     text-align: center;
-    padding-top: 22px;
+    padding: 30px 0px;
+    background: $light_grey;
+    margin: 5px;
   }
 }
 
