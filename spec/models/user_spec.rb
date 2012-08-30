@@ -196,4 +196,18 @@ describe User do
     end
   end
 
+  ##################################################################
+
+  describe "time zone validations" do
+
+    it "should reject empty time zone" do
+      User.new(@attr.merge(:timezone => "")).should_not be_valid
+    end
+
+    it "should reject wrong time zone" do
+      User.new(@attr.merge(:timezone => "QWERTY")).should_not be_valid
+    end
+  end
+
+  ##################################################################
 end

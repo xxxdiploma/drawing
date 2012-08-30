@@ -44,6 +44,10 @@ en:
     user:
       delete: "Delete"
       confirm: "Are you sure?"
+    edit:
+      basic: "Basic settings"
+    settings:
+      additional: "Additional"
 
   articles:
     index:
@@ -83,5 +87,6 @@ en:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirmation"
+        timezone: "Time zone"
       article:
         content: "Content"

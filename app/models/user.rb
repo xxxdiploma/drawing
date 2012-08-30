@@ -3,7 +3,7 @@ require 'digest'
 class User < ActiveRecord::Base
 
   attr_accessor :password
-  attr_accessible :surname, :initials, :email, :password, :password_confirmation
+  attr_accessible :surname, :initials, :email, :password, :password_confirmation, :timezone
 
   has_many :articles, :dependent => :destroy
 
@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 6..40 }
+
+  validates_inclusion_of :timezone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }
 
   before_save :encrypt_password
 

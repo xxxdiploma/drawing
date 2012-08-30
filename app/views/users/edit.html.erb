@@ -1,8 +1,9 @@
 <div class = "user edit">
-<h2><%= @title %></h2>
+<h2><%= t('.basic') %></h2>
 <hr />
 <%= form_for(@user) do |f| %>
   <%= render 'users/fields', :f => f %>
+  <%= render 'users/settings', :f => f%>
   <div class="actions">
     <%= f.submit t('buttons.update') %>
   </div>

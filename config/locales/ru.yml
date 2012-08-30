@@ -44,6 +44,10 @@ ru:
     user:
       delete: "Удалить"
       confirm: "Вы уверены?"
+    edit:
+      basic: "Основные настройки"
+    settings:
+      additional: "Дополнительно"
 
   articles:
     index:
@@ -83,5 +87,6 @@ ru:
         email: "Почта"
         password: "Пароль"
         password_confirmation: "Подтверждение"
+        timezone: "Часовой пояс"
       article:
         content: "Контент"

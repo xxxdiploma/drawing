@@ -9,8 +9,6 @@ module ArticlesHelper
   end
 
   def article_time(article)
-    Time.zone = "Moscow" #Переписать потом
-
     current_time = article.created_at
 
     old = Russian::strftime(current_time, "%d %b %Y")
