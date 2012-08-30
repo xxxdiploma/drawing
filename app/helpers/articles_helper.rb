@@ -11,7 +11,12 @@ module ArticlesHelper
   def article_time(article)
     Time.zone = "Moscow" #Переписать потом
 
-    article.created_at.in_time_zone.to_s(:russian)
+    current_time = article.created_at
+
+    old = Russian::strftime(current_time, "%d %b %Y")
+    normal =  Russian::strftime(current_time, "%d %b %H:%M")
+
+    current_time.to_i < 1.year.ago.to_i ? old : normal
   end
 
   def article_format(text)

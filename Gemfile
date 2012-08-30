@@ -8,6 +8,7 @@ gem 'rails', '3.2.6'
 gem 'pg'
 gem 'will_paginate'
 gem 'nokogiri'
+gem 'russian'
 
 group :development do
   gem 'rspec-rails'

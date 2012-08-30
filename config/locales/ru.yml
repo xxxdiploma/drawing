@@ -85,28 +85,3 @@ ru:
         password_confirmation: "Подтверждение"
       article:
         content: "Контент"
-
-    errors:
-      models:
-        user:
-          attributes:
-            surname:
-              blank: "должна быть указана"
-              too_long: "не должна быть длиннее 50 символов"
-            initials:
-              blank: "не могут быть пропущены"
-              wrong_length: "должны состоять из 2 символов"
-            email:
-              blank: "должна быть указана"
-              invalid: "имеет некорректный формат"
-            password:
-              blank: "не должен быть пустым"
-              too_short: "не должен быть короче 6 символов"
-              too_long: "не должен быть длиннее 40 символов"
-              confirmation: "и подтверждение не совпадают"
-
-        article:
-          attributes:
-            content:
-              blank: "не должен быть пустым"
-              too_long: "не должен содержать более 5000 символов"
