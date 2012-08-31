@@ -30,4 +30,13 @@ module ApplicationHelper
     "#{user.surname} #{user.initials.first}. #{user.initials.last}."
   end
 
+  def include_google_maps
+    content_for :google_maps do
+      api = "http://maps.googleapis.com/maps/api/js?"
+      key = "AIzaSyAhnorcg0Oez7hHMm-3EnY4kQW0tq9RZHA"
+      sensor = "false"
+      javascript_include_tag "#{api}key=#{key}&sensor=#{sensor}"
+    end
+  end
+
 end

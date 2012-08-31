@@ -1,7 +1,25 @@
+//Fields
+
 #user_surname {
   text-transform: capitalize;
 }
 
 #user_initials {
   text-transform: uppercase;
+}
+
+//Google maps
+
+#map_canvas {
+  top: 0;
+  left: 0;
+  height: 0px;
+  width: 480px;
+  border-color: $medium-grey;
+  opacity: 0;
+  border-radius: 4px;
+}
+
+#map_button {
+
 }

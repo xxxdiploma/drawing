@@ -1,9 +1,9 @@
-#Show notification
+# Custom notification
 
-$(document).ready ->
+customNotifications = ->
   $(".button_delete").click ->
     delete_link = $(this).find("a").attr("object_url")
-    t_message = "Вы уверены?"
+    t_message = "Вы подтверждаете удаление?"
     t_ok = "Да"
     t_cancel = "Нет"
     $("html").append("<div id='message_background' />
@@ -13,10 +13,17 @@ $(document).ready ->
                         <a href='#' class = 'button_cancel'>"+t_cancel+"</a>
                       </div>")
 
-    $("#message").find(".button_cancel").click =>
+    hideNotification = ->
       $("#message_background").remove()
       $("#message").remove()
 
+    $("#message").find(".button_cancel").click ->
+      hideNotification()
+
     $("#message_background").click ->
-      $("#message").remove()
-      $(this).remove()
+      hideNotification()
+
+# Load
+
+$ ->
+  customNotifications()

@@ -69,6 +69,10 @@ p, h1, h2, h3, h4, h5, h6, ul, a {
   padding: 0;
 }
 
+h1, h2 {
+  font-size: $font_large;
+}
+
 nav ul li {
   list-style-type: none;
   display: inline-block;
@@ -76,6 +80,14 @@ nav ul li {
 
 ul {
   padding-left: 0;
+}
+
+hr {
+  width: 400px;
+  margin: 10px 0px;
+  height: 1px;
+  background: $grey;
+  border-width: 0;
 }
 
 .content {
