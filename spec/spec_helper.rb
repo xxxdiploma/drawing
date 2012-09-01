@@ -42,4 +42,8 @@ RSpec.configure do |config|
     controller.sign_in(user)
   end
 
+  def test_current_user
+    controller.current_user
+  end
+
 end

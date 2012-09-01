@@ -9,11 +9,11 @@ describe PagesController do
       response.should redirect_to(about_path)
     end
 
-    it "should redirect to current user path path if signed in" do
-      user = FactoryGirl.create(:user, :id => 1)
+    it "should redirect to current user path if signed in" do
+      user = FactoryGirl.create(:user)
       test_sign_in(user)
       get 'home'
-      response.should redirect_to('/users/1')
+      response.should redirect_to(test_current_user)
     end
   end
 
