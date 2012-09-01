@@ -23,6 +23,8 @@ customNotifications = ->
     $("#message_background").click ->
       hideNotification()
 
+    return false
+
 # Load
 
 $ ->

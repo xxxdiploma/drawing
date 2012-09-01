@@ -23,7 +23,7 @@ googleMaps = ->
     myMarker = new google.maps.Marker(markerOptions)
     myMarker.setAnimation(google.maps.Animation.BOUNCE)
 
-    return 0
+    return false
 
 # Load
 

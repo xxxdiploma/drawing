@@ -21,7 +21,7 @@
       <nav>
          <ul>
            <% if contact_page? %>
-           <li><%= link_to t('links.contact'), '#' %></li>
+           <li><%= link_to t('links.contact'), contact_path %></li>
            <% else %>
            <% if signed_in? %>
            <li><%= link_to t('links.my_page'), current_user %></li>
@@ -29,7 +29,7 @@
            <li><%= link_to t('links.articles'), articles_path %></li>
            <li><%= link_to t('links.users'), users_path %></li>
            <% end %>
-           <li><%= link_to t('links.about'), '#' %></li>
+           <li><%= link_to t('links.about'), about_path %></li>
            <% end %>
          </ul>
        </nav>

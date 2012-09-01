@@ -234,6 +234,17 @@ footer {
   }
 }
 
+input {
+  border: 1px solid $grey;
+  min-height: 18px;
+  margin: 0;
+}
+
+select {
+  border: 1px solid $grey;
+  min-height: 18px;
+  margin: 0;
+}
 
 .actions input {
   background-color: $dark_grey;

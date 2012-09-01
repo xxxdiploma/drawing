@@ -1,7 +1,7 @@
 <div class = "articles table" >
   <% if current_user.admin? %>
   <div class = "articles button_delete">
-    <%= link_to t('.delete'), "#", :object_url => article_url(article) %>
+    <%= link_to t('.delete'), nil, :object_url => article_url(article) %>
   </div>
   <% end %>
   <div class = "articles content">

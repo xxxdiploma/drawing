@@ -5,7 +5,7 @@
 
   <% if current_user.admin? %>
   <div class = "button_delete">
-    <%= link_to t('.delete'), "#", :object_url => user_url(user) %>
+    <%= link_to t('.delete'), nil, :object_url => user_url(user) %>
   </div>
   <% end %>
   <br />

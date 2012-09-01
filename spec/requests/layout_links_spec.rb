@@ -2,35 +2,35 @@ require 'spec_helper'
 
 describe "LayoutLinks" do
 
-  it "should have a Home page at '/'" do
-    get '/'
-    response.should have_selector("title", :content => I18n.t('titles.home') )
-  end
-
-  it "should have a Contact page at '/contact'" do
-    get '/contact'
-    response.should have_selector("title", :content => I18n.t('titles.contact') )
-  end
-
-  it "should have a Contact page at '/signup'" do
-    get '/signup'
-    response.should have_selector("title", :content => I18n.t('titles.sign_up') )
-  end
-
-  it "should have a Sign in page at '/signin'" do
-    get '/signin'
-    response.should have_selector("title", :content => I18n.t('titles.sign_in') )
-  end
-
-  it "should have the right links on the layout" do
-    visit root_path
-    click_link I18n.t('links.home')
-    response.should have_selector("title", :content => I18n.t('titles.home') )
-    click_link I18n.t('links.contact')
-    response.should have_selector("title", :content => I18n.t('titles.contact') )
-  end
-
   describe "when not signed in" do
+    it "should have a Contact page at '/contact'" do
+      get '/contact'
+      response.should have_selector("title", :content => I18n.t('titles.contact') )
+    end
+
+    it "should have an About page at '/about'" do
+      get '/about'
+      response.should have_selector("title", :content => I18n.t('titles.about') )
+    end
+
+    it "should have a Contact page at '/signup'" do
+      get '/signup'
+      response.should have_selector("title", :content => I18n.t('titles.sign_up') )
+    end
+
+    it "should have a Sign in page at '/signin'" do
+      get '/signin'
+      response.should have_selector("title", :content => I18n.t('titles.sign_in') )
+    end
+
+    it "should have the right links on the main layout" do
+      visit root_path
+      click_link I18n.t('links.home')
+      response.should have_selector("title", :content => I18n.t('titles.about') )
+      click_link I18n.t('links.contact')
+      response.should have_selector("title", :content => I18n.t('titles.contact') )
+    end
+
     it "should have a signin link" do
       visit root_path
       response.should have_selector("a", :href => signin_path,
@@ -54,7 +54,13 @@ describe "LayoutLinks" do
                                          :content => I18n.t('links.sign_out') )
     end
 
-    it "should have the right links" do
+    it "should have the right links on the main layout" do
+      visit root_path
+      click_link I18n.t('links.home')
+      response.should have_selector("title", :content => "#{@user.surname}")
+    end
+
+    it "should have the right links on the 'home' layout" do
       click_link I18n.t('links.my_page')
       response.should have_selector("title", :content => "#{@user.surname}")
       click_link I18n.t('links.settings')
@@ -63,6 +69,8 @@ describe "LayoutLinks" do
       response.should have_selector("title", :content => I18n.t('titles.articles') )
       click_link I18n.t('links.users')
       response.should have_selector("title", :content => I18n.t('titles.users') )
+      click_link I18n.t('links.about')
+      response.should have_selector("title", :content => I18n.t('titles.about') )
     end
   end
 

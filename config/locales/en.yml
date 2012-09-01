@@ -6,7 +6,7 @@ en:
 
   titles:
     base: "СТАНКИН"
-    home: "Home"
+    about: "About"
     contact: "Contact"
     sign_in: "Sign in"
     sign_up: "Sign up"

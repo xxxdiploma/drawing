@@ -8,7 +8,7 @@ autohideFlash = ->
       ), 1000
     ), 5000
 
-  return 0
+  return false
 
 # Load
 

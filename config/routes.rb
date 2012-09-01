@@ -8,6 +8,7 @@ Drawing::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
 
   match '/contact', :to => 'pages#contact'
+  match '/about',   :to => 'pages#about'
 
   root :to => 'pages#home'
 
