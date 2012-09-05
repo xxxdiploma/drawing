@@ -90,3 +90,16 @@ ru:
         timezone: "Часовой пояс"
       article:
         content: "Контент"
+
+    errors:
+      models:
+        user:
+          attributes:
+            surname:
+              blank: "должна быть указана"
+              too_long: "не может быть длиннее %{count} символов"
+            initials:
+              blank: "должны быть указаны"
+              wrong_length: "должны состоять из %{count} символов"
+            email:
+              blank: "должна быть указана"

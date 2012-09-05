@@ -16,6 +16,7 @@ customNotifications = ->
     hideNotification = ->
       $("#message_background").remove()
       $("#message").remove()
+      return false
 
     $("#message").find(".button_cancel").click ->
       hideNotification()
