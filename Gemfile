@@ -9,6 +9,7 @@ gem 'pg'
 gem 'will_paginate'
 gem 'nokogiri'
 gem 'russian'
+gem 'dropbox-sdk'
 
 group :development do
   gem 'rspec-rails'

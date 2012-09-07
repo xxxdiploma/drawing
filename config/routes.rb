@@ -1,4 +1,5 @@
 Drawing::Application.routes.draw do
+
   resources :users
   resources :articles
   resources :sessions, :only => [:new, :create, :destroy]
@@ -11,5 +12,11 @@ Drawing::Application.routes.draw do
   match '/about',   :to => 'pages#about'
 
   root :to => 'pages#home'
+
+
+  match 'dropbox',  :to => 'dropbox#index'
+
+  match 'dropbox/authorize', :controller => 'dropbox', :action => 'authorize'
+  match 'dropbox/upload',    :controller => 'dropbox', :action => 'upload'
 
 end
