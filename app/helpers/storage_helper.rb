@@ -1,4 +1,4 @@
-module DropboxHelper
+module StorageHelper
   def dropbox_user
     session[:db_ready]
   end

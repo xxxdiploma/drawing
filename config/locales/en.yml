@@ -13,14 +13,14 @@ en:
     user_edit: "Settings"
     users: "Users"
     articles: "News"
-    dropbox: "Files"
+    storage: "Files"
     publication: "Publication"
     article_edit: "Editing"
 
   links:
     articles: "News"
     about: "About"
-    dropbox: "Files"
+    storage: "Files"
     my_page: "My page"
     settings: "Settings"
     users: "Users"
@@ -60,7 +60,7 @@ en:
       confirm: "Are you sure?"
       edit: "Edit"
 
-  dropbox:
+  storage:
     index:
       file_name: "File name"
     authorize:

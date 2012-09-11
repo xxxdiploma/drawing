@@ -20,6 +20,7 @@
   margin-top: 10px;
   border-radius: 4px;
   background: #e9cec8;
+  font-size: $font_small;
 
   ul li {
     list-style-type: none;
@@ -41,11 +42,11 @@
 }
 
 .flash.error {
-  color: #c0391b;
-  background: #e9cec8;
+  color: #fff;
+  background: #c0391b;
 }
 
 .flash.notice {
   color: #c0391b;
-  background: #fbc48e;
+  background: #fcd2a8;
 }

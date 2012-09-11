@@ -13,14 +13,14 @@ ru:
     user_edit: "Настройки"
     users: "Пользователи"
     articles: "Новости"
-    dropbox: "Файлы"
+    storage: "Файлы"
     publication: "Публикация"
     article_edit: "Редактирование"
 
   links:
     articles: "Новости"
     about: "O кафедре"
-    dropbox: "Файлы"
+    storage: "Файлы"
     my_page: "Моя страница"
     settings: "Настройки"
     users: "Пользователи"
@@ -60,7 +60,7 @@ ru:
       confirm: "Удалить это сообщение?"
       edit: "Редактировать"
 
-  dropbox:
+  storage:
     upload:
       file_name: "Имя файла"
     authorize:

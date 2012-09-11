@@ -1,7 +1,10 @@
-class DropboxController < ApplicationController
+class StorageController < ApplicationController
+
+  before_filter :authenticate
+  before_filter :admin_user, :except => [:index]
 
   def index
-    @title = t('titles.dropbox')
+    @title = t('titles.storage')
   end
 
   def authorize
@@ -10,6 +13,7 @@ class DropboxController < ApplicationController
       request_token = consumer.get_request_token
       session[:db_token] = request_token.token
       session[:db_secret] = request_token.secret
+
       redirect_to request_token.authorize_url(:oauth_callback => url_for(:action => 'authorize'))
     else
       request_token = OAuth::RequestToken.new(consumer, session[:db_token], session[:db_secret])
@@ -30,5 +34,11 @@ class DropboxController < ApplicationController
 
     redirect_to(:action => 'index')
   end
+
+  private
+
+    def admin_user
+      redirect_to(storage_path) unless current_user.admin?
+    end
 
 end

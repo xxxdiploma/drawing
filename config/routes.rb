@@ -11,10 +11,10 @@ Drawing::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
 
-  match '/dropbox',  :to => 'dropbox#index'
+  match '/storage',  :to => 'storage#index'
 
-  match 'dropbox/authorize', :controller => 'dropbox', :action => 'authorize'
-  match 'dropbox/upload',    :controller => 'dropbox', :action => 'upload'
+  match '/storage/authorize', :controller => 'storage', :action => 'authorize'
+  match '/storage/upload',    :controller => 'storage', :action => 'upload'
 
 
   root :to => 'pages#home'
