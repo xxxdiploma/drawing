@@ -1,30 +1,35 @@
-require 'dropbox_sdk'
-
 class DropboxController < ApplicationController
+
   def authorize
     if not params[:oauth_token] then
-      dbsession = DropboxSession.new(ENV["DB_APP_KEY"], ENV["DB_APP_SECRET"])
-      session[:dropbox_session] = dbsession.serialize
-
-      redirect_to dbsession.get_authorize_url url_for(:action => 'authorize')
+      consumer = Dropbox::API::OAuth.consumer(:authorize)
+      request_token = consumer.get_request_token
+      session[:db_token] = request_token.token
+      session[:db_secret] = request_token.secret
+      redirect_to request_token.authorize_url(:oauth_callback => url_for(:action => 'authorize'))
     else
-      dbsession = DropboxSession.deserialize(session[:dropbox_session])
-      dbsession.get_access_token
-      session[:dropbox_session] = dbsession.serialize
+      consumer = Dropbox::API::OAuth.consumer(:authorize)
+      request_token = OAuth::RequestToken.new(consumer, session[:db_token], session[:db_secret])
+      access_token = request_token.get_access_token(:oauth_verifier => params[:oauth_token])
+      session[:db_token] = access_token.token
+      session[:db_secret] = access_token.secret
+      session[:db_ready] = "ready"
 
-      redirect_to :action => 'upload'
+      return redirect_to(:action => 'upload')
     end
   end
 
   def upload
-    return redirect_to(:action => 'authorize') unless session[:dropbox_session]
+    return redirect_to(:action => 'authorize') if not session[:db_ready]
 
-    dbsession = DropboxSession.deserialize(session[:dropbox_session])
-    client = DropboxClient.new(dbsession, :app_folder)
-    info = client.account_info
+    @client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
 
-    resp = client.put_file(params[:file].original_filename, params[:file].read)
-    flash.now[:success] = "Upload successful!"
+    @client.search('test.txt').each do |file|
+      file.copy(file.path + ".old2")
+    end
+
+    flash.now[:success] = "Update successful!"
     render 'index'
+
   end
 end
