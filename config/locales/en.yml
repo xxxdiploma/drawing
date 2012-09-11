@@ -13,12 +13,14 @@ en:
     user_edit: "Settings"
     users: "Users"
     articles: "News"
+    dropbox: "Files"
     publication: "Publication"
     article_edit: "Editing"
 
   links:
     articles: "News"
     about: "About"
+    dropbox: "Files"
     my_page: "My page"
     settings: "Settings"
     users: "Users"
@@ -32,6 +34,7 @@ en:
     sign_up: "Sign up"
     update: "Update"
     publish: "Publish"
+    upload: "Upload"
 
   sessions:
     new:
@@ -57,6 +60,14 @@ en:
       confirm: "Are you sure?"
       edit: "Edit"
 
+  dropbox:
+    index:
+      file_name: "File name"
+    authorize:
+      must_allow: "You must"
+      allow_access: "allow access"
+      can_upload: "before you can upload files"
+
   flash:
     success:
       welcome: "Welcome to the site"
@@ -65,6 +76,7 @@ en:
       article_destroyed: "Article destroyed"
       published: "Article published"
       article_updated: "Article updated"
+      file_uploaded: "File has been successfully uploaded"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"

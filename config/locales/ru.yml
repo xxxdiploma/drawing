@@ -13,12 +13,14 @@ ru:
     user_edit: "Настройки"
     users: "Пользователи"
     articles: "Новости"
+    dropbox: "Файлы"
     publication: "Публикация"
     article_edit: "Редактирование"
 
   links:
     articles: "Новости"
     about: "O кафедре"
+    dropbox: "Файлы"
     my_page: "Моя страница"
     settings: "Настройки"
     users: "Пользователи"
@@ -32,6 +34,7 @@ ru:
     sign_up: "Зарегистрироваться"
     update: "Обновить"
     publish: "Опубликовать"
+    upload: "Загрузить"
 
   sessions:
     new:
@@ -57,6 +60,14 @@ ru:
       confirm: "Удалить это сообщение?"
       edit: "Редактировать"
 
+  dropbox:
+    upload:
+      file_name: "Имя файла"
+    authorize:
+      must_allow: "Вы должны"
+      allow_access: "разрешить доступ"
+      can_upload: "прежде, чем сможете загрузить файл"
+
   flash:
     success:
       welcome: "Добро пожаловать на сайт"
@@ -65,6 +76,7 @@ ru:
       article_destroyed: "Запись удалена"
       published: "Запись была опубликована"
       article_updated: "Запись обновлена"
+      file_uploaded: "Файл был успешно загружен"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"

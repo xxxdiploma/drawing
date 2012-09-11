@@ -1,3 +1,7 @@
-<h2>Dropbox</h2>
+<h2><%= @title %></h2>
 <hr />
-<%= render 'upload' %>
+<% if not dropbox_user %>
+  <%= render 'authorize' %>
+<% else %>
+  <%= render 'upload' %>
+<% end %>

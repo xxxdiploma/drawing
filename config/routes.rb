@@ -11,12 +11,12 @@ Drawing::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
 
-  root :to => 'pages#home'
-
-
-  match 'dropbox',  :to => 'dropbox#index'
+  match '/dropbox',  :to => 'dropbox#index'
 
   match 'dropbox/authorize', :controller => 'dropbox', :action => 'authorize'
   match 'dropbox/upload',    :controller => 'dropbox', :action => 'upload'
+
+
+  root :to => 'pages#home'
 
 end
