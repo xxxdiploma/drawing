@@ -23,6 +23,12 @@ describe ArticlesController do
         test_sign_in(@user)
       end
 
+      it "should be successful" do
+        get :index
+        response.should be_success
+      end
+
+
       it "should have the right title" do
         get :index
         response.should have_selector("title", :content => I18n.t('titles.articles') )

@@ -26,7 +26,7 @@
            <% if signed_in? %>
            <li><%= link_to t('links.my_page'), current_user %></li>
            <li><%= link_to t('links.settings'), edit_user_path(current_user) %></li>
-           <li><%= link_to t('links.storage'), storage_path %></li>
+           <li><%= link_to t('links.storages'), storages_path %></li>
            <li><%= link_to t('links.articles'), articles_path %></li>
            <li><%= link_to t('links.users'), users_path %></li>
            <% end %>

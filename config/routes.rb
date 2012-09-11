@@ -2,6 +2,7 @@ Drawing::Application.routes.draw do
 
   resources :users
   resources :articles
+  resources :storages
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'
@@ -11,11 +12,8 @@ Drawing::Application.routes.draw do
   match '/contact', :to => 'pages#contact'
   match '/about',   :to => 'pages#about'
 
-  match '/storage',  :to => 'storage#index'
-
-  match '/storage/authorize', :controller => 'storage', :action => 'authorize'
-  match '/storage/upload',    :controller => 'storage', :action => 'upload'
-
+  match '/storages/authorize', :controller => 'storages', :action => 'authorize'
+  match '/storages/upload',    :controller => 'storages', :action => 'upload'
 
   root :to => 'pages#home'
 

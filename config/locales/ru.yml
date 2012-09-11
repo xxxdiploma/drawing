@@ -13,14 +13,14 @@ ru:
     user_edit: "Настройки"
     users: "Пользователи"
     articles: "Новости"
-    storage: "Файлы"
+    storages: "Файлы"
     publication: "Публикация"
     article_edit: "Редактирование"
 
   links:
     articles: "Новости"
     about: "O кафедре"
-    storage: "Файлы"
+    storages: "Файлы"
     my_page: "Моя страница"
     settings: "Настройки"
     users: "Пользователи"
@@ -60,7 +60,7 @@ ru:
       confirm: "Удалить это сообщение?"
       edit: "Редактировать"
 
-  storage:
+  storages:
     upload:
       file_name: "Имя файла"
     authorize:
