@@ -1,9 +1,0 @@
-<%= form_tag({:controller => :storage, :action => :upload}, :method => "post", :multipart => true) do |f| %>
-  <div class="field">
-    <%= label_tag t('.file_name') %><br />
-    <%= file_field_tag :file %>
-  </div>
-  <div class="actions">
-    <%= submit_tag t('buttons.upload') %>
-  </div>
-<% end %>
