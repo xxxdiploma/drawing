@@ -67,7 +67,7 @@ ru:
     authorize:
       must_allow: "Вы должны"
       allow_access: "разрешить доступ"
-      can_upload: "прежде, чем сможете загрузить файл"
+      can_upload: "прежде, чем загружать или редактировать файлы"
 
   flash:
     success:

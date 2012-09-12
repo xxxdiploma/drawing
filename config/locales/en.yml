@@ -67,7 +67,7 @@ en:
     authorize:
       must_allow: "You must"
       allow_access: "allow access"
-      can_upload: "before you can upload files"
+      can_upload: "before you can upload and edit files"
 
   flash:
     success:

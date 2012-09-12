@@ -28,6 +28,8 @@ class StoragesController < ApplicationController
   end
 
   def upload
+    return redirect_to(:action => 'authorize') if not session[:db_ready]
+
     if not params[:file]
       flash[:error] =  t('flash.error.empty_file')
       return redirect_to(:action => 'index')
@@ -36,15 +38,13 @@ class StoragesController < ApplicationController
     client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
     file = client.upload(params[:file].original_filename, params[:file].read)
 
-    ###
+    # Saving a file #
 
-    @st = current_user.storages.build(:file_name => params[:file].original_filename.to_s,
-                                      :url => file.share_url[:url],
-                                      :description => "empty")
+    current_file = current_user.storages.build(:file_name => params[:file].original_filename,
+                                               :url => file.share_url[:url], :description => "empty")
+    current_file.save
 
-    @st.save
-
-    ###
+    #################
 
     flash[:success] = t('flash.success.file_uploaded')
     redirect_to(:action => 'index')

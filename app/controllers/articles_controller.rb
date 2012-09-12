@@ -20,16 +20,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    if current_user.admin?
-      @article = current_user.articles.build(params[:article])
-      if @article.save
-        flash[:success] = t('flash.success.published')
-        redirect_to articles_path
-      else
-        @title = t('titles.articles')
-        flash.now[:error] = t('flash.error.publication')
-        render 'new'
-      end
+    @article = current_user.articles.build(params[:article])
+    if @article.save
+      flash[:success] = t('flash.success.published')
+      redirect_to articles_path
+    else
+      @title = t('titles.articles')
+      flash.now[:error] = t('flash.error.publication')
+      render 'new'
     end
   end
 

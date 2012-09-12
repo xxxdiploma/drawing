@@ -6,12 +6,15 @@
     <ul>
     <%= render @storages %>
     </ul>
+    <%= will_paginate %>
   </div>
-  <hr />
-  <br />
-  <% if not dropbox_user %>
-    <%= render 'authorize' %>
-  <% else %>
-    <%= render 'upload' %>
-  <% end %>
+  <% if current_user.admin? %>
+    <br />
+    <br />
+    <% if not dropbox_user %>
+      <%= render 'authorize' %>
+    <% else %>
+      <%= render 'upload' %>
+    <% end %>
+  <% end%>
 </div>
