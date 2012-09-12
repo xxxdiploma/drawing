@@ -1,7 +1,17 @@
 <h2><%= @title %></h2>
 <hr />
-<% if not dropbox_user %>
-  <%= render 'authorize' %>
-<% else %>
-  <%= render 'upload' %>
-<% end %>
+<br />
+<div class="storage">
+  <div class="storage list">
+    <ul>
+    <%= render @storages %>
+    </ul>
+  </div>
+  <hr />
+  <br />
+  <% if not dropbox_user %>
+    <%= render 'authorize' %>
+  <% else %>
+    <%= render 'upload' %>
+  <% end %>
+</div>

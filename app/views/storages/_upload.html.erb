@@ -1,6 +1,6 @@
-<%= form_tag({:controller => :storages, :action => :upload}, :method => "post", :multipart => true) do |f| %>
+<%= form_tag({:action => :upload}, :method => :post, :multipart => true) do |f| %>
   <div class="field">
-    <%= label_tag t('.file_name') %><br />
+    <%= label_tag t('.file_name') %>
     <%= file_field_tag :file %>
   </div>
   <div class="actions">

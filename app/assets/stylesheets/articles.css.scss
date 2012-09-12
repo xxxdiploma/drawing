@@ -8,7 +8,15 @@
   }
 
   .table:hover .content {
-    background: $grey;
+    background: #fbfbfb;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $medium_grey;
+    padding: 5px;
+  }
+
+  .table:hover hr {
+    background: $medium_grey;
   }
 
   .button_delete {
@@ -108,7 +116,7 @@
   border-radius: 4px;
   padding: 6px;
   margin-left: -6px;
-  background: #eee;
+  background: $medium_grey;
 
   h1, h2, h3, h4, h5, h6 {
     font-size: $font_normal;
@@ -122,7 +130,7 @@
   hr {
     width: 100%;
     height: 1px;
-    background: #ccc;
+    background: $grey;
     border-width: 0;
   }
 }

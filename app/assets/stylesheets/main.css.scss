@@ -16,11 +16,12 @@ $font_small: 12px;
 
 @mixin green_link {
   a {
-    color: $green
+    color: $green;
+    text-decoration: none;
   }
 
   a:hover {
-    color: $basic_text_color;
+    text-decoration: underline;
   }
 }
 

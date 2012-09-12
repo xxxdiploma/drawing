@@ -5,6 +5,7 @@ class StoragesController < ApplicationController
 
   def index
     @title = t('titles.storages')
+    @storages = Storage.paginate(:page => params[:page], :per_page => 15 )
   end
 
   def authorize
@@ -27,11 +28,25 @@ class StoragesController < ApplicationController
   end
 
   def upload
+    if not params[:file]
+      flash[:error] =  t('flash.error.empty_file')
+      return redirect_to(:action => 'index')
+    end
+
     client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
     file = client.upload(params[:file].original_filename, params[:file].read)
 
-    flash[:success] = t('flash.success.file_uploaded')
+    ###
 
+    @st = current_user.storages.build(:file_name => params[:file].original_filename.to_s,
+                                      :url => file.share_url[:url],
+                                      :description => "empty")
+
+    @st.save
+
+    ###
+
+    flash[:success] = t('flash.success.file_uploaded')
     redirect_to(:action => 'index')
   end
 

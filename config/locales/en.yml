@@ -14,6 +14,7 @@ en:
     users: "Users"
     articles: "News"
     storages: "Files"
+    file_edit: "Edit"
     publication: "Publication"
     article_edit: "Editing"
 
@@ -82,6 +83,7 @@ en:
       registration: "There are some errors in registration data"
       not_updated: "Profile has not been updated"
       publication: "Publishing failure"
+      empty_file: "You have not specified a file for upload"
     notice:
       deny_access: "Please sign in to access this page"
       already_signed_in: "You are already signed in"

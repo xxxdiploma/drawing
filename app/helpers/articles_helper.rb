@@ -5,7 +5,7 @@ module ArticlesHelper
   end
 
   def article_author(article)
-    return User.find(article.user_id)
+    User.find(article.user_id)
   end
 
   def article_time(article)
