@@ -47,7 +47,6 @@ ru:
   users:
     user:
       delete: "Удалить"
-      confirm: "Вы уверены?"
     edit:
       basic: "Основные настройки"
     settings:
@@ -58,10 +57,11 @@ ru:
       new: "Добавить новость"
     article:
       delete: "Удалить"
-      confirm: "Удалить это сообщение?"
       edit: "Редактировать"
 
   storages:
+    storage:
+      delete: "Удалить"
     upload:
       file_name: "Имя файла"
     authorize:
@@ -78,6 +78,7 @@ ru:
       published: "Запись была опубликована"
       article_updated: "Запись обновлена"
       file_uploaded: "Файл был успешно загружен"
+      file_destroyed: "Файл удалён"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"

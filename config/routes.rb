@@ -2,7 +2,7 @@ Drawing::Application.routes.draw do
 
   resources :users
   resources :articles
-  resources :storages, :only => [:index]
+  resources :storages, :only => [:index, :destroy]
   resources :sessions, :only => [:new, :create, :destroy]
 
   match '/signup',  :to => 'users#new'

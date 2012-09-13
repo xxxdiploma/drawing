@@ -65,6 +65,8 @@ describe "LayoutLinks" do
       response.should have_selector("title", :content => "#{@user.surname}")
       click_link I18n.t('links.settings')
       response.should have_selector("title", :content => I18n.t('titles.user_edit') )
+      click_link I18n.t('links.storages')
+      response.should have_selector("title", :content => I18n.t('titles.storages') )
       click_link I18n.t('links.articles')
       response.should have_selector("title", :content => I18n.t('titles.articles') )
       click_link I18n.t('links.users')

@@ -36,9 +36,10 @@ class StoragesController < ApplicationController
     end
 
     client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
-    file = client.upload(params[:file].original_filename, params[:file].read)
 
     # Saving a file #
+
+    file = client.upload(params[:file].original_filename, params[:file].read)
 
     current_file = current_user.storages.build(:file_name => params[:file].original_filename,
                                                :url => file.share_url[:url], :description => "empty")
@@ -49,6 +50,25 @@ class StoragesController < ApplicationController
     flash[:success] = t('flash.success.file_uploaded')
     redirect_to(:action => 'index')
   end
+
+  def destroy
+    return redirect_to(:action => 'authorize') if not session[:db_ready]
+
+    client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
+
+    # Destroying a file #
+
+    current_file = Storage.find(params[:id])
+
+    client.find(current_file.file_name).destroy
+    current_file.destroy
+
+    #####################
+
+    flash[:success] = t('flash.success.file_destroyed')
+    redirect_to(:action => 'index')
+  end
+
 
   private
 

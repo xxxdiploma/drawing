@@ -1,3 +1,12 @@
 <li>
-  <%= link_to storage.file_name, storage.url, :target => "_blank" %>
+  <div class = "button_show">
+    <%= link_to storage.file_name, storage.url, :target => "_blank" %>
+  </div>
+
+  <% if current_user.admin? %>
+  <div class = "button_delete">
+    <%= link_to t('.delete'), nil, :object_url => storage_url(storage) %>
+  </div>
+  <% end %>
+  <br />
 </li>

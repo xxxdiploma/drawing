@@ -259,11 +259,17 @@ select {
   border-radius: 2px;
 }
 
-
 .pagination {
   margin: 10px 0px;
   padding-top: 10px;
   border-top-color: $grey;
 	border-width: 1px 0 0 0;
 	border-style: solid;
+}
+
+.pagination .current {
+  background: $light_green;
+  padding: 2px 4px;
+  font-style: normal;
+  border-radius: 3px;
 }

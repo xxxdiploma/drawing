@@ -47,7 +47,6 @@ en:
   users:
     user:
       delete: "Delete"
-      confirm: "Are you sure?"
     edit:
       basic: "Basic settings"
     settings:
@@ -58,10 +57,11 @@ en:
       new: "New article"
     article:
       delete: "Delete"
-      confirm: "Are you sure?"
       edit: "Edit"
 
   storages:
+    storage:
+      delete: "Delete"
     index:
       file_name: "File name"
     authorize:
@@ -78,6 +78,7 @@ en:
       published: "Article published"
       article_updated: "Article updated"
       file_uploaded: "File has been successfully uploaded"
+      file_destroyed: "File destroyed"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"

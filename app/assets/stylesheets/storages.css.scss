@@ -36,4 +36,28 @@
   li:hover {
     background: $medium_grey;
   }
+
+  li:hover .button_delete {
+    visibility: visible;
+  }
+
+  .button_show {
+    float: left;
+  }
+
+  .button_delete {
+    float: right;
+    opacity: 0.3;
+    padding-top: 2px;
+    padding-right: 4px;
+    visibility: hidden;
+  }
+
+  .button_delete:hover {
+    opacity: inherit;
+  }
+
+  .button_delete a {
+    content: url(buttons/delete.gif);
+  }
 }
