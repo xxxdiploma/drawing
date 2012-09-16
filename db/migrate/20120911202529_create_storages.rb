@@ -3,7 +3,7 @@ class CreateStorages < ActiveRecord::Migration
     create_table :storages do |t|
       t.integer :user_id, :null => false
       t.string :file_name, :null => false
-      t.string :url
+      t.string :url, :null => false
       t.string :title
       t.text :description
 

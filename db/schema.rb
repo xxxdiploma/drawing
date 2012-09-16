@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(:version => 20120911202529) do
 
   create_table "articles", :force => true do |t|
-    t.text     "content"
-    t.integer  "user_id"
+    t.integer  "user_id",    :null => false
+    t.text     "content",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20120911202529) do
   create_table "storages", :force => true do |t|
     t.integer  "user_id",     :null => false
     t.string   "file_name",   :null => false
-    t.string   "url"
+    t.string   "url",         :null => false
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  :null => false
@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(:version => 20120911202529) do
   add_index "storages", ["user_id"], :name => "index_storages_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "surname"
-    t.string   "initials"
-    t.string   "email"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.string   "surname",                                  :null => false
+    t.string   "initials",                                 :null => false
+    t.string   "email",                                    :null => false
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              :default => false
     t.string   "timezone",           :default => "Moscow"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
