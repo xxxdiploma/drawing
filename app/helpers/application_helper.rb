@@ -36,4 +36,23 @@ module ApplicationHelper
     end
   end
 
+  ###
+
+  def post_by(post)
+    user_full_name(User.find(post.user_id))
+  end
+
+  def post_author(post)
+    User.find(post.user_id)
+  end
+
+  def post_time(post)
+    current_time = post.created_at
+
+    old = Russian::strftime(current_time, "%d %b %Y")
+    normal =  Russian::strftime(current_time, "%d %b %H:%M")
+
+    current_time.to_i < 1.year.ago.to_i ? old : normal
+  end
+
 end

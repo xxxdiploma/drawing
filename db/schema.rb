@@ -24,9 +24,10 @@ ActiveRecord::Schema.define(:version => 20120911202529) do
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "storages", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "file_name"
+    t.integer  "user_id",     :null => false
+    t.string   "file_name",   :null => false
     t.string   "url"
+    t.string   "title"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

@@ -13,6 +13,78 @@
     padding-bottom: 2px;
     display: table;
   }
+
+  #storage_title {
+    width: 992px;
+  }
+
+  textarea {
+    width: 990px;
+    font-family: inherit;
+  }
+
+  .description {
+    width: 100%;
+    min-height: 100px;
+    border-radius: 4px;
+    padding: 6px;
+    margin-left: -6px;
+    background: #fbfbfb;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $medium_grey;
+    padding: 5px;
+  }
+
+  .button_edit a {
+    float: right;
+    margin-top: -16px;
+    margin-right: -2px;
+    opacity: 0.3;
+  }
+
+  .button_edit a:hover {
+    opacity: inherit;
+  }
+
+  .button_edit a {
+    content: url(buttons/edit.gif);
+  }
+
+  .info {
+    padding-top: 4px;
+    padding-bottom: 2px;
+    font-size: $font_small;
+    color: $dark_grey;
+  }
+
+  .author {
+    width: auto;
+    float: left;
+    @include grey_link;
+  }
+
+  .time {
+    width: auto;
+    float: left;
+    color: #999;
+  }
+
+  .time:before {
+    color: #999;
+    content: "|";
+    padding-left: 4px;
+  }
+
+  .button_download {
+    @include grey_link;
+  }
+
+  .button_download:before {
+    color: #999;
+    content: "|";
+    padding-left: 4px;
+  }
 }
 
 .storage.list {

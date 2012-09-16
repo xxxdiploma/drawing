@@ -1,7 +1,7 @@
 class StoragesController < ApplicationController
 
   before_filter :authenticate
-  before_filter :admin_user, :except => [:index]
+  before_filter :admin_user, :except => [:index, :show]
 
   def index
     @title = t('titles.storages')
@@ -42,7 +42,9 @@ class StoragesController < ApplicationController
     file = client.upload(params[:file].original_filename, params[:file].read)
 
     current_file = current_user.storages.build(:file_name => params[:file].original_filename,
-                                               :url => file.share_url[:url], :description => "empty")
+                                               :url => file.share_url[:url],
+                                               :title => "title",
+                                               :description => "description")
     current_file.save
 
     #################
@@ -69,6 +71,27 @@ class StoragesController < ApplicationController
     redirect_to(:action => 'index')
   end
 
+  def show
+    @storage = Storage.find(params[:id])
+    @title = @storage.title
+  end
+
+  def edit
+    @storage = Storage.find(params[:id])
+    @title = t('titles.file_edit')
+  end
+
+  def update
+    @storage = Storage.find(params[:id])
+    if @storage.update_attributes(params[:storage])
+      flash[:success] = t('flash.success.file_updated')
+      redirect_to @storage
+    else
+      @title = t('titles.file_edit')
+      flash.now[:error] = t('flash.error.file_not_updated')
+      render 'edit'
+    end
+  end
 
   private
 

@@ -1,0 +1,24 @@
+<div class="storage"">
+  <h2><%= @storage.title %></h2>
+  <hr />
+  <br />
+  <% if current_user.admin? %>
+  <div class="storage button_edit">
+    <%= link_to t('.edit'), edit_storage_path(@storage) %>
+  </div>
+  <% end %>
+  <div class="storage description">
+    <%= @storage.description %>
+  </div>
+  <div class = "storage info" >
+    <div class="storage author">
+      <%= link_to post_by(@storage), post_author(@storage) %>
+    </div>
+    <div class="storage time">
+      <%= post_time(@storage) %>
+    </div>
+    <div class="storage button_download">
+      <%= link_to t('.download'), @storage.url, :target => "_blank" %>
+    <div>
+  </div>
+</div>

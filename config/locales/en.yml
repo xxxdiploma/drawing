@@ -68,6 +68,12 @@ en:
       must_allow: "You must"
       allow_access: "allow access"
       can_upload: "before you can upload and edit files"
+    edit:
+      title: "Title"
+      description: "Description"
+    show:
+      download: "Download"
+      edit: "Edit"
 
   flash:
     success:
@@ -79,11 +85,13 @@ en:
       article_updated: "Article updated"
       file_uploaded: "File has been successfully uploaded"
       file_destroyed: "File destroyed"
+      file_updated: "File updated"
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"
       not_updated: "Profile has not been updated"
       publication: "Publishing failure"
+      file_not_updated: "File has not been updated"
       empty_file: "You have not specified a file for upload"
     notice:
       deny_access: "Please sign in to access this page"

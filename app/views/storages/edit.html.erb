@@ -1,0 +1,19 @@
+<div class = "storage edit">
+  <h2><%= @title %></h2>
+  <hr />
+  <%= form_for (@storage) do |f| %>
+  <%= render 'shared/error_messages', :object => f.object %>
+  <br />
+  <div class="field">
+    <%= f.label :title, t('.title')%>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description, t('.description') %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit t('buttons.update') %>
+  </div>
+  <% end %>
+</div>

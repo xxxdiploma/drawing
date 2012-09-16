@@ -68,6 +68,12 @@ ru:
       must_allow: "Вы должны"
       allow_access: "разрешить доступ"
       can_upload: "прежде, чем загружать или редактировать файлы"
+    edit:
+      title: "Заголовок"
+      description: "Описание"
+    show:
+      download: "Скачать"
+      edit: "Редактировать"
 
   flash:
     success:
@@ -79,11 +85,13 @@ ru:
       article_updated: "Запись обновлена"
       file_uploaded: "Файл был успешно загружен"
       file_destroyed: "Файл удалён"
+      file_updated: "Файл обновлён"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"
       not_updated: "Профиль не был обновлён"
       publication: "Ошибка при публикации"
+      file_not_updated: "Файл не был обновлён"
       empty_file: "Вы не указали файл для загрузки"
     notice:
       deny_access: "Авторизируйтесь для доступа к этой странице"

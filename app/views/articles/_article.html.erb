@@ -9,10 +9,10 @@
   </div>
   <div class = "articles info" >
     <div class = "articles author" >
-      <%= link_to article_by(article), article_author(article) %></p>
+      <%= link_to post_by(article), post_author(article) %>
     </div>
     <div class = "articles time" >
-      <%= article_time(article) %>
+      <%= post_time(article) %>
     </div>
     <% if current_user.admin? %>
     <div class = "articles button_edit">

@@ -265,11 +265,16 @@ select {
   border-top-color: $grey;
 	border-width: 1px 0 0 0;
 	border-style: solid;
+	cursor: default;
 }
 
 .pagination .current {
-  background: $light_green;
-  padding: 2px 4px;
+  background: $medium_grey;
+  color: $green;
+  padding: 1px 3px;
   font-style: normal;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $green;
   border-radius: 3px;
 }

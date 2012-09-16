@@ -1,9 +1,10 @@
 class CreateStorages < ActiveRecord::Migration
   def change
     create_table :storages do |t|
-      t.integer :user_id
-      t.string :file_name
+      t.integer :user_id, :null => false
+      t.string :file_name, :null => false
       t.string :url
+      t.string :title
       t.text :description
 
       t.timestamps
