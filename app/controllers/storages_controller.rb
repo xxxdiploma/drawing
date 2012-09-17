@@ -39,12 +39,11 @@ class StoragesController < ApplicationController
 
     # Saving a file #
 
-    file = client.upload(params[:file].original_filename, params[:file].read)
+    file = client.upload("#{Time.now.to_i}-"+params[:file].original_filename, params[:file].read)
 
-    current_file = current_user.storages.build(:file_name => params[:file].original_filename,
+    current_file = current_user.storages.build(:file_name => file[:path],
                                                :url => file.share_url[:url],
-                                               :title => "title",
-                                               :description => "description")
+                                               :title => params[:file].original_filename)
     current_file.save
 
     #################

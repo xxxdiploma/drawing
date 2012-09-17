@@ -10,8 +10,7 @@ class Storage < ActiveRecord::Base
   validates :url,         :presence => true
   validates :title,       :presence => true,
                           :length   => { :within => 3..150 }
-  validates :description, :presence => true,
-                          :length   => { :maximum => 1000 }
+  validates :description, :length   => { :maximum => 1000 }
 
   default_scope :order => 'storages.created_at DESC'
 
