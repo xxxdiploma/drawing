@@ -67,13 +67,14 @@ ru:
     authorize:
       must_allow: "Вы должны"
       allow_access: "разрешить доступ"
-      can_upload: "прежде, чем загружать или редактировать файлы"
+      can_upload: "прежде, чем загружать или удалять файлы"
     edit:
       title: "Заголовок"
       description: "Описание"
     show:
       download: "Скачать"
       edit: "Редактировать"
+      no_description: "Описание отсутствует"
 
   flash:
     success:

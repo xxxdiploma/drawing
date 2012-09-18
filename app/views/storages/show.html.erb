@@ -1,4 +1,4 @@
-<div class="storage"">
+<div class="storage">
   <h2><%= @storage.title %></h2>
   <hr />
   <br />
@@ -8,7 +8,11 @@
   </div>
   <% end %>
   <div class="storage description">
-    <%= @storage.description %>
+    <% if not @storage.description or "" == @storage.description %>
+      <%= t('.no_description') %>
+    <% else %>
+      <%= @storage.description %>
+    <% end %> 
   </div>
   <div class = "storage info" >
     <div class="storage author">

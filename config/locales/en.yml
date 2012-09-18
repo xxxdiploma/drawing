@@ -67,13 +67,14 @@ en:
     authorize:
       must_allow: "You must"
       allow_access: "allow access"
-      can_upload: "before you can upload and edit files"
+      can_upload: "before you can upload and delete files"
     edit:
       title: "Title"
       description: "Description"
     show:
       download: "Download"
       edit: "Edit"
+      no_description: "No description available"
 
   flash:
     success:

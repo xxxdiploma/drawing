@@ -1,24 +1,14 @@
-.field_with_errors {
-  padding: 4px;
-  margin-top: -4px;
-  margin-left: -4px;
-  background: #c0391b;
-  border-radius: 4px;
+.field_with_errors input {
+  background: #e9cec8;
   display: table;
-
-  label {
-    color: #fff;
-    padding-right: 3px;
-  }
 }
 
 #error_explanation {
   width: 390px;
-  border: 4px solid #c0391b;
+  border: 2px solid #c0391b;
   padding: 4px;
-  margin-left: -4px;
   margin-top: 10px;
-  border-radius: 4px;
+  border-radius: 2px;
   background: #e9cec8;
   font-size: $font_small;
 
@@ -43,12 +33,12 @@
 
 .flash.success {
   color: #557230;
-  background: #cdf08b;
+  background: #d7f0a8;
 }
 
 .flash.error {
-  color: #fff;
-  background: #c0391b;
+  color: #c0391b;
+  background: #e9cec8;
 }
 
 .flash.notice {

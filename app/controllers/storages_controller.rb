@@ -2,6 +2,7 @@ class StoragesController < ApplicationController
 
   before_filter :authenticate
   before_filter :admin_user, :except => [:index, :show]
+  before_filter :db_client, :only => [:upload, :destroy]
 
   def index
     @title = t('titles.storages')
@@ -28,42 +29,29 @@ class StoragesController < ApplicationController
   end
 
   def upload
-    return redirect_to(:action => 'authorize') if not session[:db_ready]
-
-    if not params[:file]
+    
+    begin
+      file = @client.upload("#{Time.now.to_i}-"+params[:file].original_filename, params[:file].read)
+    rescue Exception
       flash[:error] =  t('flash.error.empty_file')
       return redirect_to(:action => 'index')
     end
 
-    client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
-
-    # Saving a file #
-
-    file = client.upload("#{Time.now.to_i}-"+params[:file].original_filename, params[:file].read)
-
     current_file = current_user.storages.build(:file_name => file[:path],
                                                :url => file.share_url[:url],
                                                :title => params[:file].original_filename,
-                                               :uid => client.account[:uid])
+                                               :uid => @client.account[:uid])
     current_file.save
-
-    #################
 
     flash[:success] = t('flash.success.file_uploaded')
     redirect_to(:action => 'index')
   end
 
   def destroy
-    return redirect_to(:action => 'authorize') if not session[:db_ready]
-
-    client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
-
-    # Destroying a file #
-
     current_file = Storage.find(params[:id])
     
     begin
-      client.find(current_file.file_name).destroy
+      @client.find(current_file.file_name).destroy
     rescue Exception
       flash[:notice] = t('flash.notice.file_not_found')
     else
@@ -71,9 +59,6 @@ class StoragesController < ApplicationController
     end
 
     current_file.destroy
-
-    #####################
-
     redirect_to(:action => 'index')
   end
 
@@ -103,6 +88,11 @@ class StoragesController < ApplicationController
 
     def admin_user
       redirect_to(storages_path) unless current_user.admin?
+    end
+
+    def db_client
+      return redirect_to(:action => 'authorize') if not session[:db_ready]
+      @client = Dropbox::API::Client.new(:token => session[:db_token], :secret => session[:db_secret])
     end
 
 end

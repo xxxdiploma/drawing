@@ -3,7 +3,7 @@
     <%= link_to storage.title, storage %>
   </div>
 
-  <% if current_user.admin? %>
+  <% if current_user.admin? and dropbox_user %>
   <div class = "button_delete">
     <%= link_to t('.delete'), nil, :object_url => storage_url(storage) %>
   </div>
