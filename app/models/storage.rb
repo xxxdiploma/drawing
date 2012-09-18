@@ -1,6 +1,6 @@
 class Storage < ActiveRecord::Base
 
-  attr_accessible :url, :title, :description, :file_name
+  attr_accessible :url, :title, :description, :file_name, :uid
 
   belongs_to :user
 
@@ -11,6 +11,7 @@ class Storage < ActiveRecord::Base
   validates :title,       :presence => true,
                           :length   => { :within => 3..150 }
   validates :description, :length   => { :maximum => 1000 }
+  validates :uid,         :presence => true
 
   default_scope :order => 'storages.created_at DESC'
 

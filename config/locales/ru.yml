@@ -97,6 +97,7 @@ ru:
       deny_access: "Авторизируйтесь для доступа к этой странице"
       already_signed_in: "Вы уже авторизированы"
       destroy_yourself: "Вы не можете удалить себя"
+      file_not_found: "Файл не был найден, но был удалён из базы данных"
 
   will_paginate:
     previous_label: "Назад"

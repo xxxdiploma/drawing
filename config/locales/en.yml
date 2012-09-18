@@ -97,6 +97,7 @@ en:
       deny_access: "Please sign in to access this page"
       already_signed_in: "You are already signed in"
       destroy_yourself: "You cannot destroy yourself"
+      file_not_found: "File not foud, but was removed from the database"
 
   will_paginate:
     previous_label: "Previous"

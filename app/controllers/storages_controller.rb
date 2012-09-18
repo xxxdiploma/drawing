@@ -43,7 +43,8 @@ class StoragesController < ApplicationController
 
     current_file = current_user.storages.build(:file_name => file[:path],
                                                :url => file.share_url[:url],
-                                               :title => params[:file].original_filename)
+                                               :title => params[:file].original_filename,
+                                               :uid => client.account[:uid])
     current_file.save
 
     #################
@@ -60,13 +61,19 @@ class StoragesController < ApplicationController
     # Destroying a file #
 
     current_file = Storage.find(params[:id])
+    
+    begin
+      client.find(current_file.file_name).destroy
+    rescue Exception
+      flash[:notice] = t('flash.notice.file_not_found')
+    else
+      flash[:success] = t('flash.success.file_destroyed')
+    end
 
-    client.find(current_file.file_name).destroy
     current_file.destroy
 
     #####################
 
-    flash[:success] = t('flash.success.file_destroyed')
     redirect_to(:action => 'index')
   end
 

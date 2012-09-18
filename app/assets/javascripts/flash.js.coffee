@@ -2,7 +2,7 @@
 
 autohideFlash = ->
   setTimeout (() ->
-    $(".flash").animate {"opacity": 0}, 1000
+    $(".flash").animate {"top": -80}, 1000
     setTimeout (() ->
       $(".flash").remove()
       ), 1000
