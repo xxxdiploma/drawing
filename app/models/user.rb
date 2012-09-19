@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
   validates_inclusion_of :timezone, :in => ActiveSupport::TimeZone.zones_map { |m| m.name }
 
   before_save :encrypt_password
+  before_save :capitalize_initials
+
+  default_scope :order => 'users.id ASC'
 
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -60,5 +63,9 @@ class User < ActiveRecord::Base
 
     def secure_hash(string)
       Digest::SHA2.hexdigest(string)
+    end
+
+    def capitalize_initials
+      self.initials.upcase!
     end
 end

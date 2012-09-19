@@ -34,8 +34,8 @@ describe ArticlesController do
       end
 
       it "should show the articles" do
-        mp1 = FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
-        mp2 = FactoryGirl.create(:article, :user => @admin, :content => "Sample text")
+        mp1 = FactoryGirl.create(:article, :user => @admin, :content => "Sample text 1")
+        mp2 = FactoryGirl.create(:article, :user => @admin, :content => "Sample text 2")
         get :index
         response.should have_selector("div.articles.content", :content => mp1.content)
         response.should have_selector("div.articles.content", :content => mp2.content)
@@ -51,12 +51,9 @@ describe ArticlesController do
 
         get :index
         response.should have_selector("div.pagination")
-        response.should have_selector("span.disabled",
-                                           :content => I18n.t('will_paginate.previous_label'))
-        response.should have_selector("a", :href => "/articles?page=2",
-                                           :content => "2")
-        response.should have_selector("a", :href => "/articles?page=2",
-                                           :content => I18n.t('will_paginate.next_label'))
+        response.should have_selector("span.disabled", :content => I18n.t('will_paginate.previous_label'))
+        response.should have_selector("a", :href => "/articles?page=2", :content => "2")
+        response.should have_selector("a", :href => "/articles?page=2", :content => I18n.t('will_paginate.next_label'))
       end
     end
 

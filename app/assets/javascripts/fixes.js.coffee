@@ -1,11 +1,11 @@
 # Capitalize fix
 
 capitalizeFix = ->
-  object = $("#user_surname")
-  object.keyup ->
-    text = object.val()
+  surname_field = $("#user_surname")
+  surname_field.keyup ->
+    text = surname_field.val()
     text = text[0].toUpperCase() + text.substr(1).toLowerCase()
-    object.val(text)
+    surname_field.val(text)
 
 # Load
 

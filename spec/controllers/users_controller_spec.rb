@@ -75,7 +75,7 @@ describe UsersController do
 
     describe "as an non-admin user" do
 
-      it "should have 'delete' links" do
+      it "should not have 'delete' links" do
         user = FactoryGirl.create(:user)
         test_sign_in(user)
         get :index
@@ -237,7 +237,7 @@ describe UsersController do
 
     it "should have the right title" do
       get :edit, :id => @user
-      response.should have_selector("title", :content => I18n.t('titles.user_edit') )
+      response.should have_selector("title", :content => I18n.t('titles.user_edit'))
     end
   end
 
