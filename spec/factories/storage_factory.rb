@@ -4,7 +4,6 @@ FactoryGirl.define do
   	title         "test file"
   	description   "description"
   	file_name     "test.txt"
-    uid           0
     
     association :user
   end

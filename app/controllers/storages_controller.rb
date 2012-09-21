@@ -39,8 +39,7 @@ class StoragesController < ApplicationController
 
     current_file = current_user.storages.build(:file_name => file[:path],
                                                :url => file.share_url[:url],
-                                               :title => params[:file].original_filename,
-                                               :uid => @client.account[:uid])
+                                               :title => params[:file].original_filename)
     current_file.save
 
     flash[:success] = t('flash.success.file_uploaded')

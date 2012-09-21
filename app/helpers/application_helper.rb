@@ -36,7 +36,7 @@ module ApplicationHelper
     end
   end
 
-  ###
+  #####################################
 
   def post_by(post)
     user_full_name(User.find(post.user_id))
@@ -53,6 +53,12 @@ module ApplicationHelper
     normal =  Russian::strftime(current_time, "%d %b %H:%M")
 
     current_time.to_i < 1.year.ago.to_i ? old : normal
+  end
+
+  def post_format(text)
+    text = Nokogiri::HTML::DocumentFragment.parse(text).to_html
+    text = sanitize(text)
+    text.html_safe
   end
 
 end
