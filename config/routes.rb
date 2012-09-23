@@ -2,6 +2,7 @@ Drawing::Application.routes.draw do
 
   resources :users
   resources :articles
+  resources :pictures
   resources :sessions, :only => [:new, :create, :destroy]
 
   resources :storages do

@@ -1,0 +1,13 @@
+.picture {
+  width: $content_width - 6px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $medium-grey;
+  background: white;  
+  height: 400px;
+  
+  canvas {
+    width: inherit;
+    height: inherit;
+  }
+}
