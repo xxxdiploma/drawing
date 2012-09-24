@@ -7,7 +7,14 @@ capitalizeFix = ->
     text = text[0].toUpperCase() + text.substr(1).toLowerCase()
     surname_field.val(text) 
 
-# Load
+# Select fix
+
+selectFix = ->
+  document.onselectstart = ->
+    return false
+
+# Load fixes
 
 $ ->
   capitalizeFix()
+  selectFix()

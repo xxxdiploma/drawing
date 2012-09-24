@@ -11,3 +11,21 @@
     height: inherit;
   }
 }
+
+.board_tools_button { 
+  margin-bottom: 2px;
+  width: 38px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  background-color: white;
+  border-width: 2px;
+  border-color: $medium-grey;
+  border-radius: 2px;
+}
+
+.board_tools_button:hover {
+  background-color: #e3f4c3;
+  border-color: $light-green;  
+}

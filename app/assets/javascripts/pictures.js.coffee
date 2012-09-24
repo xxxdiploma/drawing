@@ -1,7 +1,7 @@
 # Canvas test
 
 action = "line"
-actions = ["line", "circle", "ellipse", "arc", "curve", "text"]
+actions = ["line", "arc", "curve", "circle", "ellipse", "text"]
 
 createFakeBoard = -> 
   canvas = document.createElement("canvas")
@@ -10,8 +10,7 @@ createFakeBoard = ->
   canvas.height = $("canvas").height()
 
   $("#board")[0].parentNode.appendChild(canvas)
-  $("#fake_board").css 
-    "position" : "absolute"
+  $("#fake_board").css "position" : "absolute"
 
   context = canvas.getContext('2d')
   context.strokeStyle = "#b2d179"
@@ -23,8 +22,7 @@ createBoard = ->
   canvas.width = $("canvas").width()
   canvas.height = $("canvas").height()
   context = canvas.getContext('2d') 
-  $("#board").css 
-    "position" : "absolute" 
+  $("#board").css "position" : "absolute" 
 
   return context
 
@@ -39,8 +37,7 @@ createMenu = ->
     "width" : 40 
     "height" : "100%" 
     "margin-right" : -44
-    "margin-top" : -1
-
+    "margin-top" : -2
 
   for name in actions
     button = document.createElement "input"
@@ -49,19 +46,9 @@ createMenu = ->
     button.setAttribute "tool", name
     menu.appendChild button
 
-    $(".board_tools_button."+name).css 
-      "background-image" : "url('/assets/buttons/"+name+".gif')"
+    $(".board_tools_button."+name).css "background-image" : "url('/assets/buttons/"+name+".png')"  
 
-  $(".board_tools_button").css 
-    "margin-bottom" : 2
-    "width" : 38
-    "height" : 24
-    "background-repeat" : "no-repeat"
-    "background-position" : "center"
-    "cursor" : "pointer"
-  
-
-  $(".board_tools_button").click ->
+  $(".board_tools_button").mousedown ->
     action = $(this).attr "tool"
 
     return false
