@@ -6,7 +6,7 @@ action = actions[0]
 sqr = (x) ->
   return x*x
 
-#############################################  
+# Create board ----------------------------------------------------------
 
 createFakeBoard = -> 
   canvas = document.createElement("canvas")
@@ -60,7 +60,7 @@ createMenu = ->
 
   return menu  
 
-#############################################    
+# Drawing functions ----------------------------------------------------------  
 
 drawPoint = (context, X1, Y1) ->  
   context.moveTo(X1-5, Y1)
@@ -179,19 +179,19 @@ drawEllipce = (context, points, draw_radius=false, draw_points=false) ->
   context.stroke()
   context.closePath()
 
-######################    
+# ---------------------------------------------------------------    
 
 drawText = () ->
   return
 
-#############################################  
+# ---------------------------------------------------------------  
 
 clearBoard = (context) -> 
   width = $("canvas").width()
   height = $("canvas").height() 
   context.clearRect(0, 0, width, height)
 
-#############################################    
+# Initialize canvas ---------------------------------------------------    
 
 canvasInit = -> 
   points = []
@@ -273,6 +273,7 @@ canvasInit = ->
     return false    
 
   return false
+
 
 # Load
 
