@@ -1,7 +1,12 @@
 # Canvas test
 
-action = "line"
 actions = ["line", "curve", "bezier", "arc", "circle", "ellipse", "text"]
+action = actions[0]
+
+sqr = (x) ->
+  return x*x
+
+#############################################  
 
 createFakeBoard = -> 
   canvas = document.createElement("canvas")
@@ -48,10 +53,14 @@ createMenu = ->
 
     $(".board_tools_button."+name).css "background-image" : "url('/assets/buttons/"+name+".png')"  
 
-  $(".board_tools_button").mousedown ->
+  $(".board_tools_button").mousedown -> 
     action = $(this).attr "tool"
 
     return false
+
+  return menu  
+
+#############################################    
 
 drawPoint = (context, X1, Y1) ->  
   context.moveTo(X1-5, Y1)
@@ -60,11 +69,7 @@ drawPoint = (context, X1, Y1) ->
   context.lineTo(X1, Y1+5) 
 
 drawLine = (context, points, draw_points=false) -> 
-  X1 = points[0][0]
-  Y1 = points[0][1]
-
-  X2 = points[1][0]
-  Y2 = points[1][1] 
+  [[X1, Y1], [X2, Y2]] = points
 
   context.beginPath()
   context.moveTo(X1, Y1)
@@ -78,13 +83,9 @@ drawLine = (context, points, draw_points=false) ->
   context.closePath()
 
 drawCircle = (context, points, draw_radius=false, draw_points=false) ->
-  X1 = points[0][0]
-  Y1 = points[0][1]
+  [[X1, Y1], [X2, Y2]] = points
 
-  X2 = points[1][0]
-  Y2 = points[1][1] 
-
-  radius = Math.sqrt((X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2))
+  radius = Math.sqrt(sqr(X1-X2) + sqr(Y1-Y2))
 
   context.beginPath()  
   context.arc(X1, Y1, radius, 0, 2*Math.PI, false)
@@ -101,17 +102,7 @@ drawCircle = (context, points, draw_radius=false, draw_points=false) ->
   context.closePath()
 
 drawBezierCurve = (context, points, draw_points=false) ->
-  X1 = points[0][0]
-  Y1 = points[0][1]
-
-  X2 = points[1][0]
-  Y2 = points[1][1] 
-
-  X3 = points[2][0]
-  Y3 = points[2][1] 
-
-  X4 = points[3][0]
-  Y4 = points[3][1]  
+  [[X1, Y1], [X2, Y2], [X3, Y3], [X4, Y4]] = points
 
   context.beginPath() 
   context.moveTo(X1, Y1)
@@ -127,14 +118,7 @@ drawBezierCurve = (context, points, draw_points=false) ->
   context.closePath()
 
 drawQuadraticCurve = (context, points, draw_points=false) ->
-  X1 = points[0][0]
-  Y1 = points[0][1]
-
-  X2 = points[1][0]
-  Y2 = points[1][1] 
-
-  X3 = points[2][0]
-  Y3 = points[2][1] 
+  [[X1, Y1], [X2, Y2], [X3, Y3]] = points
 
   context.beginPath() 
   context.moveTo(X1, Y1)
@@ -149,16 +133,9 @@ drawQuadraticCurve = (context, points, draw_points=false) ->
   context.closePath()   
 
 drawArc = (context, points, draw_radius=false, draw_points=false) ->    
-  X1 = points[0][0]
-  Y1 = points[0][1]
+  [[X1, Y1], [X2, Y2], [X3, Y3]] = points
 
-  X2 = points[1][0]
-  Y2 = points[1][1] 
-
-  X3 = points[2][0]
-  Y3 = points[2][1] 
-
-  radius = Math.sqrt((X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2))
+  radius = Math.sqrt(sqr(X1-X2) + sqr(Y1-Y2))
   start_angle = 0.5*Math.PI - Math.atan2(X2-X1, Y2-Y1)
   end_angle = 0.5*Math.PI - Math.atan2(X3-X1, Y3-Y1)
 
@@ -180,17 +157,10 @@ drawArc = (context, points, draw_radius=false, draw_points=false) ->
   context.closePath()
 
 drawEllipce = (context, points, draw_radius=false, draw_points=false) -> 
-  X1 = points[0][0]
-  Y1 = points[0][1]
+  [[X1, Y1], [X2, Y2], [X3, Y3]] = points
 
-  X2 = points[1][0]
-  Y2 = points[1][1] 
-
-  X3 = points[2][0]
-  Y3 = points[2][1] 
-
-  width = Math.sqrt((X1-X2)*(X1-X2) + (Y1-Y2)*(Y1-Y2))*1.33
-  height = Math.sqrt((X1-X3)*(X1-X3) + (Y1-Y3)*(Y1-Y3))
+  width = Math.sqrt(sqr(X1-X2) + sqr(Y1-Y2))*1.33
+  height = Math.sqrt(sqr(X1-X3) + sqr(Y1-Y3))
 
   context.beginPath() 
   context.moveTo(X1, Y1 - height)
@@ -214,88 +184,95 @@ drawEllipce = (context, points, draw_radius=false, draw_points=false) ->
 drawText = () ->
   return
 
-######################    
+#############################################  
 
 clearBoard = (context) -> 
   width = $("canvas").width()
   height = $("canvas").height() 
   context.clearRect(0, 0, width, height)
 
+#############################################    
+
 canvasInit = -> 
   points = []
   mouseDown = false
-  
   board = createBoard()
   fake = createFakeBoard()
   createMenu()
+  previous_action = "no action"
 
   $("canvas#fake_board").mousedown (p) ->
     if not points.length 
       points.push([p.offsetX, p.offsetY])
+      previous_action = action
 
     mouseDown = true
+    return false
 
   $("canvas#fake_board").mouseup (p) -> 
     points.push([p.offsetX, p.offsetY])
 
-    switch action 
-      when "line" 
-        if 2 == points.length 
-          drawLine(board, points)
-          points = []
-          clearBoard(fake)
-      when "circle" 
-        if 2 == points.length
-          drawCircle(board, points)
-          points = []
-          clearBoard(fake)
-      when "ellipse"
-        if 3 == points.length  
-          drawEllipce(board, points)
-          points = []
-          clearBoard(fake)
-      when "curve"
-        if 3 == points.length
-          drawQuadraticCurve(board, points)
-          points = []
-          clearBoard(fake)
-      when "arc"
-        if 3 == points.length
-          drawArc(board, points)
-          points = []
-          clearBoard(fake) 
-      when "bezier"
-        if 4 == points.length
-          drawBezierCurve(board, points)
-          points = []
-          clearBoard(fake)    
+    clear = () ->
+      points = []
+      clearBoard(fake)
+
+    switch points.length
+      when 2
+        switch action 
+          when "line" then drawLine(board, points)
+          when "circle" then drawCircle(board, points)
+          else return
+        clear()  
+      when 3
+        switch action 
+          when "ellipse" then drawEllipce(board, points)
+          when "curve" then drawQuadraticCurve(board, points)
+          when "arc" then drawArc(board, points)
+          else return
+        clear()  
+      when 4
+        switch action 
+          when "bezier" then drawBezierCurve(board, points)
+          else return
+        clear()    
     
     mouseDown = false
+    return false
 
   $("canvas#fake_board").mousemove (p) ->
     if mouseDown
       clearBoard(fake)
 
+      if previous_action isnt action
+        points = []
+        clearBoard(fake) 
+
+      XY = [p.offsetX, p.offsetY]
+
       switch action
-        when "line" then drawLine(fake, points.concat([[p.offsetX, p.offsetY]]), true)
-        when "circle" then drawCircle(fake, points.concat([[p.offsetX, p.offsetY]]), true, true)
+        when "line" then drawLine(fake, points.concat([XY]), true)
+        when "circle" then drawCircle(fake, points.concat([XY]), true, true)
         when "curve" 
           switch points.length
-            when 2 then drawQuadraticCurve(fake, points.concat([[p.offsetX, p.offsetY]]), true)
-            else drawLine(fake, points.concat([[p.offsetX, p.offsetY]]), true)
+            when 2 then drawQuadraticCurve(fake, points.concat([XY]), true)
+            else drawLine(fake, points.concat([XY]), true)
         when "arc"
           switch points.length
-            when 2 then drawArc(fake, points.concat([[p.offsetX, p.offsetY]]), true, true)
-            else drawCircle(fake, points.concat([[p.offsetX, p.offsetY]]), true, true)
+            when 2 then drawArc(fake, points.concat([XY]), true, true)
+            else drawCircle(fake, points.concat([XY]), true, true)
         when "bezier" 
           switch points.length
-            when 3 then drawBezierCurve(fake, points.concat([[p.offsetX, p.offsetY]]), true)
-            when 2 then drawBezierCurve(fake, points.concat([[p.offsetX, p.offsetY],[p.offsetX, p.offsetY]]), true)
-            else drawLine(fake, points.concat([[p.offsetX, p.offsetY]]), true) 
+            when 3 then drawBezierCurve(fake, points.concat([XY]), true)
+            when 2 then drawBezierCurve(fake, points.concat([XY, XY]), true)
+            else drawLine(fake, points.concat([XY]), true) 
         when "ellipse"
           switch points.length
-            when 2 then drawEllipce(fake, points.concat([[p.offsetX, p.offsetY]]), true, true)
-            else drawCircle(fake, points.concat([[p.offsetX, p.offsetY]]), true, true)
+            when 2 then drawEllipce(fake, points.concat([XY]), true, true)
+            else drawCircle(fake, points.concat([XY]), false, true)
+
+    return false    
+
+  return false
 
 # Load
 
