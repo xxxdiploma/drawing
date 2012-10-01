@@ -17,6 +17,7 @@ en:
     file_edit: "Edit"
     publication: "Publication"
     article_edit: "Editing"
+    picture_new: "New drawing"    
 
   links:
     articles: "News"
@@ -36,6 +37,7 @@ en:
     update: "Update"
     publish: "Publish"
     upload: "Upload"
+    save: "Save"   
 
   sessions:
     new:
@@ -51,6 +53,15 @@ en:
       basic: "Basic settings"
     settings:
       additional: "Additional"
+    show:
+      drawings:
+        one: "drawing"
+        few: "drawings" 
+        many: "drawings"    
+
+  pictures:
+    picture:
+      drawing: "Drawing"
 
   articles:
     index:
@@ -87,6 +98,7 @@ en:
       file_uploaded: "File has been successfully uploaded"
       file_destroyed: "File destroyed"
       file_updated: "File updated"
+      picture_saved: "Drawing saved"      
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"
@@ -94,6 +106,7 @@ en:
       publication: "Publishing failure"
       file_not_updated: "File has not been updated"
       empty_file: "You have not specified a file for upload"
+      picture_not_saved: "Drawing has not been saved"      
     notice:
       deny_access: "Please sign in to access this page"
       already_signed_in: "You are already signed in"

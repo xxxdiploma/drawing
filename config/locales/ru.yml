@@ -17,6 +17,7 @@ ru:
     file_edit: "Редактирование файла"
     publication: "Публикация"
     article_edit: "Редактирование"
+    picture_new: "Новый чертёж"
 
   links:
     articles: "Новости"
@@ -36,6 +37,7 @@ ru:
     update: "Обновить"
     publish: "Опубликовать"
     upload: "Загрузить"
+    save: "Сохранить"
 
   sessions:
     new:
@@ -51,6 +53,15 @@ ru:
       basic: "Основные настройки"
     settings:
       additional: "Дополнительно"
+    show:
+      drawings:
+        one: "чертёж"
+        few: "чертежа"
+        many: "чертежей"
+
+  pictures:
+    picture:
+      drawing: "Чертёж"      
 
   articles:
     index:
@@ -87,6 +98,7 @@ ru:
       file_uploaded: "Файл был успешно загружен"
       file_destroyed: "Файл удалён"
       file_updated: "Файл обновлён"
+      picture_saved: "Чертёж сохранён"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"
@@ -94,6 +106,7 @@ ru:
       publication: "Ошибка при публикации"
       file_not_updated: "Файл не был обновлён"
       empty_file: "Вы не указали файл для загрузки"
+      picture_not_saved: "Чертёж не был сохранён"
     notice:
       deny_access: "Авторизируйтесь для доступа к этой странице"
       already_signed_in: "Вы уже авторизированы"

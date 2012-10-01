@@ -1,81 +1,8 @@
-# Canvas test
+# --------------------------------------------------------------------- 
 
-actions = ["line", "curve", "bezier", "arc", "circle", "ellipse", "rectangle", "text"]
-action = actions[0]
+sqr = (x) -> return x*x
 
-sqr = (x) ->
-  return x*x
-
-# Create board --------------------------------------------------------
-
-createFakeBoard = -> 
-  canvas = document.createElement "canvas"
-  canvas.id = "fake_board"
-  canvas.width = $("canvas").width()
-  canvas.height = $("canvas").height()
-
-  $("#board")[0].parentNode.appendChild canvas
-  $("#fake_board").css "position" : "absolute"
-
-  context = canvas.getContext('2d')
-  context.strokeStyle = "#b2d179"
-
-  return context
-
-createMenu = ->
-  menu = document.createElement "div"
-  menu.id = "board_menu"
-
-  $("#board")[0].parentNode.appendChild menu
-
-  $("#board_menu").css 
-    "float" : "right"
-    "width" : 40 
-    "height" : "100%" 
-    "margin-right" : -44
-    "margin-top" : -2
-
-  for name in actions
-    button = document.createElement "input"
-    button.type = "button"
-    button.setAttribute "class", "board_tools_button " + name
-    button.setAttribute "tool", name
-    menu.appendChild button
-
-    $(".board_tools_button." + name).css 
-      "background-image" : "url('/assets/buttons/" + name + ".png')"  
-
-  $(".board_tools_button").mousedown -> 
-    action = $(this).attr "tool"
-
-    return false
-
-  return menu  
-
-createTextField = ->
-  input = document.createElement "input"  
-  input.id = "board_text_tool"
-  $("#board")[0].parentNode.parentNode.appendChild input
-  $("#board_text_tool").css 
-    "position" : "absolute"
-    "visibility" : "hidden"
-    "background" : "transparent"
-    "border" : 0
-
-createBoard = -> 
-  canvas = $("#board")[0]
-  canvas.width = $("canvas").width()
-  canvas.height = $("canvas").height()
-  context = canvas.getContext('2d') 
-  context.font = "13px arial"
-  $("#board").css "position" : "absolute" 
-
-  createMenu()
-  createTextField()  
-
-  return context    
-
-# Drawing functions ---------------------------------------------------  
+# Drawing functions --------------------------------------------------- 
 
 drawPoint = (context, X1, Y1) ->  
   context.moveTo(X1 - 5, Y1)
@@ -179,12 +106,14 @@ drawArc = (context, points, draw_radius = false, draw_points = false) ->
   context.closePath()
 
 drawEllipce = (context, points, draw_radius = false, draw_points = false) -> 
-  if points.length is 2 then drawCircle(context, points, draw_radius, draw_points)
+  if points.length is 2 
+    [X1, Y1] = points[0]
+    drawEllipce(context, points.concat([[X1, Y1+10]]), draw_radius, draw_points)
 
   [[X1, Y1], [X2, Y2], [X3, Y3]] = points
 
-  width = Math.sqrt(sqr(X1 - X2) + sqr(Y1 - Y2)) * 1.33
-  height = Math.sqrt(sqr(X1 - X3) + sqr(Y1 - Y3))
+  width = (X1 - X2) * 1.33
+  height = Y1 - Y3
 
   context.beginPath() 
   context.moveTo(X1, Y1 - height)
@@ -193,12 +122,14 @@ drawEllipce = (context, points, draw_radius = false, draw_points = false) ->
 
   if draw_radius
     context.moveTo(X1, Y1)
-    context.lineTo(X1 + width / 1.33, Y1)
+    context.lineTo(X1 - width / 1.33, Y1)
+    context.moveTo(X1, Y1)
+    context.lineTo(X1, Y1 - height)
 
   if draw_points
     drawPoint(context, X1, Y1)
-    drawPoint(context, X1 + width / 1.33, Y1) 
-    drawPoint(context, X3, Y3)   
+    drawPoint(context, X1 - width / 1.33, Y1) 
+    drawPoint(context, X1, Y1 - height)   
 
   context.stroke()
   context.closePath()
@@ -230,44 +161,18 @@ drawRect = (context, points, draw_diag = false, draw_points = false) ->
   context.stroke()    
   context.closePath()
 
-# ---------------------------------------------------------------------    
+drawText = (context, points, text) ->
+  [[X1, Y1]] = points
 
-drawText = (context, points) ->
-  X1 = points[0][0]
-  Y1 = points[0][1]
+  text = text.replace /^\s+/g, ""
+  if text is "" then return
 
-  if points.length is 2
-    height = $("canvas").height()
-    width = $("canvas").width()
-    field_height = $("#board_text_tool").height()
+  context.fillText(text, X1, Y1)
 
-    $("#board_text_tool").css
-      "visibility" : "visible" 
-      "margin-top" : -height+Y1-field_height
-      "width" : width - X1
-      "margin-left" : X1
 
-    $("#board_text_tool").focus() 
-  else
-    text = $("#board_text_tool").val()
-    context.fillText(text, X1, Y1)
+# --------------------------------------------------------------------- 
 
-# ---------------------------------------------------------------------  
-
-clearBoard = (context) -> 
-  width = $("canvas").width()
-  height = $("canvas").height() 
-  context.clearRect(0, 0, width, height)
-  
-  $("#board_text_tool").val("")
-  $("#board_text_tool").css "visibility" : "hidden"
-  
-
-# Drawing on the boards -----------------------------------------------
-
-drawInAction = (context, points, mouse_pointer) ->
-  points = points.concat([mouse_pointer])
-
+draftDrawing = (action, context, points) -> 
   switch action
     when "line" then drawLine(context, points, true)
     when "circle" then drawCircle(context, points, true, true)
@@ -279,75 +184,51 @@ drawInAction = (context, points, mouse_pointer) ->
 
   return false  
 
-drawFigure = (context, points) -> 
-  switch points.length        
+finishDrawing = (action, context, points, text) -> 
+  switch points.length       
+    when 1
+      switch action  
+        when "text" then drawText(context, points, text)
+        else return false
     when 2
       switch action 
         when "line" then drawLine(context, points)
         when "circle" then drawCircle(context, points)
         when "rectangle" then drawRect(context, points)
-        when "text" 
-          drawText(context, points)
-          return false
         else return false
     when 3
       switch action 
         when "ellipse" then drawEllipce(context, points)
         when "curve" then drawQuadraticCurve(context, points)
         when "arc" then drawArc(context, points)
-        when "text" then drawText(context, points)
         else return false
     when 4
       switch action 
         when "bezier" then drawBezierCurve(context, points)
-        else return false  
+        else return false 
 
-  return true        
+  return true  
 
-# Initialize canvas ---------------------------------------------------    
+# ---------------------------------------------------------------------   
 
-canvasInit = -> 
-  board = createBoard()
-  fake = createFakeBoard()
+root = exports ? this
+root.drawing = (action, context, points, others...) ->
+  draft = false
 
-  points = []
-  mouse_down = false
-  previous_action = "no action"
+  switch others.length
+    when 1 
+      switch typeof(others[0])
+        when "string" then text = others[0]
+        when "boolean" then draft = others[0]
+        else return false
+    when 2
+      if (typeof(others[0]) is "string") and (typeof(others[1]) is "boolean") then text = others[0]
+      else return false  
 
-  $("canvas#fake_board").mousedown (p) ->
-    mouse_down = true
-
-    if not points.length 
-      points.push([p.offsetX, p.offsetY])
-      previous_action = action
-
-    return false
-
-  $("canvas#fake_board").mouseup (p) -> 
-    mouse_down = false
-
-    points.push([p.offsetX, p.offsetY])
-
-    if drawFigure(board, points)
-      points = []
-      clearBoard(fake)  
-    
-    return false
-
-  $("canvas#fake_board").mousemove (p) ->
-    if previous_action isnt action 
-      points = []
-      clearBoard(fake)  
-
-    if mouse_down
-      clearBoard(fake)
-      drawInAction(fake, points, [p.offsetX, p.offsetY])
-
-    return false  
-
+  if draft 
+    return draftDrawing(action, context, points)
+  else 
+    return finishDrawing(action, context, points, text)      
+  
   return false
 
-# Load
-
-$ ->
-  canvasInit()

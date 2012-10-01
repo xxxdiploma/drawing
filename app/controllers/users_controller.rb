@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @pictures = @user.pictures.paginate(:page => params[:page], :per_page => 10)
     @title = "#{@user.surname} #{@user.initials.first}. #{@user.initials.last}."
   end
 

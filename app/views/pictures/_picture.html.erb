@@ -1,0 +1,12 @@
+<li>
+  <div class = "button_show">
+    <%= link_to picture_name(picture), edit_picture_path(picture) %>
+  </div>
+
+
+  <div class = "button_delete">
+    <%= link_to t('.delete'), nil, :object_url => picture_url(picture) %>
+  </div>
+
+  <br />
+</li>

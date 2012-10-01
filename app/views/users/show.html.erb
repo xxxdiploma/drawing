@@ -1,6 +1,19 @@
 <div class="user info">
-<h2><%= @title %></h2>
-<hr />
-<br />
-<p><%= @user.email %></p>
+  <h2><%= @title %></h2>
+  <hr />
+  <br />
+  <p><%= @user.email %></p>
+</div>
+
+<br/>
+<br/>
+
+<div class = "picture list">
+  <h2><%= pictures_title %></h2> 
+  <hr/>
+  <br/>
+  <ul>
+    <%= render @pictures %>
+  </ul>
+  <%= will_paginate @pictures %>
 </div>

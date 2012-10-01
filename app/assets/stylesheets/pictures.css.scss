@@ -1,4 +1,17 @@
 .picture {
+  .actions {
+    position: absolute;
+  }
+}
+
+#picture_code {
+  width:  $content_width - 50px;
+  position: absolute;
+
+  visibility: hidden;
+}
+
+.picture.board {
   width: $content_width - 48px;
   border-width: 2px;
   border-style: solid;
@@ -28,4 +41,50 @@
 .board_tools_button:hover {
   background-color: #e3f4c3;
   border-color: $light-green;  
+}
+
+.picture {
+  width: 400px;
+
+  ul li {
+    @include black_link;
+
+    list-style-type: none;
+    padding-bottom: 2px;
+  }
+
+  li {
+    cursor: pointer;
+    border-radius: 2px;
+    padding-left: 4px;
+    margin-left: -4px;
+  }
+
+  li:hover {
+    background: $medium_grey;
+  }
+
+  li:hover .button_delete {
+    visibility: visible;
+  }
+
+  .button_show {
+    float: left;
+  }
+
+  .button_delete {
+    float: right;
+    opacity: 0.3;
+    padding-top: 2px;
+    padding-right: 4px;
+    visibility: hidden;
+  }
+
+  .button_delete:hover {
+    opacity: inherit;
+  }
+
+  .button_delete a {
+    content: url(buttons/delete.gif);
+  }
 }
