@@ -2,6 +2,35 @@
   .actions {
     position: absolute;
   }
+
+  .button_new {
+    margin-right: -4px;
+    font-size: $font_small;
+  }
+
+  .button_new a {
+    float: right;
+    color: $light_grey;
+    text-decoration: none;
+    margin-top: -21px;
+    background: url(buttons/add.gif);
+    background-repeat: no-repeat;
+    background-position: 96% 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    opacity: 0.3;
+  }
+
+ .button_new a:hover {
+    color: $basic_text_color;
+    background-color: $medium_grey;
+    opacity: inherit;
+  }
+
+  .button_new a:after {
+    content: " ";
+    margin-right: 14px;
+  }  
 }
 
 #picture_code {

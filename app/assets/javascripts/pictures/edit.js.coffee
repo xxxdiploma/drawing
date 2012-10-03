@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------- 
 
 actions = ["line", "curve", "bezier", "arc", "circle", "ellipse", "rectangle", "text"]
-action = actions[0]
+action = "no action"
 
 # Create board --------------------------------------------------------
 
@@ -43,7 +43,7 @@ createMenu = ->
       "background-image" : "url('/assets/buttons/" + name + ".png')"  
 
   $(".board_tools_button").mousedown -> 
-    action = $(this).attr "tool"
+    if $("#board").attr("type") isnt "show" then action = $(this).attr "tool"
 
     return false
 
@@ -71,12 +71,6 @@ createBoard = ->
   createTextField()  
 
   return context    
-
-# Drawing functions ---------------------------------------------------  
-
-# ---------------------------------------------------------------------    
-
-# ---------------------------------------------------------------------  
 
 showTextField = (points) ->
   [X1, Y1] = points[0]

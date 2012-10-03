@@ -19,26 +19,31 @@ class PicturesController < ApplicationController
     end
   end
 
+  def show
+    @picture = Picture.find(params[:id])
+    @title = t('titles.picture_show')
+  end
+
   def edit
     @picture = Picture.find(params[:id])
-    @title = "edit"
+    @title = t('titles.picture_edit')
   end
 
   def update
     @picture = Picture.find(params[:id])
     if @picture.update_attributes(params[:picture])
-      flash[:success] = "updated"
-      redirect_to root_path
+      flash[:success] = t('flash.success.picture_saved')
+      redirect_to current_user
     else
-      @title = "edit"
-      flash.now[:error] = "error"
+      @title = t('titles.picture_edit')
+      flash[:error] = t('flash.error.picture_not_saved')
       render 'edit'
     end
   end
 
   def destroy
     Picture.find(params[:id]).destroy
-    flash[:success] = "destroyed"
+    flash[:success] = t('flash.success.picture_destroyed')
     redirect_to current_user
   end
 
@@ -47,7 +52,7 @@ private
   def correct_user
     id = Picture.find(params[:id]).user_id
     @user = User.find(id)
-    redirect_to(root_path) unless current_user?(@user)
+    redirect_to(current_user) unless current_user?(@user)
   end  
 
 end

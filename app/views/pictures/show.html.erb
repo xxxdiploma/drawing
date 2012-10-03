@@ -1,0 +1,12 @@
+<div class="picture board">
+  <canvas id="board" type="show" />
+</div>
+
+<div class="picture">
+<%= form_for(@picture) do |f| %>
+  <div class="field">
+    <%= f.text_area :code, { :rows => 0, :cols => 0, :readonly => true } %>
+  </div>
+<% end %>
+</div>  
+

@@ -1,12 +1,15 @@
 <li>
+  <% if current_user?(@user) %>
   <div class = "button_show">
     <%= link_to picture_name(picture), edit_picture_path(picture) %>
   </div>
-
-
   <div class = "button_delete">
     <%= link_to t('.delete'), nil, :object_url => picture_url(picture) %>
   </div>
-
+  <% else %>
+  <div class = "button_show">
+    <%= link_to picture_name(picture), picture %>
+  </div>
+  <% end %>
   <br />
 </li>

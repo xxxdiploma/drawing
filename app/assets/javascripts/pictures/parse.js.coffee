@@ -1,45 +1,24 @@
 # ---------------------------------------------------------------------
 
 parseCode = (context, text) ->  
-  tmp = []
+  tmp = text.match /(\d+[,\d+]+)/g
+  action = text.match /(\w+[a-z])/g
   points = []
-  pos = 0
 
-  loop
-    tmp.push pos
-    pos = text.indexOf ",", pos + 1 
-    if pos < 0 then break
-    tmp.push pos
+  for str in tmp
+    XY = str.match /(\d+)/g
+    points.push([parseInt(XY[0]), parseInt(XY[1])])
 
-  tmp.push text.length
-
-  action = text[tmp[0]..tmp[1]-1]
-
-  if action is "text"
-    user_text = text[tmp[6]+1..text.length-1]
-    tmp = tmp[0..5]
-
-  points_count = tmp.length/2-1
-
-  for i in [1..points_count] when i % 2
-    X = text[tmp[i*2]+1..tmp[i*2+1]-1]
-    Y = text[tmp[(i+1)*2]+1..tmp[(i+1)*2+1]-1]
-    points.push([parseInt(X), parseInt(Y)])
-
-  if action is "text"
-    drawing(action, context, points, user_text)
-  else 
-    drawing(action, context, points) 
+  drawing(action.toString(), context, points) 
 
 # ---------------------------------------------------------------------      
 
 root = exports ? this
 root.parseAndDraw = (context, text) ->
-  length = text.length-2
-  start = 0
+  tmp = text.match /(.*\n)/g
 
-  while finish isnt length
-    finish = text.indexOf("\n", start+1)-1
-    parseCode(context, text[start..finish])
-    start = finish+2
+  if not tmp then return
+
+  for str in tmp
+    parseCode(context, str)
  

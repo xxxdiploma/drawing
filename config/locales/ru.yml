@@ -18,6 +18,8 @@ ru:
     publication: "Публикация"
     article_edit: "Редактирование"
     picture_new: "Новый чертёж"
+    picture_edit: "Редактирование чертежа"    
+    picture_show: "Просмотр чертежа"
 
   links:
     articles: "Новости"
@@ -58,6 +60,7 @@ ru:
         one: "чертёж"
         few: "чертежа"
         many: "чертежей"
+      new_picture: "Новый чертёж"
 
   pictures:
     picture:
@@ -99,6 +102,7 @@ ru:
       file_destroyed: "Файл удалён"
       file_updated: "Файл обновлён"
       picture_saved: "Чертёж сохранён"
+      picture_destroyed: "Чертёж удалён"
     error:
       login: "Неверная пара почта/пароль"
       registration: "Регистрационные данные указаны с ошибками"

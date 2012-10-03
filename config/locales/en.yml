@@ -17,7 +17,9 @@ en:
     file_edit: "Edit"
     publication: "Publication"
     article_edit: "Editing"
-    picture_new: "New drawing"    
+    picture_new: "New drawing"
+    picture_edit: "Edit drawing" 
+    picture_show: "Show drawing"              
 
   links:
     articles: "News"
@@ -57,7 +59,8 @@ en:
       drawings:
         one: "drawing"
         few: "drawings" 
-        many: "drawings"    
+        many: "drawings"
+      new_picture: "New drawing"      
 
   pictures:
     picture:
@@ -98,7 +101,8 @@ en:
       file_uploaded: "File has been successfully uploaded"
       file_destroyed: "File destroyed"
       file_updated: "File updated"
-      picture_saved: "Drawing saved"      
+      picture_saved: "Drawing saved"
+      picture_destroyed: "Drawing destroyed"            
     error:
       login: "Invalid email/password combination"
       registration: "There are some errors in registration data"
