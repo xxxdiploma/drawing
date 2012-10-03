@@ -1,6 +1,6 @@
 # --------------------------------------------------------------------- 
 
-actions = ["line", "curve", "bezier", "arc", "circle", "ellipse", "rectangle", "text"]
+actions = ["line", "curve", "bezier", "arc", "circle", "ellipse", "rectangle"]
 action = "no action"
 
 # Create board --------------------------------------------------------
@@ -49,43 +49,16 @@ createMenu = ->
 
   return menu  
 
-createTextField = ->
-  input = document.createElement "input"  
-  input.id = "board_text_tool"
-  $("#board")[0].parentNode.parentNode.appendChild input
-  $("#board_text_tool").css 
-    "position" : "absolute"
-    "visibility" : "hidden"
-    "background" : "transparent"
-    "border" : 0
-
 createBoard = -> 
   canvas = $("#board")[0]
   canvas.width = $("canvas").width()
   canvas.height = $("canvas").height()
   context = canvas.getContext('2d') 
-  context.font = "13px arial"
   $("#board").css "position" : "absolute" 
 
-  createMenu()
-  createTextField()  
+  createMenu() 
 
   return context    
-
-showTextField = (points) ->
-  [X1, Y1] = points[0]
-
-  height = $("canvas").height()
-  width = $("canvas").width()
-  field_height = $("#board_text_tool").height()
-
-  $("#board_text_tool").css
-    "visibility" : "visible" 
-    "margin-top" : -height+Y1-field_height
-    "width" : width - X1
-    "margin-left" : X1
-
-  $("#board_text_tool").focus()
 
 # --------------------------------------------------------------------- 
 
@@ -93,16 +66,7 @@ printFigureCode = (points) ->
   text = $("#picture_code")
   old_text = text.val().replace /^\s+/g, ""
 
-  text.val(old_text + action + "," + points + "\n")
-
-# --------------------------------------------------------------------- 
-
-printTextCode = (points, user_text) -> 
-  text = $("#picture_code")
-  old_text = text.val().replace /^\s+/g, ""
-  user_text = user_text.replace /^\s+/g, ""
-
-  text.val(old_text + action + "," + points + "," + user_text + "\n")
+  text.val(old_text + action + " " + points.join(" ") + "\n")
 
 # ---------------------------------------------------------------------   
  
@@ -110,9 +74,6 @@ clearBoard = (context) ->
   width = $("canvas").width()
   height = $("canvas").height() 
   context.clearRect(0, 0, width, height)
-  
-  $("#board_text_tool").val("")
-  $("#board_text_tool").css "visibility" : "hidden" 
 
 # Drawing on the boards -----------------------------------------------
 
@@ -126,20 +87,7 @@ finishDrawing = (context, points) ->
     printFigureCode(points)
     return true
   
-  return false
-
-textDrawing = (context, points) ->  
-  if action is "text"
-    if points.length is 3
-      text = $("#board_text_tool").val()
-      drawing(action, context, points.slice(1,2), text)
-      printTextCode(points.slice(1,2), text)
-      return true
-    else 
-      showTextField(points)
-
-  return false  
-  
+  return false 
 
 # Initialize canvas ---------------------------------------------------    
 
@@ -167,7 +115,7 @@ canvasInit = ->
 
     points.push([p.offsetX, p.offsetY])
 
-    if finishDrawing(board, points) or textDrawing(board, points)
+    if finishDrawing(board, points)
       points = []
       clearBoard(fake)  
     
