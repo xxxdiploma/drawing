@@ -3,6 +3,9 @@
 </div>
 
 <div class="picture">
+
+<%= button_tag t('buttons.import'), :id => "import_picture" %>
+
 <%= form_for(@picture) do |f| %>
   <div class="field">
     <%= f.text_area :code, { :rows => 0, :cols => 0, :readonly => true } %>

@@ -99,7 +99,7 @@ canvasInit = ->
   mouse_down = false
   previous_action = "no action"
 
-  parseAndDraw(board, $("#picture_code").val())
+  parseCode(board, $("#picture_code").val())
 
   $("canvas#fake_board").mousedown (p) ->
     mouse_down = true

@@ -39,7 +39,8 @@ en:
     update: "Update"
     publish: "Publish"
     upload: "Upload"
-    save: "Save"   
+    save: "Save"  
+    import: "Import"     
 
   sessions:
     new:

@@ -40,6 +40,7 @@ ru:
     publish: "Опубликовать"
     upload: "Загрузить"
     save: "Сохранить"
+    import: "Импорт"
 
   sessions:
     new:

@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------
 
-parseCode = (context, text) ->  
+parseLineAndDraw = (context, text) ->  
   tmp = text.match /(\d+[,\d+]+)/g
   action = text.match /(\w+[a-z])/g
   points = []
@@ -8,17 +8,17 @@ parseCode = (context, text) ->
   for str in tmp
     XY = str.match /(\d+)/g
     points.push([parseInt(XY[0]), parseInt(XY[1])])
-
+  
   drawing(action.toString(), context, points) 
 
 # ---------------------------------------------------------------------      
 
 root = exports ? this
-root.parseAndDraw = (context, text) ->
+root.parseCode = (context, text) ->
   tmp = text.match /(.*\n)/g
 
   if not tmp then return
 
   for str in tmp
-    parseCode(context, str)
+    parseLineAndDraw(context, str)  
  

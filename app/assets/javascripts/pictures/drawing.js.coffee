@@ -161,15 +161,6 @@ drawRect = (context, points, draw_diag = false, draw_points = false) ->
   context.stroke()    
   context.closePath()
 
-drawText = (context, points, text) ->
-  [[X1, Y1]] = points
-
-  text = text.replace /^\s+/g, ""
-  if text is "" then return
-
-  context.fillText(text, X1, Y1)
-
-
 # --------------------------------------------------------------------- 
 
 draftDrawing = (action, context, points) -> 
@@ -184,12 +175,8 @@ draftDrawing = (action, context, points) ->
 
   return false  
 
-finishDrawing = (action, context, points, text) -> 
+finishDrawing = (action, context, points) -> 
   switch points.length       
-    when 1
-      switch action  
-        when "text" then drawText(context, points, text)
-        else return false
     when 2
       switch action 
         when "line" then drawLine(context, points)
@@ -212,23 +199,11 @@ finishDrawing = (action, context, points, text) ->
 # ---------------------------------------------------------------------   
 
 root = exports ? this
-root.drawing = (action, context, points, others...) ->
-  draft = false
-
-  switch others.length
-    when 1 
-      switch typeof(others[0])
-        when "string" then text = others[0]
-        when "boolean" then draft = others[0]
-        else return false
-    when 2
-      if (typeof(others[0]) is "string") and (typeof(others[1]) is "boolean") then text = others[0]
-      else return false  
-
+root.drawing = (action, context, points, draft = false) ->
   if draft 
     return draftDrawing(action, context, points)
   else 
-    return finishDrawing(action, context, points, text)      
+    return finishDrawing(action, context, points)      
   
   return false
 
