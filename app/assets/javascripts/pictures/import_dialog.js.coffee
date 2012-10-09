@@ -15,6 +15,14 @@ importPicture = ->
       $("#import_dialog").remove()
       return false
 
+    updateBoard = ->
+      context = $("#board")[0].getContext('2d')
+      width = $("canvas").width()
+      height = $("canvas").height() 
+      context.clearRect(0, 0, width, height)
+      text = $("#picture_code").val()
+      parseCode(context, text)  
+
     $("#import_dialog").find(".button_cancel").click ->
       hideImportDialog()
 
@@ -24,6 +32,7 @@ importPicture = ->
     $("#import_dialog").find(".button_ok").click ->
       text = $("#import_dialog_text").val()
       parseExternalCode(text)
+      updateBoard()
       hideImportDialog() 
 
     return false

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20120923143927) do
 
   create_table "articles", :force => true do |t|
     t.integer  "user_id",    :null => false
-    t.text     "content",    :null => false
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -24,16 +24,19 @@ ActiveRecord::Schema.define(:version => 20120923143927) do
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "pictures", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    :null => false
     t.text     "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  add_index "pictures", ["created_at"], :name => "index_pictures_on_created_at"
+  add_index "pictures", ["user_id"], :name => "index_pictures_on_user_id"
+
   create_table "storages", :force => true do |t|
     t.integer  "user_id",     :null => false
-    t.string   "file_name",   :null => false
-    t.string   "url",         :null => false
+    t.string   "file_name"
+    t.string   "url"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  :null => false
@@ -44,9 +47,9 @@ ActiveRecord::Schema.define(:version => 20120923143927) do
   add_index "storages", ["user_id"], :name => "index_storages_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "surname",                                  :null => false
-    t.string   "initials",                                 :null => false
-    t.string   "email",                                    :null => false
+    t.string   "surname"
+    t.string   "initials"
+    t.string   "email"
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              :default => false

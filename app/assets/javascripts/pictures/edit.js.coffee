@@ -75,6 +75,11 @@ clearBoard = (context) ->
   height = $("canvas").height() 
   context.clearRect(0, 0, width, height)
 
+updateBoard = (context) ->
+  clearBoard(context)
+  text = $("#picture_code").val()
+  parseCode(context, text)
+
 # Drawing on the boards -----------------------------------------------
 
 draftDrawing = (context, points) ->
@@ -94,12 +99,11 @@ finishDrawing = (context, points) ->
 canvasInit = -> 
   board = createBoard()
   fake = createFakeBoard()
+  updateBoard(board)
 
   points = []
   mouse_down = false
   previous_action = "no action"
-
-  parseCode(board, $("#picture_code").val())
 
   $("canvas#fake_board").mousedown (p) ->
     mouse_down = true

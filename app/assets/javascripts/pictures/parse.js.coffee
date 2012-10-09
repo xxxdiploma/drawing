@@ -1,6 +1,6 @@
 # ---------------------------------------------------------------------
 
-parseLineAndDraw = (context, text) ->  
+parseLine = (context, text) ->  
   tmp = text.match /(\d+[,\d+]+)/g
   action = text.match /(\w+[a-z])/g
   points = []
@@ -20,5 +20,5 @@ root.parseCode = (context, text) ->
   if not tmp then return
 
   for str in tmp
-    parseLineAndDraw(context, str)  
+    parseLine(context, str)  
  
