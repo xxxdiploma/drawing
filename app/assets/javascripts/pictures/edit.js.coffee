@@ -3,6 +3,9 @@
 actions = ["line", "curve", "bezier", "arc", "circle", "ellipse", "rectangle"]
 action = "no action"
 
+demensions = ["xy", "xz", "yz", "xyz"]
+demension = "xy"
+
 # Create board --------------------------------------------------------
 
 createFakeBoard = -> 
@@ -47,6 +50,26 @@ createMenu = ->
 
     return false
 
+
+  button = document.createElement "input"
+  button.type = "button"
+  button.id = "board_demension_button" 
+  button.value = demension
+  menu.appendChild button
+
+  $("#board_demension_button").mousedown ->    
+    i = demensions.indexOf(demension)
+    if i is demensions.length-1 then i = -1
+    demension = demensions[i+1]
+    $(this).val demension
+
+    canvas = $("#board")[0]
+    context = canvas.getContext('2d') 
+    updateBoard(context)
+
+    return false  
+    
+
   return menu  
 
 createBoard = -> 
@@ -66,33 +89,63 @@ printFigureCode = (points) ->
   text = $("#picture_code")
   old_text = text.val().replace /^\s+/g, ""
 
-  text.val(old_text + action + " " + points.join(" ") + "\n")
+  new_points = []
+  for i in points
+    switch demension
+      when "xy" then new_points.push([i[0], i[1], 0])
+      when "xz" then new_points.push([i[0], 0, i[1]])
+      when "yz" then new_points.push([0, i[0], i[1]])      
+
+  text.val(old_text + action + " " + new_points.join(" ") + "\n")
 
 # ---------------------------------------------------------------------   
- 
-clearBoard = (context) -> 
+
+root = exports ? this 
+root.clearBoard = (context) -> 
   width = $("canvas").width()
   height = $("canvas").height() 
   context.clearRect(0, 0, width, height)
 
-updateBoard = (context) ->
+root.updateBoard = (context) ->
   clearBoard(context)
   text = $("#picture_code").val()
-  parseCode(context, text)
+  drawGrid(context, 20)
+  parseCode(context, demension, text)
 
 # Drawing on the boards -----------------------------------------------
 
 draftDrawing = (context, points) ->
-  drawing(action, context, points, true)
+  drawing2D(action, context, "xy", points, true)
 
   return false  
 
 finishDrawing = (context, points) -> 
-  if drawing(action, context, points)
+  if drawing2D(action, context, "xy", points)
     printFigureCode(points)
     return true
   
   return false 
+
+# Other ---------------------------------------------------------------
+
+drawGrid = (context, scale) ->
+  if demension is "xyz" then return false
+
+  width = context.canvas.width
+  height = context.canvas.height
+
+  oldstyle = context.strokeStyle
+  context.strokeStyle = "#f3f3f3"
+  
+  for i in [1..width/scale]
+    drawing2D("line", context, "xy", [[i*scale, 0],[i*scale, height]])
+  
+  for i in [1..height/scale]
+    drawing2D("line", context, "xy", [[0, i*scale],[width, i*scale]])      
+
+  context.strokeStyle = oldstyle 
+
+  return true        
 
 # Initialize canvas ---------------------------------------------------    
 

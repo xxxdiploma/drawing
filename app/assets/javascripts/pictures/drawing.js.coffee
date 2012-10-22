@@ -2,6 +2,35 @@
 
 sqr = (x) -> return x*x
 
+demension = "xy"
+
+# Get Demension -------------------------------------------------------
+
+changeDemension = (points) -> 
+  [X, Y, Z] = points
+
+  X0 = X*Math.cos(Math.PI/6) - Y*Math.sin(Math.PI/3)
+  Y0 = (X+Y)*Math.tan(Math.PI/6) + Z
+  
+  return [parseInt(X0), parseInt(Y0)]
+
+getDemension = (points) ->
+  new_points = []
+
+  if demension.length is 2
+    switch demension
+      when "xy" then [a, b] = [0, 1]
+      when "xz" then [a, b] = [0, 2]
+      when "yz" then [a, b] = [1, 2]
+
+    for i in points
+      new_points.push([i[a], i[b]])
+  else
+    for i in points
+      new_points.push(changeDemension(i))
+
+  return new_points
+
 # Drawing functions --------------------------------------------------- 
 
 drawPoint = (context, X1, Y1) ->  
@@ -11,7 +40,7 @@ drawPoint = (context, X1, Y1) ->
   context.lineTo(X1, Y1 + 5) 
 
 drawLine = (context, points, draw_points = false) -> 
-  [[X1, Y1], [X2, Y2]] = points
+  [[X1, Y1], [X2, Y2]] = getDemension(points)
 
   context.beginPath()
   context.moveTo(X1, Y1)
@@ -24,7 +53,7 @@ drawLine = (context, points, draw_points = false) ->
   context.stroke()
   context.closePath()
 
-drawCircle = (context, points, draw_radius = false, draw_points = false) ->
+###drawCircle = (context, points, draw_radius = false, draw_points = false) ->
   [[X1, Y1], [X2, Y2]] = points
 
   radius = Math.sqrt(sqr(X1-X2) + sqr(Y1-Y2))
@@ -41,13 +70,13 @@ drawCircle = (context, points, draw_radius = false, draw_points = false) ->
     drawPoint(context, X2, Y2)    
   
   context.stroke()
-  context.closePath()
+  context.closePath()###
 
 drawBezierCurve = (context, points, draw_points = false) ->
   if points.length is 2 then drawLine(context, points, draw_points)
   if points.length is 3 then drawBezierCurve(context, points.concat([points[2]]), draw_points)
 
-  [[X1, Y1], [X2, Y2], [X3, Y3], [X4, Y4]] = points
+  [[X1, Y1], [X2, Y2], [X3, Y3], [X4, Y4]] = getDemension(points)
 
   context.beginPath() 
   context.moveTo(X1, Y1)
@@ -65,7 +94,7 @@ drawBezierCurve = (context, points, draw_points = false) ->
 drawQuadraticCurve = (context, points, draw_points = false) ->
   if points.length is 2 then drawLine(context, points, draw_points)
 
-  [[X1, Y1], [X2, Y2], [X3, Y3]] = points
+  [[X1, Y1], [X2, Y2], [X3, Y3]] = getDemension(points)
 
   context.beginPath() 
   context.moveTo(X1, Y1)
@@ -79,7 +108,7 @@ drawQuadraticCurve = (context, points, draw_points = false) ->
   context.stroke()
   context.closePath()   
 
-drawArc = (context, points, draw_radius = false, draw_points = false) ->  
+###drawArc = (context, points, draw_radius = false, draw_points = false) ->  
   if points.length is 2 then drawCircle(context, points, draw_radius, draw_points)
 
   [[X1, Y1], [X2, Y2], [X3, Y3]] = points
@@ -103,14 +132,14 @@ drawArc = (context, points, draw_radius = false, draw_points = false) ->
     drawPoint(context, X3, Y3)     
   
   context.stroke()
-  context.closePath()
+  context.closePath()###
 
 drawEllipce = (context, points, draw_radius = false, draw_points = false) -> 
   if points.length is 2 
     [X1, Y1] = points[0]
     drawEllipce(context, points.concat([[X1, Y1+10]]), draw_radius, draw_points)
 
-  [[X1, Y1], [X2, Y2], [X3, Y3]] = points
+  [[X1, Y1], [X2, Y2], [X3, Y3]] = getDemension(points)
 
   width = (X1 - X2) * 1.33
   height = Y1 - Y3
@@ -135,7 +164,7 @@ drawEllipce = (context, points, draw_radius = false, draw_points = false) ->
   context.closePath()
 
 drawRect = (context, points, draw_diag = false, draw_points = false) ->
-  [[X1, Y1], [X3, Y3]] = points 
+  [[X1, Y1], [X3, Y3]] = getDemension(points)
   [[X2, Y2], [X4, Y4]] = [[X3, Y1], [X1, Y3]]
 
   context.beginPath()  
@@ -199,11 +228,18 @@ finishDrawing = (action, context, points) ->
 # ---------------------------------------------------------------------   
 
 root = exports ? this
-root.drawing = (action, context, points, draft = false) ->
+root.drawing2D = (action, context, dem, points, draft = false) ->
+  demension = dem
+
   if draft 
     return draftDrawing(action, context, points)
   else 
     return finishDrawing(action, context, points)      
   
-  return false
+  return false  
+
+root = exports ? this
+root.drawing3D = (action, context, points) ->
+  demension = "xyz"
+  return finishDrawing(action, context, points)         
 

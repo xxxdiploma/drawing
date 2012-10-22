@@ -72,6 +72,24 @@
   border-color: $light-green;  
 }
 
+#board_demension_button { 
+  margin-bottom: 2px;
+  width: 38px;
+  height: 24px;
+  cursor: pointer;
+  text-align: center;
+  background-color: white;
+  border-width: 2px;
+  border-color: $medium-grey;
+  border-radius: 2px;
+}
+
+#board_demension_button:hover {
+  background-color: #e3f4c3;
+  border-color: $light-green;  
+}
+
+
 .picture {
   width: 400px;
 

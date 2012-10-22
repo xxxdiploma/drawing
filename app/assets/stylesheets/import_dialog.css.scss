@@ -23,9 +23,23 @@
 
   textarea {
     border: 0px;
-    width: 598px;
-    height: 344px;
     font-size: $font_normal;
+    float: left;    
+  }
+
+  #import_dialog_line_numbers {
+    width: 22px; 
+    height: 344px;
+    text-align: center;
+    color: $light_grey;
+    background: $dark_grey;
+    font-weight: bold;
+  }
+
+  #import_dialog_text {
+    width: 570px;
+    height: 344px;
+    padding-left: 4px;
   }
 
   .button_ok {

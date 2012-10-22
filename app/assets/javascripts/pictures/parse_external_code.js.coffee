@@ -1,13 +1,11 @@
 # ---------------------------------------------------------------------
 
-last_point = [0, 0]
-radius_offset = false #компенсация на радиус инструмента
-cutter_radius = 10 #радиус фрезы
+last_point = [0, 0, 0] #X, Y, Z
 
 # ---------------------------------------------------------------------
 
 sqr = (x) -> 
-  return x*x
+  return x*x   
 
 # ---------------------------------------------------------------------
 
@@ -17,47 +15,26 @@ G00 = (current_point) ->
 
 #линия
 G01 = (current_point) ->
-  if not radius_offset
-    printFigureCode("line", [last_point, current_point])
-  else 
-    [X1, Y1] = last_point
-    [X2, Y2] = current_point
-    R = cutter_radius
-    printFigureCode("line", [[X1 + R, Y1 - R], [X2 + R, Y2 - R]])   
-  
+  printFigureCode("line", [last_point, current_point])  
   last_point = current_point
 
 #дуга по часовой стрелке
-G02 = (current_point, R) ->
-  radius_point = getRadiusPoint(R, current_point, true)
-  printFigureCode("arc", [radius_point, last_point, current_point])
-  last_point = current_point      
+#G02 = (current_point, R) ->
+#  radius_point = getRadiusPoint(R, current_point, true)
+#  printFigureCode("arc", [radius_point, last_point, current_point])
+#  last_point = current_point      
 
 #дуга против часовой стрелки
-G03 = (current_point, R) ->
-  radius_point = getRadiusPoint(R, current_point, false)
-  printFigureCode("arc", [radius_point, current_point, last_point])
-  last_point = current_point   
-
-#отмена компенсации на радиус инструмента
-G40 = () ->
-  radius_offset = false 
-
-#компенсация слева
-G41 = () ->
-  cutter_radius = Math.abs(cutter_radius)
-  radius_offset = true   
-
-#компенсация справа
-G42 = () ->
-  cutter_radius = -1 * Math.abs(cutter_radius)
-  radius_offset = true     
+#G03 = (current_point, R) ->
+#  radius_point = getRadiusPoint(R, current_point, false)
+#  printFigureCode("arc", [radius_point, current_point, last_point])
+#  last_point = current_point    
 
 #сверление
-G81 = (current_point, R) -> 
-  radius_point = [current_point[0] + R, current_point[1]]
-  printFigureCode("circle", [current_point, radius_point])
-  last_point = current_point  
+#G81 = (current_point, R) -> 
+#  radius_point = [current_point[0] + R, current_point[1]]
+#  printFigureCode("circle", [current_point, radius_point])
+#  last_point = current_point  
 
 # ---------------------------------------------------------------------
 
@@ -88,6 +65,14 @@ getRadiusPoint = (R, point, ckw) ->
 
 # ---------------------------------------------------------------------
 
+changeDemension = (X, Y, Z) -> 
+  X0 = X*Math.cos(Math.PI/6) - Y*Math.sin(Math.PI/3)
+  Y0 = (X+Y)*Math.tan(Math.PI/6) + Z
+  
+  return [parseInt(X0), parseInt(Y0)]
+
+# ---------------------------------------------------------------------
+
 parseLine = (text) ->
   R = 0
 
@@ -107,10 +92,16 @@ parseLine = (text) ->
   else  
     Y = parseInt(tmp[0].match /(\d+)/g)
 
+  tmp = text.match /[zZ](\d+)/g
+  if not tmp 
+    Z = last_point[2]
+  else  
+    Z = parseInt(tmp[0].match /(\d+)/g)    
+
   tmp = text.match /[rR](\d+)/g
   if tmp then R = parseInt(tmp[0].match /(\d+)/g)    
 
-  current_point = [X, Y]
+  current_point = [X, Y, Z]
 
   switch action
     when 0 then G00(current_point)
