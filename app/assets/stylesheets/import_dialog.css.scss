@@ -33,11 +33,12 @@
     text-align: center;
     color: $light_grey;
     background: $dark_grey;
-    font-weight: bold;
+    overflow: hidden;
   }
 
   #import_dialog_text {
-    width: 570px;
+    width: 567px;
+    margin-left: 3px;
     height: 344px;
     padding-left: 4px;
   }

@@ -1,5 +1,7 @@
 # --------------------------------------------------------------------- 
 
+root = exports ? this 
+
 actions = ["line", "curve", "bezier", "arc", "circle", "ellipse", "rectangle"]
 action = "no action"
 
@@ -67,6 +69,12 @@ createMenu = ->
     context = canvas.getContext('2d') 
     updateBoard(context)
 
+    if demension isnt "xy"
+      $("#board")[0].setAttribute "type", "show"
+      action = "no action"
+    else 
+      $("#board")[0].removeAttribute "type"
+
     return false  
     
 
@@ -85,22 +93,20 @@ createBoard = ->
 
 # --------------------------------------------------------------------- 
 
-printFigureCode = (points) ->
+printFigureCode = (points) -> #Только в плоскости XY
   text = $("#picture_code")
   old_text = text.val().replace /^\s+/g, ""
 
+  Z = 10
+
   new_points = []
   for i in points
-    switch demension
-      when "xy" then new_points.push([i[0], i[1], 0])
-      when "xz" then new_points.push([i[0], 0, i[1]])
-      when "yz" then new_points.push([0, i[0], i[1]])      
+    if demension is "xy" then new_points.push([i[0], i[1], Z])    
 
   text.val(old_text + action + " " + new_points.join(" ") + "\n")
 
 # ---------------------------------------------------------------------   
 
-root = exports ? this 
 root.clearBoard = (context) -> 
   width = $("canvas").width()
   height = $("canvas").height() 
