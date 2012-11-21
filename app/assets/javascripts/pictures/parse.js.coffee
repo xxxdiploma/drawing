@@ -1,12 +1,12 @@
 # ---------------------------------------------------------------------
 
 parseLine = (text) ->  
-  tmp = text.match /(\d+[,\d+]+)/g
+  tmp = text.match /(\d+[,\-*\d+]+)/g
   action = (text.match /(\w+[a-z])/g).toString()
   points = []
 
   for str in tmp
-    XY = str.match /(\d+)/g
+    XY = str.match /(-*\d+)/g
     points.push([parseInt(XY[0]), parseInt(XY[1]), parseInt(XY[2])])
 
   return {"action": action, "points": points}

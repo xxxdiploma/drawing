@@ -71,25 +71,22 @@ printFigureCode = (param) ->
 
 # ---------------------------------------------------------------------  
 
-getRadiusPoint = (R, point, ckw) ->
-  [X1, Y1, Z1] = point
-  [X0, Y0, Z0] = last_point 
+getRadiusPoint = (R, current_point, ckw = false) ->
+  [X1, Y1, Z1] = current_point
+  [X0, Y0, Z0] = last_point
 
   mod = 1
   if ckw then mod = -1 
 
-  Cx = (X0 - X1)/2 + X1
-  Cy = (Y0 - Y1)/2 + Y1
-  Cz = (Z0 - Z1)/2 + Z1
-
-  d = Math.sqrt(sqr(X0 - X1) + sqr(Y0 - Y1) + sqr(Z0 - Z1)) 
+  d = Math.sqrt(sqr(X0 - X1) + sqr(Y0 - Y1)) 
   h = Math.sqrt(sqr(R) - sqr(d/2))
-  
-  Rx = parseInt(Cx - mod*h*(X0 - Y1)/d)
-  Ry = parseInt(Cy + mod*h*(Y0 - X1)/d)
-  Rz = parseInt(Cz + h*(Z0 - Z1)/d)
 
-  return [Rx, Ry, Rz]
+  a = Math.PI - mod*Math.atan2(X0 - X1, Y0 - Y1)
+  
+  Rx = parseInt(X0 + (X1 - X0)/2 + h*Math.cos(a))
+  Ry = parseInt(Y0 + (Y1 - Y0)/2 + h*Math.sin(a))
+
+  return [Rx, Ry, Z0]
 
 # ---------------------------------------------------------------------
 

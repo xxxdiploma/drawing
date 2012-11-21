@@ -151,8 +151,25 @@ drawArc = (context, points, draw_radius = false, draw_points = false) ->
 drawArc3D = (context, points) ->
   [[X0, Y0, Z0], [X01, Y01, Z01], [X02, Y02, Z02]] = points
 
-  drawLine(context, [[X01, Y01, Z01], [X02, Y02, Z02]])
+  R = Math.sqrt(sqr(X0 - X01) + sqr(Y0 - Y01))
   
+  a = Math.atan2(X02 - X01, Y02 - Y01)
+
+  [[X1, Y1, Z1], [X2, Y2, Z2], [X3, Y3, Z3], [X4, Y4, Z4]] = [
+    [X0+R*Math.sin(a), Y0+R*Math.cos(a), Z0],
+    [X0-R*Math.sin(a), Y0-R*Math.cos(a), Z0],
+    [X0+R*Math.cos(a), Y0+R*Math.sin(a), Z0],
+    [X0-R*Math.cos(a), Y0-R*Math.sin(a), Z0]] 
+
+  #drawLine(context, [[X0, Y0, Z0], [X1, Y1, Z1]])
+  #drawLine(context, [[X0, Y0, Z0], [X2, Y2, Z2]])  
+  #drawLine(context, [[X0, Y0, Z0], [X3, Y3, Z3]])
+  #drawLine(context, [[X0, Y0, Z0], [X4, Y4, Z4]])
+
+  drawLine(context, [[X01, Y01, Z01], [X4, Y4, Z4]])
+  drawLine(context, [[X02, Y02, Z02], [X4, Y4, Z4]])  
+
+  #drawCircle3D(context, [[X0, Y0, Z0], [X01, Y01, Z01]])
 
 #Только для плоскости ХУ   
 drawArc2D = (context, points, draw_radius = false, draw_points = false) ->
